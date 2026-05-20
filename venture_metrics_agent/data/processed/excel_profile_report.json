@@ -1,0 +1,2045 @@
+{
+  "generated_at": "2026-05-20T21:29:48.209221+00:00",
+  "folder_path": "document_sources",
+  "totals": {
+    "files": 9,
+    "sheets": 25,
+    "rows": 661,
+    "urls": 686,
+    "unique_urls": 675,
+    "duplicate_urls": 11
+  },
+  "files": [
+    {
+      "file_name": "创新创业相关协会（深圳·香港）-2026.03.24.xlsx",
+      "file_path": "document_sources/创新创业相关协会（深圳·香港）-2026.03.24.xlsx",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_name": "深圳",
+          "column_names": [
+            "名字",
+            "网址",
+            "性质",
+            "简介"
+          ],
+          "row_count": 40,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 38
+            }
+          ],
+          "url_count": 38,
+          "unique_url_count": 37,
+          "duplicate_url_count": 1,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "简介"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "性质": 0.325,
+            "简介": 0.025
+          },
+          "sample_rows": [
+            {
+              "名字": "深圳市创业投资同业公会",
+              "网址": "https://www.szvca.com/szvca/cn",
+              "性质": "本会是由深圳市从事创业投资行业相关的企业（其他经济组织、个体工商户）自愿组成的、地方性、行业性、非营利性社会 组织。",
+              "简介": "深圳市创业投资同业公会（简称深圳创投公会）依据深圳市政府发布的《深圳市创业资本投资高新技术产业暂行规定》（深府[2000]96号令）相关规定，于2000年10月13日正式成立，是国内成立最早、最活跃、深具凝聚力和影响力的地方性创业投资行业自律组织之一。深圳创投公会会员包括优秀创投机构、创新型企业、机构出资人及相关中介服务机构等。\n\n多年来，深圳创投公会为完善我国创业投资生态体系建设积极出谋献策（包括参与深圳及国家有关部委创业投资相关政策法规的制定、修订），坚持开展创投从业人员和创业企业家专业培训，持续开展项目投融资对接活动。创新机制，与银行、担保、券商、会计师、律师、产权交易所、科技创业服务中心、创新孵化器等建立战略合作联盟。\n　　新时期，深圳创投公会在现任会长、东方富海陈玮董事长带领下，致力于转型成为创投生态公会，扩大会员边界，除了着力发展100家创投优秀会员外，还将发展100家创新型企业，100家LP机构，100家中介服务机构、科研院所、孵化器、FA等，形成创新创业创投协同发展的新生态；与此同时，深圳创投公会联合全国创投行业组织，积极向国家相关部门呼吁：把创投行业作为国家科技创新的组成部分，纳入国家发展战略，给予系列针对性政策支持。"
+            },
+            {
+              "名字": "深圳私募基金业协会",
+              "网址": "https://www.szpfa.org.cn/",
+              "性质": "本团体是依据私募投资基金相关法律法规和《社会团体登记管理条例》等的有关规定设立，主要由深圳私募投资基金管理人、相关机构、 个人自愿组成的专业性、地方性自律组织，是非营利性社会团体法人",
+              "简介": "深圳私募基金业协会（以下简称协会）成立于2020年8月18日，注册及办公地为深圳前海， 是全国首家由中国证监会派出机构作为业务主管单位指导设立的私募基金行业协会。协会由深圳市创新投资集团有限公司、 前海母基金股权投资（深圳）有限公司、招商局资本管理有限责任公司、深圳市鲲鹏股权投资管理有限公司、深圳市东方富海创 业投资管理有限公司、深圳市松禾资本管理有限公司等14家在管理规模、行业影响、合规规范等方面均处于行业领先地位的发 起单位发起，主要由深圳私募投资基金管理人及基金服务相关机构自愿组成，是实现自我组织、自我管理、自我服务、自我发展的 非营利性社会组织。首批（创会）会员133家，会员管理基金涵盖证券投资基金、私募股权基金、风险投资基金、对冲基金、另类 投资基金等多种类型。"
+            },
+            {
+              "名字": "深圳市投资基金同业公会",
+              "网址": "http://www.szama.org/",
+              "性质": null,
+              "简介": "深圳市投资基金同业公会（以下简称“基金公会”）在中国证监会深圳监管局、中国基金业协会、深圳市地方金融监管局等相关部门支持下，于2013年3月18日，由深圳最具代表性和影响力的专业投资机构发起成立。\n\n       深圳市投资基金同业公会秉承“携手同业、自律维权、创新共赢”的理念，助力粤港澳大湾区金融业发展与创新，业务内容涵盖行业自律管理、专业人才培训、监管协作，产业园区运营等，业已成为深圳地区最有影响力的行业协会之一。"
+            }
+          ],
+          "urls": [
+            "https://www.szvca.com/szvca/cn",
+            "https://www.szpfa.org.cn/",
+            "http://www.szama.org/",
+            "https://www.tsfof.com/tsfof/index.html",
+            "https://www.szscfa.com/",
+            "https://www.qhfa.org.cn/",
+            "https://www.szfta.org.cn/",
+            "https://saai.net.cn/",
+            "https://www.szsia.com/",
+            "http://www.szbattery.org/",
+            "https://www.szsrdi.com/",
+            "http://www.szpis.cn/",
+            "https://www.sieia.org/",
+            "https://www.sesacn.com/",
+            "http://szgch.org/",
+            "http://www.szicpa.com/",
+            "https://www.szbiomed.cn/",
+            "https://szida.org/",
+            "http://xhjjxh.cn/index.html",
+            "https://szuavia.org/mobile/index.html",
+            "https://www.ssctcell.com/index",
+            "https://www.shenshang.org/",
+            "https://ecnia.glueup.cn/org/ecnia/events/",
+            "http://www.szeia.com/page72",
+            "http://www.szfa.com/extend/szfa.html",
+            "https://www.szgfa.com/",
+            "http://szurta.org/",
+            "https://www.samd.org.cn/home/index",
+            "https://www.yysz.cn/",
+            "http://www.sznea.cn/",
+            "http://www.szmma.org.cn/portal/index/index.html",
+            "https://www.szaicx.com/",
+            "https://www.cnbayarea.org.cn/news/focus/content/post_167386.html",
+            "http://www.sziur.com/",
+            "https://newshub.sustech.edu.cn/html/202512/47084.html",
+            "https://www.gdsta.cn/kxxw/yw/content_51584",
+            "https://www.chinago.world/?spm=..index.header_1.1&spm_prev=..page_2385077.header_1.1",
+            "https://www.qhfa.org.cn/"
+          ]
+        },
+        {
+          "sheet_name": "香港",
+          "column_names": [
+            "名字",
+            "网址",
+            "简介"
+          ],
+          "row_count": 38,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 38
+            }
+          ],
+          "url_count": 38,
+          "unique_url_count": 38,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "简介"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "简介": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "香港创业及私募投资协会（HKVCA）",
+              "网址": "https://www.hkvca.com.hk/",
+              "简介": "始创于1987年11月12日，香港创业及私募投资协会（HKVCA）的宗旨是支持与促进香港及亚洲的创业及私募投资行业发展，同时积极推动会员公司在价值创造，业务创新和经济发展中起到的作用。本协会为会员公司提供一个交流和分享经验的平台，提倡行业道德操守及国际最佳实践和标准，并代表协会会员向政府和其他相关团体表达观点。\n   \n本协会560多间公司会员，成员当中有360间私募股权机构 – 包括世界前10大私募股权公司以及小型风险投资公司，共管理2万亿美元。它們积极参与亚太地区创业基金，成长基金，并购基金以及重组基金，退休基金，母基金，和家族办公室等各个发展阶段的投资之中。\n\n香港创业及私募投资协会的宗旨是推广中国内地与香港的创业及私募投资行业的发展，同时积极推动会员公司在价值创造，业务创新和经济发展中起到的作用。本协会为会员公司提供一个交流和经验分享的平台，提倡行业道德操守及国际最佳实践和标准，并代表协会会员向政府和其他相关团体表达观点。"
+            },
+            {
+              "名字": "香港金融科技协会（FTAHK）",
+              "网址": "https://ftahk.org/tc",
+              "简介": "香港金融科技協會 (FTAHK) 於 2017 年由一群充滿熱誠的專業人士創立。現在由一群關心香港、大中華區和亞洲金融科技未來的董事會成員和委員會聯合主席業界人士領導。我們是一家非營利組織，擁有基於透明度、問責制和治理支柱的獨立結構。\n\n本會會員包括最強的初創公司和滿腔熱誠的人士，以及全球金融機構和服務提供商。我們還與政府和監管機構緊密合作，為金融科技生態圈奠定全球標準。協會結合了專業知識、獨立性和非營利地位，使其在香港金融科技活動方面具有公正性和充分代表性，並在國際上代表香港金融科技。 其董事會成員來自各個領域，以確保多元化的代表性。"
+            },
+            {
+              "名字": "香港区块链协会（HKBA）",
+              "网址": "https://hkba.club/",
+              "简介": "香港區塊鏈協會（Hong Kong Blockchain Association）是一個致力於推動和發展區塊鏈技術的組織。協會成立於2017年，旨在促進香港的區塊鏈生態系統的發展，並推動區塊鏈技術在不同領域的應用。協會的使命是通過教育、研究和推廣來提高公眾對區塊鏈技術的認識和理解。該協會組織各類活動，包括會議、研討會和培訓課程，旨在促進區塊鏈技術的知識分享和合作。\n\n協會的成員來自不同領域，包括學術界、企業界和政府部門，他們共同致力於推動香港成為一個區塊鏈創新和應用的中心。該協會與相關機構和組織建立了廣泛的合作夥伴關系，以推動區塊鏈技術的發展，並與國際社群進行交流與合作。\n\n香港區塊鏈協會是一個重要的組織，致力於推動區塊鏈技術在香港及其周邊地區的發展，並為人們提供了一個交流和合作的平臺。"
+            }
+          ],
+          "urls": [
+            "https://www.hkvca.com.hk/",
+            "https://ftahk.org/tc",
+            "https://hkba.club/",
+            "https://hongkongai.org/cn/",
+            "https://www.hkgreenfinance.org/",
+            "https://www.hkstp.org/en/",
+            "https://www.astri.org/sc/",
+            "https://www.hkpc.org/zh-CN",
+            "https://www.mrdi.org.hk/zh-hant",
+            "https://hkitjc.org.hk/zh-hant/",
+            "https://www.iproa.org/web2023/web/",
+            "https://www.hkeia.org/",
+            "https://hkita.org.hk/",
+            "https://smartcity.org.hk/index.php/en/",
+            "https://hkati.hk/cn/",
+            "https://www.startup.org.hk/tc/",
+            "https://www.hksi.org/hk/",
+            "http://hkpefa.org/",
+            "https://hkifoa.com/",
+            "https://www.hkgcye.org.hk/",
+            "https://www.weventure.gov.hk/sc/gba_alliance/index.html",
+            "https://newgen.org.hk/",
+            "https://hkfyg.org.hk/zh/%e9%9d%92%e5%8d%94%e4%b8%bb%e9%a0%81-2/",
+            "https://www.yelites.org/",
+            "https://klnfas.hk/tc/%E6%9C%AC%E6%9C%83%E7%B0%A1%E4%BB%8B",
+            "https://www.poleungkuk.org.hk/",
+            "https://www.mhtt.com.hk/",
+            "https://www.cuhk.edu.hk/chinese/research/institutes.html",
+            "https://ec.hkust.edu.hk/",
+            "https://www.polyu.edu.hk/kteo/entrepreneurship/community/polyu-innohub/?sc_lang=sc",
+            "https://www.easefund.eduhk.hk/",
+            "https://www.hkcss.org.hk/",
+            "https://fses.hk/",
+            "https://makerbay.net/",
+            "https://www.oxfam.org.hk/tc/",
+            "https://sechamber.hk/zh_cn/home",
+            "https://www.ypahk.com/",
+            "https://hkyic.org/"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "双一流大学_孵化器_科技园05.10.xlsx",
+      "file_path": "document_sources/双一流大学_孵化器_科技园05.10.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "双一流大学_孵化器_科技园",
+          "column_names": [
+            "高校名称",
+            "孵化器/科技园名称",
+            "官网地址",
+            "企业链接"
+          ],
+          "row_count": 36,
+          "detected_url_columns": [
+            {
+              "column_name": "官网地址",
+              "url_count": 36
+            },
+            {
+              "column_name": "企业链接",
+              "url_count": 21
+            }
+          ],
+          "url_count": 57,
+          "unique_url_count": 56,
+          "duplicate_url_count": 1,
+          "likely_title_columns": [
+            "高校名称",
+            "孵化器/科技园名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "高校名称": 0.0,
+            "孵化器/科技园名称": 0.0,
+            "官网地址": 0.0,
+            "企业链接": 0.1389
+          },
+          "sample_rows": [
+            {
+              "高校名称": "北京大学",
+              "孵化器/科技园名称": "燕缘孵化器",
+              "官网地址": "https://iicsh.pku.edu.cn/gywm/yyfhq.htm",
+              "企业链接": "https://iicsh.pku.edu.cn/qypy/thqy.htm"
+            },
+            {
+              "高校名称": "北京大学",
+              "孵化器/科技园名称": "北大科技园",
+              "官网地址": "https://www.pkusp.com/",
+              "企业链接": "https://www.pkusp.com/serve/invest"
+            },
+            {
+              "高校名称": "北京大学",
+              "孵化器/科技园名称": "科技开发部/技术转移中心",
+              "官网地址": "https://kjkfb.pku.edu.cn/",
+              "企业链接": "无企业，成果链接https://kjkfb.pku.edu.cn/kjcg/tgcg.htm"
+            }
+          ],
+          "urls": [
+            "https://iicsh.pku.edu.cn/gywm/yyfhq.htm",
+            "https://iicsh.pku.edu.cn/qypy/thqy.htm",
+            "https://www.pkusp.com/",
+            "https://www.pkusp.com/serve/invest",
+            "https://kjkfb.pku.edu.cn/",
+            "http://www.tusholdings.com/h/tuspark/",
+            "http://www.tusholdings.com/h/incubation/",
+            "https://ott.tsinghua.edu.cn/index.htm",
+            "https://www.leaguer.com.cn",
+            "https://www.leaguer.com.cn/?yingyongyanfa.html",
+            "https://www.fudanusp.com",
+            "https://www.fudanusp.com/case/",
+            "https://ist.fudan.edu.cn/",
+            "http://www.sjtusp.com/Article?ArticleID=77",
+            "http://www.sjtusp.com/ArticleList?id=34",
+            "https://news.sjtu.edu.cn/jdyw/20240525/197963.html",
+            "https://aitri.sjtu.edu.cn/aitri/",
+            "https://aitri.sjtu.edu.cn/aitri/ip",
+            "https://ott.shanghaitech.edu.cn/main.htm",
+            "https://ott.shanghaitech.edu.cn/fhgs_9252/list.htm",
+            "https://kyy.scu.edu.cn/",
+            "http://iat.hust.edu.cn/",
+            "https://ttc.seu.edu.cn/",
+            "https://kfy.whu.edu.cn/bmgk/gwfg/kjcgzhfwzx_jszyzx_.htm",
+            "http://ott.swjtu.edu.cn/",
+            "https://ttc.bit.edu.cn/",
+            "https://ttc.bit.edu.cn/cyfw/xkxgs20/index.htm",
+            "http://zjusp.zju.edu.cn",
+            "http://zjusp.zju.edu.cn/WindowOfEnterprise",
+            "https://hic.zju.edu.cn",
+            "https://hic.zju.edu.cn/qzkj_84674/list.htm",
+            "http://www.itt.zju.edu.cn/",
+            "https://www.itt.zju.edu.cn/xgbgxz/list.htm",
+            "https://ott.shanghaitech.edu.cn",
+            "https://ott.shanghaitech.edu.cn/fhgs_9252/list.htm",
+            "https://zcgs.nwpu.edu.cn/info/1025/1641.htm",
+            "https://zcgs.nwpu.edu.cn/cyfh/fhqy.htm",
+            "http://www.tjt.cn/Default.aspx",
+            "http://www.tjt.cn/pictruelink.aspx?info_lb=236&flag=119",
+            "https://www.ecnu.edu.cn/info/1094/69640.htm",
+            "https://www2.scut.edu.cn/scutcm/hnlgdxgjdxkjy/list.htm",
+            "https://kjc.nwu.edu.cn/info/1201/7822.htm",
+            "https://kxyjb.csu.edu.cn/index.htm",
+            "https://sp.nju.edu.cn",
+            "https://sp.nju.edu.cn/mxqy/list.htm",
+            "https://www.cumtusp.com/",
+            "https://www.cumtusp.com/qyfc.html",
+            "http://usp.hit.edu.cn",
+            "http://usp.hit.edu.cn/13215/list.htm",
+            "http://www.hfusp.com",
+            "http://www.hfusp.com/index/Product/index.html?cate=28",
+            "https://zcjy.xmu.edu.cn",
+            "https://zcjy.xmu.edu.cn/tzqy/qyfc/qzkgqy.htm",
+            "https://www.tj.ztx0755.com/gongyeyuan/3-1685.html",
+            "https://www.ncsti.gov.cn/kcfw/zkj/cyyq/xq/?cid=78eaa123168fc13e6fb5e58a719ffc34",
+            "https://www.mingsishangwu.com/",
+            "https://www.mingsishangwu.com/enterpriseService/enterpriseDirectory"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "国内5年内创新创业相关报告-2026.03.14.xlsx",
+      "file_path": "document_sources/国内5年内创新创业相关报告-2026.03.14.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "工作表1",
+          "column_names": [
+            "报告名称",
+            "相关网址"
+          ],
+          "row_count": 82,
+          "detected_url_columns": [
+            {
+              "column_name": "相关网址",
+              "url_count": 82
+            }
+          ],
+          "url_count": 82,
+          "unique_url_count": 77,
+          "duplicate_url_count": 5,
+          "likely_title_columns": [
+            "报告名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "报告名称": 0.0,
+            "相关网址": 0.0
+          },
+          "sample_rows": [
+            {
+              "报告名称": "中国科学技术发展战略研究院：《国家创新指数报告 2024》",
+              "相关网址": "http://mob.casted.org.cn/channel/index/wid/83"
+            },
+            {
+              "报告名称": "中国科学技术发展战略研究院：《中国区域科技创新评价报告 2025》",
+              "相关网址": "http://mob.casted.org.cn/channel/index/wid/83"
+            },
+            {
+              "报告名称": "中国科学技术发展战略研究院：《中国创业投资发展报告 2024》",
+              "相关网址": "http://mob.casted.org.cn/channel/index/wid/83"
+            }
+          ],
+          "urls": [
+            "http://mob.casted.org.cn/channel/index/wid/83",
+            "http://mob.casted.org.cn/channel/index/wid/83",
+            "http://mob.casted.org.cn/channel/index/wid/83",
+            "http://mob.casted.org.cn/channel/index/wid/83",
+            "http://mob.casted.org.cn/channel/index/wid/83",
+            "https://m.sgpjbg.com/baogao/599119.html",
+            "https://m.sgpjbg.com/baogao/731766.html",
+            "http://www.chinatorch.gov.cn/cycx/scyw/202406/f2658bcc5c6048b98dd48815cb38eb19.shtml",
+            "https://www.gov.cn/gongbao/2025/issue_11966/202504/content_7017458.html",
+            "https://kw.beijing.gov.cn/zwgk/zfxxgk/zfxxgknb/202601/t20260119_4445345.html",
+            "https://m.sgpjbg.com/baogao/724134.html",
+            "https://m.sgpjbg.com/baogao/622400.html",
+            "https://m.sgpjbg.com/baogao/622397.html",
+            "https://m.sgpjbg.com/baogao/713258.html",
+            "https://m.sgpjbg.com/baogao/126659.html",
+            "https://xianxiao.ssap.com.cn/bibliography/1884431.html",
+            "https://www.caict.ac.cn/kxyj/qwfb/bps/202408/t20240827_491581.htm",
+            "https://www.caict.ac.cn/kxyj/qwfb/bps/202401/t20240104_469498.htm",
+            "https://m.sgpjbg.com/baogao/66772.html",
+            "https://m.sgpjbg.com/baogao/71147.html",
+            "https://m.sgpjbg.com/baogao/46896.html",
+            "http://www.kab.org.cn/gb/articles/2025-09/05/content_Lgn8aOFO9a.html",
+            "http://www.kab.org.cn/gb/articles/2024-12/26/content_77XBYVi58B.html",
+            "https://www.sohu.com/a/957572511_121778725",
+            "https://m.sgpjbg.com/baogao/187404.html",
+            "https://m.sgpjbg.com/baogao/149796.html",
+            "https://www.vzkoo.com/read/202401235d9cc7944a26c223725f5730.html",
+            "https://www.fxbaogao.com/detail/3821757",
+            "https://m.sgpjbg.com/baogao/710063.html",
+            "https://www.36kr.com/p/2020959571202305",
+            "https://m.sgpjbg.com/baogao/57062.html",
+            "https://m.sgpjbg.com/baogao/141299.html",
+            "https://m.sgpjbg.com/baogao/145273.html",
+            "https://www.idigital.com.cn/report/detail?id=4157",
+            "https://finance.sina.com.cn/tech/roll/2022-11-28/doc-imqmmthc6217217.shtml",
+            "https://m.sgpjbg.com/baogao/176593.html",
+            "https://m.sgpjbg.com/baogao/113938.html",
+            "https://m.sgpjbg.com/baogao/69767.html",
+            "https://www.jjckb.cn/2022-12/15/c_1310684245.htm",
+            "https://www.36kr.com/p/1996924072510216",
+            "https://pc.h2cn.org.cn/7ge8og/202401/e4715c6d519acd87f6cbf540f7f71097.html",
+            "https://m.sgpjbg.com/baogao/714295.html",
+            "https://m.sgpjbg.com/baogao/118342.html",
+            "https://m.sgpjbg.com/baogao/58723.html",
+            "https://m.sgpjbg.com/baogao/123569.html",
+            "https://www.fxbaogao.com/detail/4355297",
+            "https://m.sgpjbg.com/baogao/116408.html",
+            "https://m.sgpjbg.com/baogao/132820.html",
+            "https://m.sgpjbg.com/baogao/134019.html",
+            "https://m.sgpjbg.com/baogao/141584.html",
+            "https://m.sgpjbg.com/baogao/104647.html",
+            "https://m.sgpjbg.com/baogao/102734.html",
+            "https://m.sgpjbg.com/baogao/119414.html",
+            "https://m.sgpjbg.com/baogao/954681.html",
+            "https://m.sgpjbg.com/baogao/114527.html",
+            "https://m.sgpjbg.com/baogao/137047.html",
+            "https://m.sgpjbg.com/baogao/718243.html",
+            "https://m.sgpjbg.com/baogao/109817.html",
+            "https://max.book118.com/html/2025/0903/6154025211011223.shtm",
+            "https://m.sgpjbg.com/baogao/490469.html",
+            "https://m.sgpjbg.com/baogao/652922.html",
+            "https://m.sgpjbg.com/baogao/174766.html",
+            "https://m.sgpjbg.com/baogao/25281.html",
+            "https://m.sgpjbg.com/baogao/732045.html",
+            "https://m.sgpjbg.com/baogao/177303.html",
+            "https://www.hkubs.hku.hk/tc/media/press-release/hong-kong-economic-policy-green-paper-2025-policy-recommendations-to-turbocharge-hong-kongs-economy/",
+            "http://www.chinatorch.gov.cn/kjb/hjdt/202209/ba72e1e68bc946d7a80f48a8ab690bd6.shtml",
+            "http://www.cppc.org.cn/article-0-202402-1610.html",
+            "https://www.sohu.com/a/968594531_121752158",
+            "https://bimsa.net/doc/publication/15684.pdf",
+            "https://www.caict.ac.cn/kxyj/qwfb/bps/202408/P020240830315324580655.pdf",
+            "https://www.sxvca.org.cn/newsinfo/10791402.html",
+            "http://www.yee.org.cn/qywtzgg/202010/P020201030628330192124.pdf",
+            "https://www.chinaventure.com.cn/report/1005-20220121-1673.html",
+            "https://www.sgpjbg.com/baogao/732045.html",
+            "https://finance.eastmoney.com/a/202512303606103811.html",
+            "https://finance.eastmoney.com/a/202512303606103811.html",
+            "https://www.acfic.org.cn/ztzlhz/chuangxin2025/news_chuangxin2025/202509/t20250928_321639.html",
+            "https://www.eol.cn/news/dongtai/202206/t20220610_2231021.shtml",
+            "https://kjj.wuhan.gov.cn/zwgk_8/fdzdnrgk/ndbg/kjcxbg/202410/t20241021_2470916.shtml",
+            "https://www.sohu.com/a/768416697_121888860",
+            "https://www.sohu.com/a/843120510_121752158"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "数据库11个国家-2026.03.10.xlsx",
+      "file_path": "document_sources/数据库11个国家-2026.03.10.xlsx",
+      "sheet_count": 11,
+      "sheets": [
+        {
+          "sheet_name": "中国",
+          "column_names": [
+            "名字",
+            "网址",
+            "企查查link",
+            "费用",
+            "描述"
+          ],
+          "row_count": 20,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 20
+            },
+            {
+              "column_name": "企查查link",
+              "url_count": 17
+            },
+            {
+              "column_name": "费用",
+              "url_count": 1
+            }
+          ],
+          "url_count": 38,
+          "unique_url_count": 38,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "企查查link": 0.15,
+            "费用": 0.0,
+            "描述": 0.1
+          },
+          "sample_rows": [
+            {
+              "名字": "IT 桔子",
+              "网址": "https://www.itjuzi.com/",
+              "企查查link": "https://www.qcc.com/firm/dca7632e2b22013b8c69b655ec9dadb7.html",
+              "费用": "月会员：108/季会员：298/年会员：798/2年会员;1398/超级会员：19800/超级会员集团版：58000",
+              "描述": "国内最像Crunchbase的平台之一。专注于中国新经济与创业投融资市场，提供公司信息、投资事件、并购数据等，界面和信息架构都与Crunchbase有相似之处。"
+            },
+            {
+              "名字": "企名片",
+              "网址": "https://www.qimingpian.com/",
+              "企查查link": "https://www.qcc.com/web/search?key=%E4%BC%81%E5%90%8D%E7%89%87",
+              "费用": "网站并未标明",
+              "描述": "初创企业展示平台\n让创业被更多人看见\n让每一份创业热情都被看见，每一个创新项目都有舞台！初创企业展示平台深耕新兴产业赛道，以专业化、精准化的品牌传播服务为核心，为初创企业定制展示方案：从项目亮点提炼、品牌故事包装，到多渠道推广触达，助力早期项目打破初创期的知名度瓶颈。同时，平台搭建创业者社群，促进经验交流、技术合作与资源共享，让创业之路不再孤单。"
+            },
+            {
+              "名字": "烯牛数据",
+              "网址": "https://www.xiniudata.com/",
+              "企查查link": "https://www.qcc.com/firm/8b6189ee4dd25a9ceba201ca08fc84de.html",
+              "费用": "网站并未标明",
+              "描述": "专注于创业投资数据，提供公司库、融资数据、行业报告等，同样以数据驱动的方式服务投资人及创业者。"
+            }
+          ],
+          "urls": [
+            "https://www.itjuzi.com/",
+            "https://www.qcc.com/firm/dca7632e2b22013b8c69b655ec9dadb7.html",
+            "https://www.qimingpian.com/",
+            "https://www.qcc.com/web/search?key=%E4%BC%81%E5%90%8D%E7%89%87",
+            "https://www.xiniudata.com/",
+            "https://www.qcc.com/firm/8b6189ee4dd25a9ceba201ca08fc84de.html",
+            "https://www.tianyancha.com/",
+            "https://www.qcc.com/firm/d5cdc774c6b9e60a2a46f9990643fb67.html",
+            "https://www.qcc.com/",
+            "https://www.qcc.com/firm/f625a5b661058ba5082ca508f99ffe1b.html",
+            "https://bestla.cyzone.cn/",
+            "https://www.qcc.com/firm/18916399c9a3d2f4fd07398d446869e1.html",
+            "https://max.pedata.cn/",
+            "https://www.qcc.com/firm/d05372ce2980b50e51136eec1e59b606.html",
+            "https://www.cvsource.com.cn/",
+            "https://www.qcc.com/firm/c8261923787381ab14f57ae2bc1256f7.html",
+            "https://www.vbdata.cn/",
+            "https://www.qcc.com/firm/92166318f0956fe065cd1fa74dd1adb8.html",
+            "https://www.fxbaogao.com/?refer=360&bv=B&qhclickid=13bfe4c53d4f2cd9",
+            "https://www.qcc.com/firm/c70a55cb048c8e4db7bca357a2c113e0.html",
+            "https://cloud.tencent.com/product/bigdata-class",
+            "https://buy.cloud.tencent.com/pricing?Is=sdk-topnav",
+            "https://index.baidu.com/v2/index.html#/",
+            "https://www.qcc.com/firm/3f603703d59a04cbe427e5825099a565.html",
+            "https://www.iresearch.cn/",
+            "https://service.caict.ac.cn/",
+            "https://www.qcc.com/firm/ge8eb05732bf97d0eb0017ac890c9e6f.html",
+            "https://www.cninfo.com.cn/new/index.jsp",
+            "https://www.qcc.com/firm/e8ec59014b40916e84b4ee35adb1f6bd.html",
+            "https://www.wind.com.cn/portal/zh/Home/index.html",
+            "https://www.qcc.com/firm/d1b84f508d958bdd374cba6f903686b3.html",
+            "https://www.qixin.com/",
+            "https://www.qcc.com/firm/b61124dfdfb3c375475fef706eefb99e.html",
+            "https://36kr.com/",
+            "https://www.qcc.com/firm/68940a53b3b84bb28667ba4184e96098.html",
+            "https://www.chinaventure.com.cn/",
+            "https://www.qcc.com/firm/1233987e2a6ad357575f6082c0eb88cb.html",
+            "https://www.pedaily.cn/"
+          ]
+        },
+        {
+          "sheet_name": "美国",
+          "column_names": [
+            "名字",
+            "网址",
+            "费用",
+            "描述"
+          ],
+          "row_count": 12,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 12
+            },
+            {
+              "column_name": "费用",
+              "url_count": 3
+            }
+          ],
+          "url_count": 15,
+          "unique_url_count": 15,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "费用": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "PitchBook",
+              "网址": "https://pitchbook.com/",
+              "费用": "网站并未标明",
+              "描述": "全球私募和市场数据领域的领导者，提供极其详尽的公司金融、交易、基金绩效和LP信息，是许多专业投资机构的标配"
+            },
+            {
+              "名字": "Tracxn",
+              "网址": "https://tracxn.com/",
+              "费用": "网站并未标明",
+              "描述": "利用AI技术追踪全球初创公司和私募市场，提供超过300个细分行业的深度数据和市场趋势分析"
+            },
+            {
+              "名字": "CB Insights",
+              "网址": "https://www.cbinsights.com",
+              "费用": "https://www.cbinsights.com/what-we-offer/pricing/",
+              "描述": "以技术创新和市场趋势预测见长，通过分析专利、新闻和投资数据，帮助企业识别新兴技术和潜在的颠覆者"
+            }
+          ],
+          "urls": [
+            "https://pitchbook.com/",
+            "https://tracxn.com/",
+            "https://www.cbinsights.com",
+            "https://www.cbinsights.com/what-we-offer/pricing/",
+            "https://www.privco.com/",
+            "https://www.privco.com/pricing",
+            "https://www.dnb.com/en-us/",
+            "https://www.zoominfo.com/",
+            "https://www.zoominfo.com/pricing",
+            "https://angel.co",
+            "https://www.spglobal.com/market-intelligence/en",
+            "https://www.owler.com/corp",
+            "https://dealroom.co/",
+            "https://www.factset.com",
+            "https://www.preqin.com"
+          ]
+        },
+        {
+          "sheet_name": "日本",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 9,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 9
+            }
+          ],
+          "url_count": 9,
+          "unique_url_count": 9,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "INITIAL",
+              "网址": "https://initial.inc/",
+              "描述": "日本领先的 startup 信息平台之一，数据被广泛引用。提供超过150万家日本及全球初创公司信息，特别注重对日本企业成长阶段的分析和追踪，用户包括VC、企业、金融机构等"
+            },
+            {
+              "名字": "STARTUP DB",
+              "网址": "https://www.forstartups.com/",
+              "描述": "专注于日本成长型行业的专业数据库，收录超过25,000家初创公司。其特点是数据完整可靠，不仅为日经新闻等媒体提供数据，还与Crunchbase有业务合作，方便进行国际信息对照"
+            },
+            {
+              "名字": "SPEEDA",
+              "网址": "https://asia.ub-speeda.com/",
+              "描述": "由Uzabase公司提供，是日本一款非常全面的经济信息平台。不限于 startup，涵盖宏观经济、行业报告、企业财务（含未上市企业）、市场趋势、M&A和专利等多维度数据。尤其以其在亚洲（特别是日本和东南亚）的深度数据和专业分析报告见长"
+            }
+          ],
+          "urls": [
+            "https://initial.inc/",
+            "https://www.forstartups.com/",
+            "https://asia.ub-speeda.com/",
+            "https://zuva.io/",
+            "https://www.j-startup.go.jp/index.html",
+            "https://pitchbook.com/",
+            "https://www.tdb.co.jp/",
+            "https://www.tsr-net.co.jp",
+            "https://www.bvdinfo.com/ja-jp/products/orbis"
+          ]
+        },
+        {
+          "sheet_name": "印度",
+          "column_names": [
+            "名字",
+            "网址",
+            "费用",
+            "描述"
+          ],
+          "row_count": 11,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            },
+            {
+              "column_name": "费用",
+              "url_count": 2
+            }
+          ],
+          "url_count": 13,
+          "unique_url_count": 13,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "费用": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "Tracxn",
+              "网址": "https://tracxn.com/",
+              "费用": "精简版免费试用 优质版需联系销售",
+              "描述": "总部位于班加罗尔，是印度知名的数据智能平台。提供超过2000万家公司的数据，涵盖100多个行业，帮助风险投资和企业客户追踪市场趋势和公司信息"
+            },
+            {
+              "名字": "SAYUJ",
+              "网址": "https://sayuj.net/",
+              "费用": "网站并未标明",
+              "描述": "由印度软件技术园（STPI）在“数字印度”和“创业印度”倡议下推出。这是一个AI驱动的网络和资源发现平台，旨在连接初创公司、导师、投资者和孵化器"
+            },
+            {
+              "名字": "Kscan AI",
+              "网址": "https://perfios.ai/in/products/kscan-ai/",
+              "费用": "网站并未标明",
+              "描述": "由Perfios提供，更侧重于商业智能和风险评估。它整合了超过750个官方来源的数据，覆盖3000多万家企业，提供包括所有权、风险和财务状况在内的深度报告"
+            }
+          ],
+          "urls": [
+            "https://tracxn.com/",
+            "https://sayuj.net/",
+            "https://perfios.ai/in/products/kscan-ai/",
+            "https://www.ventureintelligence.com/",
+            "https://www.startupindia.gov.in/",
+            "https://www.thecompanycheck.com/",
+            "https://www.tofler.in/",
+            "https://www.tofler.in/price-and-plans",
+            "https://www.zaubacorp.com/",
+            "https://credhive.in/",
+            "http://www.primedatabasegroup.com/",
+            "https://www.companyseekers.com/",
+            "https://www.companyseekers.com/price"
+          ]
+        },
+        {
+          "sheet_name": "韩国",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 10,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "The VC",
+              "网址": "https://thevc.kr/",
+              "描述": "韩国领先的初创企业资本市场数据库（DB），提供初创公司信息、投融资数据、国家研发课题分析等功能。可通过企业 profile 查看融资历史、研发投入、合作机构排名等，帮助投资机构和企业发现深度科技初创公司"
+            },
+            {
+              "名字": "Geeks",
+              "网址": "https://geeks.co.kr/",
+              "描述": "由韩国经济日报运营的初创企业新闻平台，提供超过5000家韩国初创公司的数据库，包括CEO简介、管理层信息、主营业务、融资历史、投资者关系材料及相关新闻。平台还与The VC、Dunamu等合作，提供未上市企业估值、市场地图（Market Map）等功能。"
+            },
+            {
+              "名字": "RocketPunch",
+              "网址": "https://www.rocketpunch.com/",
+              "描述": "以“创业界的维基百科”为目标的平台，提供韩国创业公司数据库（Startup DB）、招聘平台和“大韩民国创业地图”（将创业公司地理位置视觉化标注在地图上）等功能。旨在方便快捷地提供创业相关的各种信息"
+            }
+          ],
+          "urls": [
+            "https://thevc.kr/",
+            "https://geeks.co.kr/",
+            "https://www.rocketpunch.com/",
+            "https://tryknowhow.com/",
+            "https://englishdart.fss.or.kr/",
+            "https://platum.kr/",
+            "https://www.startupkorea.kr/",
+            "https://www.hankyung.com/",
+            "https://kobdi.co.kr/",
+            "https://www.kvca.or.kr/en/"
+          ]
+        },
+        {
+          "sheet_name": "印尼",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 8,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 8
+            }
+          ],
+          "url_count": 8,
+          "unique_url_count": 8,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "EMIS ASEAN",
+              "网址": "https://www.emis.com/en",
+              "描述": "ISI Markets旗下的专业平台，专注于东盟市场，提供最全面的公司情报。覆盖新加坡、印尼、越南等市场，包含超过48.1万家上市公司和私营企业的详细资料及3年完整财务报表，并提供行业研究、并购交易数据和AI驱动的分析工具"
+            },
+            {
+              "名字": "IDX Data Services",
+              "网址": "https://www.idx.co.id/en/products/idx-data-services/",
+              "描述": "由印尼证券交易所（IDX）提供的官方数据服务，可获取实时、延迟或收盘后的市场数据，包括股票、债券、衍生品等。也提供包含800多家上市公司财务报告、公司行动等信息的数据参考产品"
+            },
+            {
+              "名字": "AHU (印尼法律人权部公司数据库)",
+              "网址": "https://ahu.go.id/pencarian/profil-pt",
+              "描述": "印尼官方公司注册信息查询平台，可查询在印尼注册的有限责任公司的基本档案，包括公司状态、地址、经营范围等工商注册信息"
+            }
+          ],
+          "urls": [
+            "https://www.emis.com/en",
+            "https://www.idx.co.id/en/products/idx-data-services/",
+            "https://ahu.go.id/pencarian/profil-pt",
+            "https://www.startupindonesia.co/",
+            "https://www.seedtable.com/",
+            "https://dailysocial.id/",
+            "https://east.vc/",
+            "https://shizune.co/"
+          ]
+        },
+        {
+          "sheet_name": "土耳其",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 10,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "startups.watch",
+              "网址": "https://startups.watch/",
+              "描述": "这是一个专注于土耳其及MENA（中东和北非）地区的初创公司数据平台。它提供超110个垂直领域的市场研究、战略洞察、初创公司数据库、交易流、公司指标（如网站流量、财务）等信息。投资者、加速器和企业可以使用它来发现投资机会、分析市场和监控竞争对手"
+            },
+            {
+              "名字": "Ideal Data Financial Technologies",
+              "网址": "https://idealdata.com.tr/",
+              "描述": "与前面几个主要关注初创公司的平台不同，这是一家位于伊斯坦布尔的金融科技公司，提供商业智能套件。它的平台侧重于金融数据分发、实时股票交易所数据跟踪以及历史和当前的金融数据内容，适合需要专业金融数据服务的用户"
+            },
+            {
+              "名字": "in4startups",
+              "网址": "https://in4startups.com/tr",
+              "描述": "位于伊斯坦布尔的投资网络平台，连接初创公司与投资者。提供创业分析、估值分析、法律和财务分析等解决方案，帮助初创公司寻找投资，帮助投资者发现适合的初创公司"
+            }
+          ],
+          "urls": [
+            "https://startups.watch/",
+            "https://idealdata.com.tr/",
+            "https://in4startups.com/tr",
+            "https://eksisozluk.com/son-girisim--3586811",
+            "https://www.findeks.com/",
+            "https://dealer.ai/",
+            "https://firmarehberi.com/",
+            "https://tr.kompass.com/",
+            "https://turkiyerehber.com/",
+            "https://www.firmasec.com/"
+          ]
+        },
+        {
+          "sheet_name": "沙特阿拉伯",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 10,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "Sharikat Mubasher",
+              "网址": "https://www.sharikatmubasher.com/sharikat-news/home",
+              "描述": "由中东知名金融信息服务机构Mubasher Info推出的平台，专注于沙特私营企业生态系统，特别是中小企业和初创公司。提供企业名录、B2B交易匹配、媒体公关服务、企业深度分析报告等功能，旨在成为沙特私募股权市场的第一可靠参考平台。"
+            },
+            {
+              "名字": "Jaree Platform",
+              "网址": "https://www.jaree.sa/en/home",
+              "描述": "2025年新推出的投资对接平台，由风险投资专业人士创立，旨在让早期投资更便捷高效。将经过筛选的初创公司与 accredited investors、家族办公室等进行匹配，注重交易质量、创始人准备情况和合规性。已与超过150名认证投资者合作。"
+            },
+            {
+              "名字": "Business Atlas",
+              "网址": "https://businessatlas.com.ph/",
+              "描述": "由沙特中小企业总局Monsha'at推出的官方数据平台。通过交互式地图和图表，提供各个行业、地区的小微企业和中型企业的多维度数据指标，包括历史数据和实时更新数据。旨在支持企业家和企业主做出明智的商业决策。"
+            }
+          ],
+          "urls": [
+            "https://www.sharikatmubasher.com/sharikat-news/home",
+            "https://www.jaree.sa/en/home",
+            "https://businessatlas.com.ph/",
+            "https://erc-jordan.org/saudi/",
+            "https://www.monafasat.sa/ar",
+            "https://thakaa.sa/",
+            "https://magnitt.com/en-sa/startups/",
+            "https://oqal.com/",
+            "https://www.venturesouq.com/",
+            "https://shizune.co/"
+          ]
+        },
+        {
+          "sheet_name": "以色列",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 11,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            }
+          ],
+          "url_count": 11,
+          "unique_url_count": 11,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "Startup Nation Finder",
+              "网址": "https://finder.startupnationcentral.org/",
+              "描述": "由非营利组织Startup Nation Central运营，是以色列最全面、最权威的免费初创企业数据库之一。覆盖大量活跃公司、投资者和创新数据，提供深入的市场研究报告"
+            },
+            {
+              "名字": "IVC - Israeli Tech Online Database",
+              "网址": "https://www.ivc-online.com/",
+              "描述": "以色列资深的研究和数据平台，提供极其详尽的高科技企业、风投基金、私募股权和高管信息。数据每日更新和验证，订阅制服务，专业性强"
+            },
+            {
+              "名字": "Dealigence",
+              "网址": "https://dealigence.vc/",
+              "描述": "一家总部位于特拉维夫的投资情报平台，专注于提供投资信号、交易流通知以及对\"隐形\"创业公司的数据分析，帮助投资机构发现机会"
+            }
+          ],
+          "urls": [
+            "https://finder.startupnationcentral.org/",
+            "https://www.ivc-online.com/",
+            "https://dealigence.vc/",
+            "https://972vc.com/",
+            "https://www.startuphub.ai/",
+            "https://startupnationcentral.org/",
+            "https://www.ourcrowd.com/",
+            "https://israeltechgate.com/",
+            "https://www.kycisrael.com/companies/",
+            "https://www.similarweb.com/",
+            "https://www.lusha.com/"
+          ]
+        },
+        {
+          "sheet_name": "泰国",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 11,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            }
+          ],
+          "url_count": 11,
+          "unique_url_count": 11,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "ThaiQuest",
+              "网址": "https://www.thaiquest.com/",
+              "描述": "泰国本土领先的金融信息和商业智能服务提供商。为泰国资本市场的专业人士提供全面的市场数据、新闻和分析工具，支持投资和交易决策。其服务包括专业分析平台TQ Professional和数据解决方案"
+            },
+            {
+              "名字": "Handshakes",
+              "网址": "https://www.handshakes.ai/",
+              "描述": "一家总部位于新加坡的企业情报解决方案提供商，专注于通过官方数据（如公司注册处、资本市场）绘制商业关系图。其数据库深度覆盖泰国，提供泰国私企的官方注册信息，支持市场拓展、投资分析和尽职调查"
+            },
+            {
+              "名字": "EMIS ASEAN",
+              "网址": "https://www.emis.com/en",
+              "描述": "全球新兴市场情报提供商ISI Markets旗下的东南亚平台。它提供泰国及整个东盟地区深度私企财务数据、行业研究、并购情报和实时新闻，以其对非上市公司的详细覆盖而闻名"
+            }
+          ],
+          "urls": [
+            "https://www.thaiquest.com/",
+            "https://www.handshakes.ai/",
+            "https://www.emis.com/en",
+            "https://www.set.or.th/en/services/connectivity-and-data/data/smart-marketplace",
+            "http://quickresultsonline.com/?dn=startupthailand.org&sksubid=529059&_slsen=0",
+            "https://techsauce.co/startup-directory",
+            "https://thaistartup.org/",
+            "https://www.startupcouncil.org/",
+            "https://datawarehouse.dbd.go.th/",
+            "https://www.boi.go.th/en/intro/",
+            "https://www.thaitrade.com/home"
+          ]
+        },
+        {
+          "sheet_name": "阿拉伯联合酋长国",
+          "column_names": [
+            "名字",
+            "网址",
+            "描述"
+          ],
+          "row_count": 14,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 14
+            }
+          ],
+          "url_count": 14,
+          "unique_url_count": 14,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "描述"
+          ],
+          "empty_column_ratio": {
+            "名字": 0.0,
+            "网址": 0.0,
+            "描述": 0.0
+          },
+          "sample_rows": [
+            {
+              "名字": "Growth (National Economic Registry)",
+              "网址": "https://www.growth.gov.ae/G2C/",
+              "描述": "这是由阿联酋经济部推出的国家级官方平台，整合了全国七个酋长国的企业执照信息，被视为最权威、最全面的企业数据库。它提供超过2,000种经济活动的数据，包含150万张活跃和已注销的商业许可证，可供投资者、研究人员查询市场趋势和投资机会"
+            },
+            {
+              "名字": "UAE Foreign Direct Investment (FDI) Dashboard",
+              "网址": "https://www.moet.gov.ae/en/foreign-direct-investment-dashboard",
+              "描述": "同样由阿联酋经济部提供，这个平台专注于外国直接投资数据。用户可以查询阿联酋吸引外资的概况、阿联酋在海外的投资、分国家的宏观经济指标以及具体的投资机会，支持数据导出"
+            },
+            {
+              "名字": "Ministry of Economy Open Data",
+              "网址": "https://www.moet.gov.ae/en/moec-opendata",
+              "描述": "阿联酋经济部的开放数据平台，提供各类统计数据、报告和分析。通过交互式仪表板和地图，用户可以获取与投资和经济指标相关的广泛数据，体现了政府对透明度的承诺"
+            }
+          ],
+          "urls": [
+            "https://www.growth.gov.ae/G2C/",
+            "https://www.moet.gov.ae/en/foreign-direct-investment-dashboard",
+            "https://www.moet.gov.ae/en/moec-opendata",
+            "https://magnitt.com/",
+            "https://www.menagrid.co/",
+            "https://www.startupsindubai.com/",
+            "https://arabnet.me/",
+            "https://www.wamda.com/",
+            "https://www.yello.ae/",
+            "https://www.reachuae.com/",
+            "https://aiwa.ae/",
+            "https://www.atninfo.com/",
+            "https://www.uaecompanies.ae/",
+            "https://www.dubaichambers.com/en/commercial-directory"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "深圳发展0519.xlsx",
+      "file_path": "document_sources/深圳发展0519.xlsx",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_name": "Sheet1",
+          "column_names": [
+            "序号",
+            "政策名称",
+            "年份",
+            "官方出处/链接"
+          ],
+          "row_count": 30,
+          "detected_url_columns": [
+            {
+              "column_name": "官方出处/链接",
+              "url_count": 21
+            }
+          ],
+          "url_count": 21,
+          "unique_url_count": 21,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "政策名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "序号": 0.0,
+            "政策名称": 0.0,
+            "年份": 0.0,
+            "官方出处/链接": 0.0
+          },
+          "sample_rows": [
+            {
+              "序号": 1,
+              "政策名称": "《关于促进科技创新的若干措施》",
+              "年份": 2016,
+              "官方出处/链接": "https://www.webtax.com.cn/articles/218700"
+            },
+            {
+              "序号": 2,
+              "政策名称": "《深圳市建设中国特色社会主义先行示范区的行动方案（2019-2025年）》",
+              "年份": 2019,
+              "官方出处/链接": "https://tzb.sz.gov.cn/xwzx/gzdt/content/post_33244.html"
+            },
+            {
+              "序号": 3,
+              "政策名称": "《深圳市科技计划管理改革方案》（“科改22条”）",
+              "年份": 2019,
+              "官方出处/链接": "https://stic.sz.gov.cn/xxgk/ztzl/kjjhtx/zytz/content/post_12126096.html\nhttps://m.thepaper.cn/baijiahao_3863787"
+            }
+          ],
+          "urls": [
+            "https://www.webtax.com.cn/articles/218700",
+            "https://tzb.sz.gov.cn/xwzx/gzdt/content/post_33244.html",
+            "https://stic.sz.gov.cn/xxgk/ztzl/kjjhtx/zytz/content/post_12126096.html",
+            "https://m.thepaper.cn/baijiahao_3863787",
+            "https://amr.sz.gov.cn/xxgk/zcwj/scjgfg/zscqgl/content/post_8775303.html",
+            "https://stic.sz.gov.cn/xxgk/zcfg/szkjcxzcfg/content/post_11694565.html",
+            "https://www.12333.gd.cn/html/rencaizhengce/661.html",
+            "https://hrss.sz.gov.cn/xxgk/qtxx/tzgg/content/post_10259925.html",
+            "https://sf.sz.gov.cn/gfxwjcx/szfbmgfxwj/szbm/srlzybzj/content/post_8302441.html",
+            "https://www.szns.gov.cn/bsfw/ztfw/jyzt/zcwj13/content/post_8408446.html",
+            "https://hrss.sz.gov.cn/xxgk/zcfgjjd/zcfg/jycy/content/post_9804752.html",
+            "https://gxj.sz.gov.cn/gkmlpt/content/12/12433/post_12433291.html#25192",
+            "https://www.szgfa.com/down_view.aspx?nid=14&typeid=13&id=536",
+            "https://jr.sz.gov.cn/sjrb/xxgk/zcfg/zcjd/zjjd/content/post_12066173.html",
+            "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fstic.sz.gov.cn%2Fattachment%2F1%2F1636%2F1636320%2F12446388.doc&wdOrigin=BROWSELINK",
+            "https://stic.sz.gov.cn/xxgk/zcfg/szkjcxzcfg/content/post_12273068.html",
+            "https://www.sz.gov.cn/cn/xxgk/zfxxgj/zwdt/content/post_12289226.html",
+            "https://www.sz.gov.cn/zfgb/2016/gb970/content/mpost_4956355.html",
+            "https://hrss.sz.gov.cn/ztfw/jycy/zcfg/szszc/content/post_7381286.html",
+            "https://www.sz.gov.cn/zfgb/2019/gb1084/content/post_5000142.html",
+            "https://stic.sz.gov.cn/xxgk/zcfg/content/post_11914785.html"
+          ]
+        },
+        {
+          "sheet_name": "Sheet2",
+          "column_names": [
+            "区域",
+            "政策特色与扶持重点",
+            "典型支持措施（部分）"
+          ],
+          "row_count": 11,
+          "detected_url_columns": [],
+          "url_count": 0,
+          "unique_url_count": 0,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [
+            "区域"
+          ],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "区域": 0.0,
+            "政策特色与扶持重点": 0.0,
+            "典型支持措施（部分）": 0.0
+          },
+          "sample_rows": [
+            {
+              "区域": "福田区",
+              "政策特色与扶持重点": "都市型先进制造业、知识产权金融",
+              "典型支持措施（部分）": "专精特新企业最高奖励300万元"
+            },
+            {
+              "区域": "南山区",
+              "政策特色与扶持重点": "科技创新、人才创业、金融支持",
+              "典型支持措施（部分）": "覆盖企业全周期的创新生态扶持"
+            },
+            {
+              "区域": "龙岗区",
+              "政策特色与扶持重点": "时尚产业、低空经济、直播电商",
+              "典型支持措施（部分）": "针对新业态出台精准扶持细则"
+            }
+          ],
+          "urls": []
+        }
+      ]
+    },
+    {
+      "file_name": "美英新白皮书0423.xlsx",
+      "file_path": "document_sources/美英新白皮书0423.xlsx",
+      "sheet_count": 3,
+      "sheets": [
+        {
+          "sheet_name": "美国",
+          "column_names": [
+            "名称",
+            "报告网址"
+          ],
+          "row_count": 87,
+          "detected_url_columns": [
+            {
+              "column_name": "报告网址",
+              "url_count": 87
+            }
+          ],
+          "url_count": 87,
+          "unique_url_count": 87,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "名称": 0.0,
+            "报告网址": 0.0
+          },
+          "sample_rows": [
+            {
+              "名称": "Global Entrepreneurship Monitor 2026 Report",
+              "报告网址": "https://www.gemconsortium.org/reports/latest-global-report"
+            },
+            {
+              "名称": "Business Dynamics Statistics 2025",
+              "报告网址": "https://www.census.gov/programs-surveys/bds.html"
+            },
+            {
+              "名称": "The Geography of Academic Commercialization",
+              "报告网址": "https://www.e-elgar.com/shop/usd/the-geography-of-academic-entrepreneurship-9780857937049.html"
+            }
+          ],
+          "urls": [
+            "https://www.gemconsortium.org/reports/latest-global-report",
+            "https://www.census.gov/programs-surveys/bds.html",
+            "https://www.e-elgar.com/shop/usd/the-geography-of-academic-entrepreneurship-9780857937049.html",
+            "https://www.nber.org/papers/w31099",
+            "https://aiindex.stanford.edu/report/",
+            "https://autm.net/about-tech-transfer/autm-insight/autm-updates/the-numbers-behind-innovation",
+            "https://www.gemconsortium.org/reports/womens-entrepreneurship",
+            "https://pitchbook.com/news/reports/2025-us-all-in-female-founders-in-the-vc-ecosystem",
+            "https://www.fedsmallbusiness.org/reports/survey/2026/2026-report-on-employer-firms",
+            "https://endeavor.org/2025-endeavor-catalyst-annual-report/",
+            "https://www.census.gov/programs-surveys/abs.html",
+            "https://www.sba.gov/priorities/councils-and-committees/invention-innovation-entrepreneurship-advisory-committee",
+            "https://www.eda.gov/sites/default/files/2024-02/NACIE_Competitiveness_Through_Entrepreneurship.pdf",
+            "https://www.nsf.gov/science-matters/nsf-2025-keeping-us-scientific-research-innovation-cutting",
+            "https://www.whitecase.com/insight-alert/white-house-unveils-comprehensive-ai-strategy-winning-race-americas-ai-action-plan",
+            "https://www.wipo.int/web-publications/global-innovation-index-2025/en/index.html",
+            "https://startupgenome.com/report/gser2025/introduction",
+            "https://www.bcg.com/assets/2025/most-innovative-companies-in-disruptive-times-the-resilient-win.pdf",
+            "https://media-publications.bcg.com/The-Widening-AI-Value-Gap-Sept-2025.pdf",
+            "https://www.cbinsights.com/research/report/venture-trends-2025/",
+            "https://www.cbinsights.com/research/report/venture-trends-q3-2025/",
+            "https://nvca.org/wp-content/uploads/2026/01/q4-2025-pitchbook-nvca-venture-monitor.pdf",
+            "https://pitchbook.com/news/reports/q3-2025-pitchbook-nvca-venture-monitor",
+            "https://www.mossadams.com/getmedia/28414a55-e14a-4b9f-b83c-47d1d672eda2/2025investmentoutcomesmonitor.pdf",
+            "https://gemconsortium.org/report/gem-20242025-womens-entrepreneurship-report-navigating-challenges-driving-change-2",
+            "https://www.grantthornton.global/globalassets/1.-member-firms/global/insights/women-in-business/2025/grant-thornton-women-in-business-2025---impacting-the-missed-generation.pdf",
+            "https://gusto.com/resources/gusto-insights/new-business-formation-report-2025",
+            "https://www.synovus.com/business/resource-center/growing-your-business/women-owned-businesses/",
+            "https://www.amcham.ro/news-from-members/ey-entrepreneurship-barometer-2025",
+            "https://www.mckinsey.com/~/media/mckinsey/business%20functions/mckinsey%20digital/our%20insights/how%20ceos%20are%20turning%20corporate%20venture%20building%20into%20outsize%20growth/how-ceos-are-turning-corporate-venture-building-into-outsize-growth.pdf",
+            "https://www.wto.org/english/tratop_e/msmes_e/mckinsey_18oct24.pdf",
+            "https://www.deloitte.com/us/en/services/audit-assurance/articles/private-financial-markets-trends.html",
+            "https://assets.kpmg.com/content/dam/kpmg/xx/pdf/2025/01/venture-pulse-q4-2024.pdf",
+            "https://newsroom.accenture.com/news/2025/accenture-technology-vision-2025-new-age-of-ai-to-bring-unprecedented-autonomy-to-business",
+            "https://www.accenture.com/content/dam/accenture/final/accenture-com/document-3/Accenture-LifeTrends2025-Report.pdf",
+            "https://www.accenture.com/us-en/insights/technology/reinventing-digital-core",
+            "https://carta.com/data/state-of-private-markets-q3-2025/",
+            "https://mercury.com/blog/startup-economics-report-2025",
+            "https://www.a16z.news/p/state-of-crypto-2025",
+            "https://nasdaqcenter.org/arie/",
+            "https://greatlakesicorps.org/icorps-impact-report-december-2025/",
+            "https://www.bipventures.vc/state-of-startups/2025",
+            "https://www.smallbusinessroundtable.org/empowering-americas-small-business-growth",
+            "https://itserve.org/immigrant-founders-power-nearly-half-of-fortune-500-companies-in-2025/",
+            "https://itif.org/publications/2025/07/18/time-to-act-policies-to-strengthen-us-robotics-industry/",
+            "https://itif.org/publications/2025/03/24/globalization2-a-new-trade-policy-framework/",
+            "https://www.rand.org/pubs/perspectives/PEA3701-1.html",
+            "https://www.rand.org/pubs/working_papers/WRA3370-1.html",
+            "https://www.nber.org/papers/w33766",
+            "https://www.nber.org/conferences/nber-entrepreneurship-and-innovation-policy-and-economy-conference-2025",
+            "https://www.hbs.edu/faculty/Pages/item.aspx?num=67574",
+            "https://rdventurestudio.com/",
+            "https://www.gsb.stanford.edu/faculty-research/publications/gsb-alumni-entrepreneurs-2025",
+            "https://indicators.kauffman.org/reports/2021-early-stage-entrepreneurship-national",
+            "https://www.sba.gov/document/report-sba-2024-capital-impact-report",
+            "https://eig.org/the-startup-surge-economic-upheaval-leads-to-record-business-formation-in-first-half-of-2021/",
+            "https://rfairlie.sites.luskin.ucla.edu/wp-content/uploads/sites/32/2025/06/entrepreneurship-indicators-2023_v5.pdf",
+            "https://www.gemconsortium.org/report/gem-usa-20212021-report-2",
+            "https://startupgenome.com/insights/key-insights-gser-2021",
+            "https://startupgenome.com/insights/the-state-of-global-startup-ecosystems-in-2022",
+            "https://www.belfercenter.org/sites/default/files/pantheon_files/files/publication/TAPP_LivioValenti_LabtoImpact_FINAL_220513.pdf",
+            "https://www.nber.org/books-and-chapters/role-innovation-and-entrepreneurship-economic-growth",
+            "https://www.census.gov/data/tables/2023/econ/abs/2023-abs-characteristics-of-owners.html",
+            "https://catalog.data.gov/dataset/2022-annual-business-survey-characteristics-of-businesses",
+            "https://www.census.gov/data/tables/2021/econ/abs/2021-abs-characteristics-of-owners.html",
+            "https://www.mayerbrown.com/en/insights/publications/2025/12/genesis-catalyst-a-national-ai-platform-to-advance-scientific-progress",
+            "https://www.nsf.gov/focus-areas/ai/nairr",
+            "https://democrats-smallbusiness.house.gov/news/documentsingle.aspx?DocumentID=5124",
+            "https://www.startupcouncil.org/gec2025",
+            "https://www.startupblink.com/blog/corporate-startup-activity-index/",
+            "https://www.nitrd.gov/coordination-areas/ai/",
+            "https://www.gsb.stanford.edu/faculty-research/publications/state-latino-entrepreneurship-2021",
+            "https://www.gsb.stanford.edu/faculty-research/publications/state-latino-entrepreneurship-2022",
+            "https://www.gsb.stanford.edu/faculty-research/publications/state-latino-entrepreneurship-2023",
+            "https://www.gsb.stanford.edu/faculty-research/publications/state-latino-entrepreneurship-2024",
+            "https://www.gsb.stanford.edu/faculty-research/publications/2025-state-latino-entrepreneurship",
+            "https://hai.stanford.edu/ai-index/2023-ai-index-report",
+            "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+            "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+            "https://d-lab.mit.edu/approach/innovation-entrepreneurship-ecosystems",
+            "https://www.technologyreview.com/2023/01/09/1066394/10-breakthrough-technologies-2023/",
+            "https://www.technologyreview.com/2024/01/08/1085094/10-breakthrough-technologies-2024/",
+            "https://www.technologyreview.com/2025/01/03/1109178/10-breakthrough-technologies-2025/",
+            "https://ide.mit.edu/",
+            "https://www.hks.harvard.edu/publications/innovation-policy-and-economy",
+            "https://www.sba.gov/document/report-agency-financial-report",
+            "https://www.deloittedigital.com/au/en/insights/research/deloitte-tech-trends-report-2023.html"
+          ]
+        },
+        {
+          "sheet_name": "英国",
+          "column_names": [
+            "名称",
+            "链接"
+          ],
+          "row_count": 86,
+          "detected_url_columns": [
+            {
+              "column_name": "链接",
+              "url_count": 86
+            }
+          ],
+          "url_count": 86,
+          "unique_url_count": 86,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "名称": 0.0,
+            "链接": 0.0
+          },
+          "sample_rows": [
+            {
+              "名称": "UK Innovation Strategy: leading the future by creating it",
+              "链接": "https://data.parliament.uk/DepositedPapers/Files/DEP2021-0648/UK_Innovation_Strategy.pdf"
+            },
+            {
+              "名称": "Innovation and Growth Report 2022/23 (HTML)",
+              "链接": "https://www.gov.uk/government/publications/promoting-innovation-and-growth-the-ipo-at-work-2022-23/innovation-and-growth-report-202223-html"
+            },
+            {
+              "名称": "Invest 2035: the UK's modern industrial strategy",
+              "链接": "https://www.gov.uk/government/consultations/invest-2035-the-uks-modern-industrial-strategy/invest-2035-the-uks-modern-industrial-strategy"
+            }
+          ],
+          "urls": [
+            "https://data.parliament.uk/DepositedPapers/Files/DEP2021-0648/UK_Innovation_Strategy.pdf",
+            "https://www.gov.uk/government/publications/promoting-innovation-and-growth-the-ipo-at-work-2022-23/innovation-and-growth-report-202223-html",
+            "https://www.gov.uk/government/consultations/invest-2035-the-uks-modern-industrial-strategy/invest-2035-the-uks-modern-industrial-strategy",
+            "https://assets.publishing.service.gov.uk/media/686e2be010d550c668de3cb1/DSIT_ARA_2024-25_web_optimised.pdf",
+            "https://www.gov.uk/government/statistics/announcements/uk-innovation-survey-2025-report",
+            "https://www.gov.uk/government/statistics/uk-innovation-survey-2023-report",
+            "https://www.gov.uk/government/statistics/uk-innovation-survey-2021-report",
+            "https://www.gov.uk/government/statistics/uk-innovation-survey-2021-northern-ireland-results",
+            "https://www.gov.scot/publications/uk-innovation-survey-2023-results-for-scotland/",
+            "https://www.gov.scot/publications/uk-innovation-survey-2021-results-for-scotland/",
+            "https://www.ciip.group.cam.ac.uk/innovation/uk-innovation-report-2025/",
+            "https://www.ciip.group.cam.ac.uk/innovation/the-uk-innovation-report-2024/",
+            "https://www.ciip.group.cam.ac.uk/innovation/the-uk-innovation-report-2023-2/",
+            "https://www.ciip.group.cam.ac.uk/innovation/the-uk-innovation-report-2022/",
+            "https://matrixni.org/documents/uk-innovation-report/",
+            "https://www.enterpriseresearch.ac.uk/global-entrepreneurship-monitor-uk-national-report-2024-25/",
+            "https://www.enterpriseresearch.ac.uk/publications/insight-from-innovation-state-of-the-nation-survey-isns-2023-and-2024/",
+            "https://ircaucus.ac.uk/publications/the-innovation-state-of-the-nation-2025-survey-report/",
+            "https://www.enterpriseresearch.ac.uk/publications/innovation-state-of-the-nation/",
+            "https://www.enterpriseresearch.ac.uk/publications/the-state-of-small-business-britain-2025-navigating-uncertainty/",
+            "https://www.enterpriseresearch.ac.uk/publications/the-state-of-small-business-britain-report-2024/",
+            "https://www.gov.uk/government/statistics/small-business-survey-2024-businesses-with-employees/longitudinal-small-business-survey-2024-sme-employers-businesses-with-1-to-249-employees",
+            "https://www.gov.uk/government/statistics/small-business-survey-2024-businesses-with-employees",
+            "https://www.british-business-bank.co.uk/about/research-and-publications/small-business-finance-markets-report-2025/factsheet",
+            "https://www.british-business-bank.co.uk/about/research-and-publications/small-business-equity-tracker-2025",
+            "https://www.british-business-bank.co.uk/about/research-and-publications/small-business-equity-tracker-2024",
+            "https://www.ipsos.com/en-uk/sme-finance-monitor",
+            "https://www.gov.uk/government/statistics/business-population-estimates-2025/business-population-estimates-for-the-uk-and-regions-2025-statistical-release",
+            "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/researchanddevelopmentexpenditure/bulletins/businessenterpriseresearchanddevelopment/2024",
+            "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/researchanddevelopmentexpenditure/bulletins/ukgovernmentexpenditureonscienceengineeringandtechnology/2024",
+            "https://www.ukri.org/publications/annual-report-and-accounts-2024-to-2025/ukri-annual-report-and-accounts-2024-to-2025/",
+            "https://www.wbs.ac.uk/news/uk-ambition-is-booming-but-small-firm-innovation-sinks-to-four-year-low/",
+            "https://www.ciosgrowthhub.com/news/record-entrepreneurial-ambition-fails-to-translate-into-growth-as-small-business-innovation",
+            "https://www.enterprisenation.com/learn-something/how-uk-small-businesses-keep-going/",
+            "https://www.business-money.com/announcements/percentage-of-small-businesses-experiencing-barriers-to-growth-hits-five-year-peak/",
+            "https://financialaccountant.co.uk/features/sme-small-business-trends/",
+            "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/enterprise/2024/feb/record-900000-new-companies-launched-in-2023.html",
+            "https://www.enterprisenation.com/learn-something/uk-another-record-year-for-company-start-ups/",
+            "https://www.natwest.com/business/insights/business-management/business-strategy/startup-index-shows-signs-of-stability-in-uk-incorporations.html",
+            "https://www.ulsterbank.co.uk/business/insights/business-management/business-strategy/uk-startup-trends-show-growth-stabilised-in-2024.html",
+            "https://www.beauhurst.com/research/new-startup-index-h1-2024-2/",
+            "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/enterprise/2024/aug/launchpad-for-growth-as-468000-new-companies-start-up.html",
+            "https://www.ons.gov.uk/businessindustryandtrade/business/activitysizeandlocation/bulletins/businessdemography/2024",
+            "https://www.reuters.com/world/uk/uk-creates-new-businesses-slowest-rate-since-2010-2024-11-18/",
+            "https://smallbusiness.co.uk/record-number-of-new-companies-launched-in-2023-2586669/",
+            "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/enterprise/2025/feb/number-of-businesses-operating-in-the-uk-hits-record-high-natwes.html",
+            "https://w.tracxn.com/report-releases/women-co-founders-in-uk-tech-annual-funding-report-2025",
+            "https://bmmagazine.co.uk/in-business/female-entrepreneurs-decline-uk-tax-investment-barriers/",
+            "https://prowess.org.uk/womens-enterprise-2025/",
+            "https://pureportal.bcu.ac.uk/en/publications/beyond-survival-how-black-and-asian-led-social-enterprises-are-re/",
+            "https://www.hsbcinnovationbanking.com/en/resources/2025-uk-innovation-review",
+            "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/06/benchmarking-government-support-for-venture-capital_cc27598f/81e53985-en.pdf",
+            "https://labs.uk.barclays/learning-and-insights/news-and-insights/thought-leadership/unlocking-investment-insights-into-high-growth-companies/",
+            "https://www.eisa.org.uk/about-eis/facts-and-figures/",
+            "https://www.smeweb.com/rd-tax-relief-claims-falling-by-a-third-spark-fears-smes-are-being-discouraged-from-innovation/",
+            "https://www.civilsociety.co.uk/news/social-impact-investment-market-hits-10bn-as-loans-to-charities-surge-report-finds.html",
+            "https://www.bdo.co.uk/en-gb/news/2025/venture-capital-and-private-equity-drive-record-investment-in-uks-maturing-circular-economy",
+            "https://itbrief.co.uk/story/uk-ai-startups-outside-london-secure-higher-average-funding",
+            "https://www.burges-salmon.com/articles/102jmrc/what-does-the-ai-sector-in-the-uk-look-like-dsits-study-published/",
+            "https://lordslibrary.parliament.uk/ai-and-creative-technology-scaleups-communications-and-digital-committee-report/",
+            "https://raeng.org.uk/policy-and-resources/research-and-innovation/accelerating-enterprise/",
+            "https://startupcoalition.io/news/the-42bn-climatetech-index-25/",
+            "https://www.beauhurst.com/research/semiconductor-clusters-review/",
+            "https://labs.uk.barclays/learning-and-insights/news-and-insights/thought-leadership/decrypting-the-uk-s-high-growth-quantum-technology-companies/",
+            "https://www.beauhurst.com/research/understanding-artificial-intelligence-companies/",
+            "https://www.ibtimes.co.uk/uk-fintech-sector-secured-more-funding-28-european-nations-put-together-2023-1722713",
+            "https://thefintechtimes.com/navigating-growth-strategies-from-uks-regional-fintech-scaleups/",
+            "https://pec.ac.uk/news_entries/with-the-right-financial-support-creative-industries-could-fuel-the-governments-growth-mission-and-help-tackle-persistent-regional-inequality/",
+            "https://www.techuk.org/resource/techuk-report-enabling-growth-and-resilience-the-uk-tech-sector-in-an-uncertain-world.html",
+            "https://www.instantoffices.com/blog/featured/entrepreneurial-uk-cities-2024/",
+            "https://www.nottinghamworld.com/business/nottingham-identified-as-uk-boomtown-where-new-businesses-thrive-4667920",
+            "https://workplacejournal.co.uk/2024/10/invgate-reveals-top-10-areas-to-start-a-business-in-the-uk/",
+            "https://www.xero.com/media-releases/small-business-productivity-declines-in-uk-regions/",
+            "https://www.business-live.co.uk/technology/tech-growth-slows-north-west-28756518",
+            "https://www.scaleupinstitute.org.uk/reports/annual-review-highlights-2024/",
+            "https://techround.co.uk/business/meet-the-uks-top-scale-ups/",
+            "https://www.futuregovernanceforum.co.uk/2024/12/12/seizing-the-scale-up-moment/",
+            "https://www.sussexinnovation.co.uk/news-resources/breaking-barriers-to-growth/",
+            "https://www.wipo.int/gii-ranking/en/united-kingdom",
+            "https://www.oecd.org/en/publications/oecd-economic-surveys-united-kingdom-2024_709e70b8-en.html",
+            "https://www.ncub.co.uk/insight/berd2025/",
+            "https://www.ncub.co.uk/insight/the-uks-innovation-dilemma-overlooking-the-power-of-intangible-investment/",
+            "https://www.ncub.co.uk/insight/uk-business-r-leaders-call-for-policy-reset/",
+            "https://www.fi-group.uk/uk-rd-spending-surges-in-2025-led-by-pharma-and-biotech",
+            "https://www.ukri.org/news/ukri-publishes-annual-report-on-investment-by-region-and-nation/",
+            "https://www.ciip.group.cam.ac.uk/innovation/uk-innovation-report-2026/"
+          ]
+        },
+        {
+          "sheet_name": "新加坡",
+          "column_names": [
+            "名称",
+            "网址",
+            "Unnamed: 2"
+          ],
+          "row_count": 28,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 28
+            },
+            {
+              "column_name": "Unnamed: 2",
+              "url_count": 1
+            }
+          ],
+          "url_count": 29,
+          "unique_url_count": 29,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "名称",
+            "Unnamed: 2"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "名称": 0.0,
+            "网址": 0.0,
+            "Unnamed: 2": 0.9643
+          },
+          "sample_rows": [
+            {
+              "名称": "EDB Year in Review 2024",
+              "网址": "https://www.edb.gov.sg/en/about-edb/media-releases-publications/edb-year-2024-in-review.html",
+              "Unnamed: 2": null
+            },
+            {
+              "名称": "Enterprise Singapore Annual Report 2024/2023",
+              "网址": "https://www.enterprisesg.gov.sg/-/media/esg/files/resources/publications/annual-reports/enterprisesg-annual-report-2023.pdf",
+              "Unnamed: 2": null
+            },
+            {
+              "名称": "Singapore Global Startup Ecosystem",
+              "网址": "https://startupgenome.com/ecosystems/singapore",
+              "Unnamed: 2": null
+            }
+          ],
+          "urls": [
+            "https://www.edb.gov.sg/en/about-edb/media-releases-publications/edb-year-2024-in-review.html",
+            "https://www.enterprisesg.gov.sg/-/media/esg/files/resources/publications/annual-reports/enterprisesg-annual-report-2023.pdf",
+            "https://startupgenome.com/ecosystems/singapore",
+            "https://www.imda.gov.sg/-/media/imda/files/infocomm-media-landscape/research-and-statistics/sgde-report/singapore-digital-economy-report-2024.pdf",
+            "https://www.imda.gov.sg/-/media/imda/files/about/resources/corporate-publications/annual-report/imda-annual-report-fy2024-2025.pdf",
+            "https://www.mti.gov.sg/newsroom/transforming-the-singapore-economy/",
+            "https://www.msf.gov.sg/media-room/article/progress-on-singapore-women-s-development-2024",
+            "https://www.msf.gov.sg/docs/default-source/research-data/progressonsingaporewomensdevelopmentreport2024.pdf",
+            "https://www.mas.gov.sg/-/media/mas-media-library/publications/annual-report/2024/mas-annual-report-infographic-fy2324.pdf",
+            "https://www.startupsg.gov.sg/public/inline-images/EntSG_9M_2024_Venture%20Funding_Landscape_v1.pdf",
+            "https://www.sginnovate.com/sites/default/files/gated_content_pdf/SGInnovate_Emerging%20Tech%20Startup%20Landscape%20Report%202022%20%281%29.pdf",
+            "https://www.edb.gov.sg/en/business-insights/insights/singapores-quiet-rise-in-the-global-deep-tech-race.html",
+            "https://www.edb.gov.sg/en/business-insights/insights/deep-tech-unlocking-new-engines-of-growth-for-singapore.html",
+            "https://www.uobgroup.com/techecosystem/reports/fintech-in-asean-2024.page",
+            "https://singaporefintech.org/wp-content/uploads/2023/11/5.1_fintech-in-asean-2023.pdf",
+            "https://www.pwc.com/sg/en/publications/fintech-state-of-play.html",
+            "https://assets.kpmg.com/content/dam/kpmgsites/cn/pdf/en/2023/09/pulse-of-fintech-h1-2023.pdf.coredownload.inline.pdf",
+            "https://fintechnews.sg/fintech-singapore-report-2023/",
+            "https://www.dealstreetasia.com/partner-content/singapore-venture-funding-landscape-2023-nine-month-report",
+            "https://www.startupsg.gov.sg/public/2023-03/Singapore%20Venture%20Funding%20Landscape%202022%20Report.pdf",
+            "https://www.jungle.vc/resources/the-first-cheque-report-2024-our-year-of-backing-ideas",
+            "https://w.tracxn.com/report-releases/singapore-tech-annual-report-2024",
+            "https://www.imda.gov.sg/-/media/imda/files/industry-development/infrastructure/technology/technology-roadmap/wg3-executive-summary-for-cyber-security.pdf",
+            "https://www.uobgroup.com/techecosystem/reports/fintech-in-asean-2025.page",
+            "https://www.bain.com/insights/southeast-asias-green-economy-2025/",
+            "https://www.studocu.com/row/document/bowen-university/financial-reporting/southeast-asia-ipo-capital-market-2025-full-year-analysis-report/155808499",
+            "https://singaporefintech.org/wp-content/uploads/2024/11/SFA-Singapore-Technology-Talent-Report-2024.pdf",
+            "https://pitchbook.com/news/reports/q2-2025-singapore-market-snapshot",
+            "https://www.eamesconsulting.com/blog/singapores-tech-workforce-trends-talent-gaps-and-market-dynamics/"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "香港tto0508.xlsx",
+      "file_path": "document_sources/香港tto0508.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "TTO和孵化器",
+          "column_names": [
+            "学校",
+            "类型",
+            "名称 / 说明",
+            "URL",
+            "相关资料"
+          ],
+          "row_count": 21,
+          "detected_url_columns": [
+            {
+              "column_name": "URL",
+              "url_count": 21
+            },
+            {
+              "column_name": "相关资料",
+              "url_count": 2
+            }
+          ],
+          "url_count": 23,
+          "unique_url_count": 23,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "名称 / 说明"
+          ],
+          "likely_category_columns": [
+            "类型"
+          ],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "学校": 0.0,
+            "类型": 0.0476,
+            "名称 / 说明": 0.0,
+            "URL": 0.0,
+            "相关资料": 0.9048
+          },
+          "sample_rows": [
+            {
+              "学校": "香港大学 (HKU)",
+              "类型": "TTO",
+              "名称 / 说明": "技术转移处官网",
+              "URL": "https://www.tto.hku.hk",
+              "相关资料": null
+            },
+            {
+              "学校": "香港大学 (HKU)",
+              "类型": "初创列表",
+              "名称 / 说明": "初创与衍生公司官方列表",
+              "URL": "https://www.tto.hku.hk/startups/hku-startup-spin-off-companies",
+              "相关资料": null
+            },
+            {
+              "学校": "香港大学 (HKU)",
+              "类型": "孵化器",
+              "名称 / 说明": "iDendron（创业社群）",
+              "URL": "https://www.startmeup.hk/zh-hant/startup-resources/networks/university-networks-zh-hant/hkus-idendron/",
+              "相关资料": "https://www.hku.hk/f/upload/19742/%E9%A6%99%E6%B8%AF%E5%A4%A7%E5%AD%B825%E9%96%93%E5%88%9D%E5%89%B5%E5%85%AC%E5%8F%B8%E7%8D%B2%E5%A4%A7%E5%AD%B8%E7%A7%91%E6%8A%80%E5%88%9D%E5%89%B5%E4%BC%81%E6%A5%AD%E8%B3%87%E5%8A%A9%E8%A8%88%E5%8A%83%E6%94%AF%E6%8F%B4%E7%99%BC%E5%B1%95.pdf"
+            }
+          ],
+          "urls": [
+            "https://www.tto.hku.hk",
+            "https://www.tto.hku.hk/startups/hku-startup-spin-off-companies",
+            "https://www.startmeup.hk/zh-hant/startup-resources/networks/university-networks-zh-hant/hkus-idendron/",
+            "https://www.hku.hk/f/upload/19742/%E9%A6%99%E6%B8%AF%E5%A4%A7%E5%AD%B825%E9%96%93%E5%88%9D%E5%89%B5%E5%85%AC%E5%8F%B8%E7%8D%B2%E5%A4%A7%E5%AD%B8%E7%A7%91%E6%8A%80%E5%88%9D%E5%89%B5%E4%BC%81%E6%A5%AD%E8%B3%87%E5%8A%A9%E8%A8%88%E5%8A%83%E6%94%AF%E6%8F%B4%E7%99%BC%E5%B1%95.pdf",
+            "https://kto.cuhk.edu.hk/en/",
+            "https://innoport.cuhk.edu.hk/wp-content/uploads/2024/09/InnoPort-Booklet.pdf",
+            "https://kto.cuhk.edu.hk/en/knowledge-transfer/discover-cuhk-startups",
+            "https://innoport.cuhk.edu.hk",
+            "https://ec.hkust.edu.hk",
+            "https://ec.hkust.edu.hk/incubatees",
+            "https://hkust.edu.hk/zh-hant/innovation-and-entrepreneurship#startups",
+            "https://www.polyu.edu.hk/kteo",
+            "https://www.polyu.edu.hk/kteo/entrepreneurship/start-ups/polyu-start-ups-list/",
+            "https://www.cityu.edu.hk/hktech300",
+            "https://www.cityu.edu.hk/en/hktech300/start-ups/all-start-ups",
+            "https://kto.hkbu.edu.hk",
+            "https://kto.hkbu.edu.hk/en/our-services/Entrepreneurship/Start-up-Profiles/Start-up-in-Focus.html",
+            "https://www.ln.edu.hk/chs/orkt",
+            "https://www.ln.edu.hk/lei/ecosystem/lingnan-start-ups",
+            "https://www.eduhk.hk/KnowledgeTransfer/en/index.html",
+            "https://www.eduhk.hk/KnowledgeTransfer/en/Entrepreneurship-Development/Start-Stories.html",
+            "https://cpo.eduhk.hk/zht",
+            "https://www.eduhk.hk/KnowledgeTransfer/tc/Entrepreneurship-Development/Internal-Entrepreneurship-Schemes/Eduhk-Ease-Fund-Scheme.html"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "香港专利0508.xlsx",
+      "file_path": "document_sources/香港专利0508.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "Sheet1",
+          "column_names": [
+            "类别",
+            "名称 / 系统",
+            "用途 / 数据内容",
+            "URL"
+          ],
+          "row_count": 5,
+          "detected_url_columns": [
+            {
+              "column_name": "URL",
+              "url_count": 5
+            }
+          ],
+          "url_count": 5,
+          "unique_url_count": 5,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "名称 / 系统"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [],
+          "empty_column_ratio": {
+            "类别": 0.0,
+            "名称 / 系统": 0.0,
+            "用途 / 数据内容": 0.0,
+            "URL": 0.0
+          },
+          "sample_rows": [
+            {
+              "类别": "官方检索",
+              "名称 / 系统": "知识产权署网上检索系统",
+              "用途 / 数据内容": "检索标准专利、短期专利、外观设计、商标",
+              "URL": "https://www.ipd.gov.hk/tc/online-services/online-search/index.html"
+            },
+            {
+              "类别": "官方补充",
+              "名称 / 系统": "商标「智快搜」",
+              "用途 / 数据内容": "图像检索商标",
+              "URL": "https://image-mark-finder.ipd.gov.hk"
+            },
+            {
+              "类别": "开放数据",
+              "名称 / 系统": "商标/专利/外观设计申请及注册统计（CSV）",
+              "用途 / 数据内容": "过去5年标准专利、短期专利等统计数据",
+              "URL": "https://data.gov.hk"
+            }
+          ],
+          "urls": [
+            "https://www.ipd.gov.hk/tc/online-services/online-search/index.html",
+            "https://image-mark-finder.ipd.gov.hk",
+            "https://data.gov.hk",
+            "https://hktisc.hkpc.org",
+            "https://www.ipd.gov.hk"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "香港加拿大英国招聘平台2026.04.13.xlsx",
+      "file_path": "document_sources/香港加拿大英国招聘平台2026.04.13.xlsx",
+      "sheet_count": 3,
+      "sheets": [
+        {
+          "sheet_name": "香港",
+          "column_names": [
+            "平台名称",
+            "官网",
+            "特点",
+            "公司简介"
+          ],
+          "row_count": 24,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 24
+            }
+          ],
+          "url_count": 24,
+          "unique_url_count": 24,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "公司简介"
+          ],
+          "empty_column_ratio": {
+            "平台名称": 0.0,
+            "官网": 0.0,
+            "特点": 0.0,
+            "公司简介": 0.2083
+          },
+          "sample_rows": [
+            {
+              "平台名称": "JobsDB",
+              "官网": "https://hk.jobsdb.com/",
+              "特点": "香港市场占有率最高的综合招聘平台，隶属全球 SEEK 集团，岗位数量常年第一。\n覆盖金融、会计、IT、行政、零售、建筑、医疗、教育等全行业，从初级文员到高管均有。\n支持简历上传、职位订阅、邮件提醒、薪资范围参考，企业认证严格，虚假岗位较少。\n移动端体验好，可一键投递，适合日常高频刷岗、应届生及有经验人士通用。\n经常与大型企业、政府机构合作专场招聘，曝光度高。",
+              "公司简介": "SEEK 是領先的網上招聘平台營運商，在亞洲地區擁有 Jobstreet 和 Jobsdb 等市場領先的招聘網站。憑藉超過25年經驗，SEEK 致力於協助個人實現更充實且高效的職涯生活，並幫助企業取得成功。SEEK 於 1997 年在澳洲墨爾本成立，經多年發展，現已成為一家專注於網上招聘平台的跨國科技公司。現時，SEEK 擁有逾 3,000 名員工，並在澳洲、紐西蘭、香港、印尼、馬來西亞、菲律賓、新加坡及泰國營運市場領先的招聘平台。"
+            },
+            {
+              "平台名称": "CTgoodjobs",
+              "官网": "https://www.ctgoodjobs.hk/",
+              "特点": "香港经济日报集团旗下，偏向白领、专业人士、金融商科。\n银行、保险、会计、金融科技、上市公司岗位密集，大企业比例高。\n设有毕业生专区、实习专区、MBA / 高管专区，适合学历较好、走专业路线的求职者。\n提供行业薪酬报告、职场专栏、面试技巧，求职信息非常完整。\n界面偏繁体商务风，更新稳定，适合长期职业规划。",
+              "公司简介": "CTgoodjobs 為 香港經濟日報集團成員（股份代號：423），為僱主提供全面的招聘及僱主品牌方案，同時為求職者提供多元且免費的職資訊。透過於Meta 平台累積逾 55 萬追蹤者的強大社交媒體影響力，CTgoodjobs 已在香港建立為備受信賴及具影響力的招聘平台。\n\n職業介紹所牌照號碼 77902"
+            },
+            {
+              "平台名称": "CPJobs",
+              "官网": "https://www.cpjobs.com.hk/",
+              "特点": "定位中高端人才招聘，主打专业岗位、管理岗、资深专员。\n金融、法律、会计、审计、人力资源、高级行政岗位占比极高。\n职位筛选非常精细，可按行业、职能、经验年限、薪资范围精准搜索。\n猎头活跃，很多岗位不对外公开，适合 3 年以上工作经验人士。\n简历私密性较好，可设置仅对认证企业开放。",
+              "公司简介": "CPJobs, Hong Kong’s latest recruitment website, went live in March 2015. Besides the overall modern, focused and practical design of the cpjobs.com, the new name and logo all contribute towards making our digital platform a better representation of who we are, what we offer today and the new direction.\n\nThe redesigned website offers job seekers easier access to the latest and most relevant job opportunities. CPJobs’ ground-breaking predictive recommendation feature provides job seekers easier access to the right job opportunities.\n\nRecruiters also benefit from increased exposure as their job ads are proactively but selectively shown to the best matched candidates, increasing both quantity and quality of applications received.\n\nAs the most established recruitment brand in Hong Kong, CPJobs prides ourselves on being reputable for providing a reliable and professional platform for executives and professionals for their career advancement. The broaden appeal of CPJobs will allow us to better cater and extend our unique brand qualities to a wider level of jobseekers: from fresh graduates to experienced professionals and all the way up to C-levels, across all sectors in the region.\n\nThis significant revamp is just another step in CPJobs’ ongoing effort to be the most valued partner in recruitment, and to connect the best matching job seekers with employers and to help both parties Get Ahead.\n\nExperience a brand new job searching experience today. Happy job hunting!"
+            }
+          ],
+          "urls": [
+            "https://hk.jobsdb.com/",
+            "https://www.ctgoodjobs.hk/",
+            "https://www.cpjobs.com.hk/",
+            "https://www.jobmarket.com.hk/",
+            "https://hk.indeed.com/",
+            "https://www.glassdoor.com.hk/index.htm",
+            "https://hk.linkedin.com/",
+            "https://www.offertoday.com/hk",
+            "https://www.work4hk.com/",
+            "https://www.jobs.gov.hk/",
+            "https://www.talent.gov.hk/",
+            "https://www.yes.labour.gov.hk/",
+            "https://www.jobs.gov.hk/isps/",
+            "http://job.hkcea.com/main",
+            "https://www.efinancialcareers.hk/",
+            "https://hkese.net/",
+            "https://www.cic.hk/career/chi/jobs/",
+            "https://recruit.hkfew.org.hk/",
+            "https://www.moovup.com/",
+            "https://www.jijis.org.hk/",
+            "https://www.michaelpage.com.hk/",
+            "https://www.roberthalf.com/hk/en",
+            "https://www.hays.com.hk/",
+            "https://www.expatica.com/hk/jobs/"
+          ]
+        },
+        {
+          "sheet_name": "加拿大",
+          "column_names": [
+            "平台名称",
+            "官网",
+            "特点",
+            "公司简介"
+          ],
+          "row_count": 22,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 22
+            }
+          ],
+          "url_count": 22,
+          "unique_url_count": 22,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "公司简介"
+          ],
+          "empty_column_ratio": {
+            "平台名称": 0.0,
+            "官网": 0.0,
+            "特点": 0.0,
+            "公司简介": 0.5
+          },
+          "sample_rows": [
+            {
+              "平台名称": "Indeed Canada",
+              "官网": "https://ca.indeed.com/",
+              "特点": "加拿大流量最高、职位最全（日均万 + 新岗）；聚合公司官网、招聘板、中介、报纸职位；支持按地点、薪资、全职 / 兼职 / 远程 / 实习筛选；带公司评论、薪资参考、邮件提醒；雇主免费发帖，付费置顶。",
+              "公司简介": null
+            },
+            {
+              "平台名称": "LinkedIn (领英加拿大)",
+              "官网": "https://www.linkedin.com/",
+              "特点": "职场社交 + 招聘双强；HR / 猎头高频搜人；支持 Easy Apply 直投；可建人脉、获内推；中高端 / 技术 / 金融 / 管理岗集中；适合主动 networking。",
+              "公司简介": null
+            },
+            {
+              "平台名称": "Glassdoor Canada",
+              "官网": "https://www.glassdoor.ca/",
+              "特点": "匿名公司评价 + 薪资 + 面试题 + 招聘；Know Your Worth 估薪资；避坑 “血汗工厂”；适合求职前做背调；中大型企业岗多。",
+              "公司简介": "So, what is Glassdoor? We’re a thriving community for workplace conversations, driven by a simple mission to make worklife better, together.\n\nBut the way we do it? That’s not so simple.\n\nEvery day, we’re inspired to build a healthier, more transparent work community for all and we’re committed to your trust. Through the products we make and the communities we create, we give people an inside look at companies and careers, so they can find the right job and workplace for them. Together, we’re fostering a world where people have the support and resources they need to make the most of their worklife.\n\nGlassdoor is now a part of Indeed, the #1 job site in the world1 and a global leader in job matching and hiring."
+            }
+          ],
+          "urls": [
+            "https://ca.indeed.com/",
+            "https://www.linkedin.com/",
+            "https://www.glassdoor.ca/",
+            "https://www.monster.ca/",
+            "https://www.workopolis.com/",
+            "https://www.talent.com/ca",
+            "https://www.simplyhired.ca/",
+            "https://www.careerbuilder.ca/",
+            "https://www.ziprecruiter.ca/",
+            "https://www.jobbank.gc.ca/",
+            "https://canada.ca/en/services/jobs.html",
+            "https://www.gojobs.gov.on.ca/",
+            "https://www.emploiquebec.gouv.qc.ca/",
+            "https://www.techjobs.ca/",
+            "https://www.roberthalf.ca/",
+            "https://www.retail.ca/jobs",
+            "https://www.tradesjobs.ca/",
+            "https://www.engineeringcareers.ca/",
+            "https://www.educationcanada.com/jobs",
+            "https://www.torontojobs.ca/",
+            "https://www.vancouverjobs.com/",
+            "https://talentegg.ca/"
+          ]
+        },
+        {
+          "sheet_name": "英国",
+          "column_names": [
+            "平台名称",
+            "官网",
+            "特点",
+            "公司简介"
+          ],
+          "row_count": 25,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 25
+            }
+          ],
+          "url_count": 25,
+          "unique_url_count": 25,
+          "duplicate_url_count": 0,
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": [],
+          "likely_notes_columns": [
+            "公司简介"
+          ],
+          "empty_column_ratio": {
+            "平台名称": 0.0,
+            "官网": 0.0,
+            "特点": 0.0,
+            "公司简介": 0.2
+          },
+          "sample_rows": [
+            {
+              "平台名称": "Indeed UK",
+              "官网": "https://www.indeed.co.uk",
+              "特点": "英国流量最大、岗位最全的聚合平台，每月超百万岗位，聚合企业官网、猎头、招聘机构信息。支持薪资、地点、远程、签证赞助（Visa Sponsorship）精准筛选；一键投递、简历上传后可被雇主主动搜索；附带公司评价、薪资数据、面试经验；全免费、移动端体验极佳。",
+              "公司简介": null
+            },
+            {
+              "平台名称": "Reed",
+              "官网": "https://www.reed.co.uk",
+              "特点": "英国老牌本土平台（1995 年成立），覆盖 42 个行业，约 30 万活跃岗位。岗位质量高（雇主付费发布），全职 / 兼职 / 实习 / 临时岗位齐全。除求职外，提供大量免费在线课程、简历工具、职业规划与面试辅导；线下 350 家办公室，支持线下面试对接；移动端与邮件提醒完善。",
+              "公司简介": "Founded in 1995, Reed.co.uk was the first recruitment website offered by a recruitment agency in the UK.\n\nSince then, Reed.co.uk has grown to become one of the UK's leading jobs and careers site.\n\nJobs: Reed.co.uk features vacancies from almost 19,000 recruiters a year*, including private and public sector employers and leading recruitment agencies and consultants.\n\nCourses: Reed Courses works with around 1,400 respected learning providers to advertise more than 155,000 courses on a wide range of subjects; from accounting and HR, right through to fitness and cooking.**\n\nCareer Advice: Hundreds of thousands of people visit Reed.co.uk's Career Advice site every month for expert tips and advice on CVs, cover letters, interviews, professional development and more.\n\nOur vision is simple: to be the jobs and careers market online.\n\n*Average number of recruiters between January 2017 & December 2023\n\n**Number of providers and courses between Jan 2023 & December 2023\n\nFor job and course seekers\nEach year, over 100 million people turn to Reed.co.uk in their search for work, making over 80,000 applications every day.*\n\nReed.co.uk provides a full online recruitment service for anyone looking for a new job. This means we advertise vacancies on behalf of employers and recruitment agencies.\n\nAs a registered user of Reed.co.uk, you can receive email job alerts, apply for vacancies, manage your applications, create your very own profile and store your CV securely online. You can also make it available to be searched for by thousands of recruitment agencies\n\nEvery year, almost 9 million course seekers visit Reed Courses in search of their next learning opportunity.** Reed Courses features a comprehensive variety of courses from a range of learning providers and partners. These include online, distance learning, classroom-based and free courses.\n\nWe also offer a breadth of Career Advice, news and information, designed to help you at all stages of your career."
+            },
+            {
+              "平台名称": "Totaljobs",
+              "官网": "https://www.totaljobs.com/",
+              "特点": "英国四大招聘平台之一，覆盖 40 + 行业，岗位量大、更新快。智能简历匹配、高级筛选（薪资、合同类型、通勤距离）；设有「Elevator Pitch」视频板块，模拟真实面试场景、提供技巧；社区活跃，可查询雇员评价、交流公司信息；移动端功能完善。",
+              "公司简介": "Totaljobs is one of the UK’s leading job search platforms and part of The Stepstone Group, one of the world’s leading online recruitment companies. The Totaljobs website is operated by The Stepstone Group UK Limited. Totaljobs has offices in Glasgow, London, Manchester and Portsmouth.\n\nLooking for your next career move? You might be seeking higher salary opportunities, wanting to gain valuable work experience, searching for a better work-life balance with remote jobs, or exploring new career paths between roles.\n\nWhatever your job search goals, Totaljobs is here to help you succeed.\n\nAs one of the UK’s largest online recruitment platforms, we connect job seekers with thousands of live job vacancies across every industry and location. From entry-level positions to executive roles, part-time jobs to full-time careers – we’ve got opportunities for everyone.\n\nFinding the perfect job match shouldn’t feel like searching for a needle in a haystack. That’s why we leverage our 25+ years in recruitment to help you discover roles that align with your skills, experience, and career aspirations.\n\nOur career advice helps you build a standout CV, write an impressive cover letter, and prepare for interviews with confidence. At the same time, our intelligent job matching technology analyses your profile and career preferences to deliver personalised job recommendations and instant job alerts straight to your inbox. Finding the right role has never been easier – just click apply to take your next step forward.\n\nFrom urgent job searches to long-term career planning, Totaljobs provides everything you need to advance your professional journey. Start your job search today and take the next step in your career with Totaljobs.\n\nTotaljobs is part of The Stepstone Group, a leading global digital recruitment platform that connects companies with the right talent and helps people find the right job. The Stepstone Group operates in more than 30 countries – including Stepstone in Germany, Appcast in the USA and Totaljobs in the UK."
+            }
+          ],
+          "urls": [
+            "https://www.indeed.co.uk",
+            "https://www.reed.co.uk",
+            "https://www.totaljobs.com/",
+            "https://www.cv-library.co.uk",
+            "https://www.monster.co.uk",
+            "https://www.adzuna.co.uk",
+            "https://www.jobsite.co.uk",
+            "https://www.jobrapido.co.uk",
+            "https://uk.jooble.org",
+            "https://www.targetjobs.co.uk",
+            "https://www.milkround.com",
+            "https://www.prospects.ac.uk",
+            "https://www.brightnetwork.co.uk",
+            "https://www.ratemyplacement.co.uk",
+            "https://studentcircus.com/",
+            "https://www.ukvisajobs.com",
+            "https://www.efinancialcareers.co.uk",
+            "https://www.jobs.ac.uk",
+            "https://www.jobs.nhs.uk",
+            "https://www.cwjobs.co.uk",
+            "https://www.caterer.com",
+            "https://www.engineeringjobs.co.uk",
+            "https://www.eteach.com",
+            "https://www.retailchoice.com",
+            "https://www.gumtree.com"
+          ]
+        }
+      ]
+    }
+  ]
+}

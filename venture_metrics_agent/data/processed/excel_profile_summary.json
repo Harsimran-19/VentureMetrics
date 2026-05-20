@@ -1,0 +1,544 @@
+{
+  "generated_at": "2026-05-20T21:29:48.209221+00:00",
+  "folder_path": "document_sources",
+  "totals": {
+    "files": 9,
+    "sheets": 25,
+    "rows": 661,
+    "urls": 686,
+    "unique_urls": 675,
+    "duplicate_urls": 11
+  },
+  "files": [
+    {
+      "file_name": "创新创业相关协会（深圳·香港）-2026.03.24.xlsx",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_name": "深圳",
+          "row_count": 40,
+          "column_count": 4,
+          "url_count": 38,
+          "unique_url_count": 37,
+          "duplicate_url_count": 1,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 38
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "香港",
+          "row_count": 38,
+          "column_count": 3,
+          "url_count": 38,
+          "unique_url_count": 38,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 38
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "双一流大学_孵化器_科技园05.10.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "双一流大学_孵化器_科技园",
+          "row_count": 36,
+          "column_count": 4,
+          "url_count": 57,
+          "unique_url_count": 56,
+          "duplicate_url_count": 1,
+          "detected_url_columns": [
+            {
+              "column_name": "官网地址",
+              "url_count": 36
+            },
+            {
+              "column_name": "企业链接",
+              "url_count": 21
+            }
+          ],
+          "likely_title_columns": [
+            "高校名称",
+            "孵化器/科技园名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "国内5年内创新创业相关报告-2026.03.14.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "工作表1",
+          "row_count": 82,
+          "column_count": 2,
+          "url_count": 82,
+          "unique_url_count": 77,
+          "duplicate_url_count": 5,
+          "detected_url_columns": [
+            {
+              "column_name": "相关网址",
+              "url_count": 82
+            }
+          ],
+          "likely_title_columns": [
+            "报告名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "数据库11个国家-2026.03.10.xlsx",
+      "sheet_count": 11,
+      "sheets": [
+        {
+          "sheet_name": "中国",
+          "row_count": 20,
+          "column_count": 5,
+          "url_count": 38,
+          "unique_url_count": 38,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 20
+            },
+            {
+              "column_name": "企查查link",
+              "url_count": 17
+            },
+            {
+              "column_name": "费用",
+              "url_count": 1
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "美国",
+          "row_count": 12,
+          "column_count": 4,
+          "url_count": 15,
+          "unique_url_count": 15,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 12
+            },
+            {
+              "column_name": "费用",
+              "url_count": 3
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "日本",
+          "row_count": 9,
+          "column_count": 3,
+          "url_count": 9,
+          "unique_url_count": 9,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 9
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "印度",
+          "row_count": 11,
+          "column_count": 4,
+          "url_count": 13,
+          "unique_url_count": 13,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            },
+            {
+              "column_name": "费用",
+              "url_count": 2
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "韩国",
+          "row_count": 10,
+          "column_count": 3,
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "印尼",
+          "row_count": 8,
+          "column_count": 3,
+          "url_count": 8,
+          "unique_url_count": 8,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 8
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "土耳其",
+          "row_count": 10,
+          "column_count": 3,
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "沙特阿拉伯",
+          "row_count": 10,
+          "column_count": 3,
+          "url_count": 10,
+          "unique_url_count": 10,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 10
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "以色列",
+          "row_count": 11,
+          "column_count": 3,
+          "url_count": 11,
+          "unique_url_count": 11,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "泰国",
+          "row_count": 11,
+          "column_count": 3,
+          "url_count": 11,
+          "unique_url_count": 11,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 11
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "阿拉伯联合酋长国",
+          "row_count": 14,
+          "column_count": 3,
+          "url_count": 14,
+          "unique_url_count": 14,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 14
+            }
+          ],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "深圳发展0519.xlsx",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_name": "Sheet1",
+          "row_count": 30,
+          "column_count": 4,
+          "url_count": 21,
+          "unique_url_count": 21,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "官方出处/链接",
+              "url_count": 21
+            }
+          ],
+          "likely_title_columns": [
+            "政策名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "Sheet2",
+          "row_count": 11,
+          "column_count": 3,
+          "url_count": 0,
+          "unique_url_count": 0,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [],
+          "likely_title_columns": [],
+          "likely_category_columns": [],
+          "likely_region_columns": [
+            "区域"
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "美英新白皮书0423.xlsx",
+      "sheet_count": 3,
+      "sheets": [
+        {
+          "sheet_name": "美国",
+          "row_count": 87,
+          "column_count": 2,
+          "url_count": 87,
+          "unique_url_count": 87,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "报告网址",
+              "url_count": 87
+            }
+          ],
+          "likely_title_columns": [
+            "名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "英国",
+          "row_count": 86,
+          "column_count": 2,
+          "url_count": 86,
+          "unique_url_count": 86,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "链接",
+              "url_count": 86
+            }
+          ],
+          "likely_title_columns": [
+            "名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "新加坡",
+          "row_count": 28,
+          "column_count": 3,
+          "url_count": 29,
+          "unique_url_count": 29,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "网址",
+              "url_count": 28
+            },
+            {
+              "column_name": "Unnamed: 2",
+              "url_count": 1
+            }
+          ],
+          "likely_title_columns": [
+            "名称",
+            "Unnamed: 2"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "香港tto0508.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "TTO和孵化器",
+          "row_count": 21,
+          "column_count": 5,
+          "url_count": 23,
+          "unique_url_count": 23,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "URL",
+              "url_count": 21
+            },
+            {
+              "column_name": "相关资料",
+              "url_count": 2
+            }
+          ],
+          "likely_title_columns": [
+            "名称 / 说明"
+          ],
+          "likely_category_columns": [
+            "类型"
+          ],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "香港专利0508.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_name": "Sheet1",
+          "row_count": 5,
+          "column_count": 4,
+          "url_count": 5,
+          "unique_url_count": 5,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "URL",
+              "url_count": 5
+            }
+          ],
+          "likely_title_columns": [
+            "名称 / 系统"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    },
+    {
+      "file_name": "香港加拿大英国招聘平台2026.04.13.xlsx",
+      "sheet_count": 3,
+      "sheets": [
+        {
+          "sheet_name": "香港",
+          "row_count": 24,
+          "column_count": 4,
+          "url_count": 24,
+          "unique_url_count": 24,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 24
+            }
+          ],
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "加拿大",
+          "row_count": 22,
+          "column_count": 4,
+          "url_count": 22,
+          "unique_url_count": 22,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 22
+            }
+          ],
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        },
+        {
+          "sheet_name": "英国",
+          "row_count": 25,
+          "column_count": 4,
+          "url_count": 25,
+          "unique_url_count": 25,
+          "duplicate_url_count": 0,
+          "detected_url_columns": [
+            {
+              "column_name": "官网",
+              "url_count": 25
+            }
+          ],
+          "likely_title_columns": [
+            "平台名称"
+          ],
+          "likely_category_columns": [],
+          "likely_region_columns": []
+        }
+      ]
+    }
+  ]
+}

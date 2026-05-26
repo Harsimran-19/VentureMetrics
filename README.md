@@ -87,6 +87,38 @@ PYTHONPATH=. python scripts/query_agent.py "Which sources are official governmen
 PYTHONPATH=. python scripts/query_agent.py "What data gaps exist in the current sample files?"
 ```
 
+## Test The Reasoning Controller
+
+The reasoning path is a reasoning-first test harness. It routes the message before using tools, then decides whether to inspect the local corpus or use web search. This is separate from the legacy linear agent so both can be compared.
+
+```bash
+PYTHONPATH=. python scripts/query_reasoning_agent.py --no-llm "hi"
+PYTHONPATH=. python scripts/query_reasoning_agent.py --no-llm --no-web "Which sources mention startup funding or grants?"
+```
+
+When web search is used, the reasoning path stores useful web results into the local source registry and index for reuse. For throwaway tests, disable that mutation:
+
+```bash
+PYTHONPATH=. python scripts/query_reasoning_agent.py --no-llm --no-remember-web "What are the latest Hong Kong startup grants?"
+```
+
+Compare both architectures on the same question:
+
+```bash
+PYTHONPATH=. python scripts/compare_agents.py --no-llm "hi"
+PYTHONPATH=. python scripts/compare_agents.py --no-llm --no-web --no-remember-web "Which sources mention startup funding or grants?"
+```
+
+The reasoning response includes a `reasoning_trace` with structured route, plan, tool, observation, and verification decisions. Raw chain-of-thought is not exposed.
+
+Run the fixed reasoning eval suite against a temporary database copy:
+
+```bash
+PYTHONPATH=. python scripts/run_reasoning_eval.py
+```
+
+By default, web search is simulated so the eval does not require network access or mutate the real database.
+
 ## Run The Local Web UI
 
 ```bash

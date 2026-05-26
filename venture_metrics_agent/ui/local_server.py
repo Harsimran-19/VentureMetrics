@@ -8,7 +8,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from venture_metrics_agent.app.config import DEFAULT_DB_PATH
-from venture_metrics_agent.retrieval.agent import QueryOptions, answer_question
+from venture_metrics_agent.reasoning import ReasoningOptions, answer_question_reasoning
 
 
 HTML = r"""<!doctype html>
@@ -63,10 +63,6 @@ HTML = r"""<!doctype html>
       grid-template-columns: 280px minmax(520px, 1fr);
     }
     body.sources-hidden .inspector {
-      display: none;
-    }
-    body.sources-hidden .source-strip,
-    body.sources-hidden .answer-select {
       display: none;
     }
 
@@ -168,28 +164,10 @@ HTML = r"""<!doctype html>
       font-size: 16px;
       line-height: 1.5;
     }
-    .settings {
-      padding: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .toggle {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .toggle input {
-      width: 16px;
-      height: 16px;
-      margin-top: 2px;
-      accent-color: var(--ink);
-    }
     .quick-list {
-      margin-top: auto;
       padding: 18px;
       border-top: 1px solid var(--line);
+      overflow: auto;
     }
     .quick-list button {
       width: 100%;
@@ -589,24 +567,18 @@ HTML = r"""<!doctype html>
         <div class="metric-list" id="status"></div>
       </section>
 
-      <section class="settings">
-        <h2 class="section-label">Options</h2>
-        <label class="toggle">
-          <input id="webFallback" type="checkbox" checked>
-          <span>Web fallback</span>
-        </label>
-        <label class="toggle">
-          <input id="showSources" type="checkbox">
-          <span>Sources</span>
-        </label>
-      </section>
-
       <section class="quick-list">
         <h2 class="section-label">Try these</h2>
-        <button data-q="Which sources are related to Hong Kong entrepreneurship support?">Hong Kong entrepreneurship support</button>
-        <button data-q="Which sources mention startup funding or grants?">Startup funding or grants</button>
-        <button data-q="Which sources are official government or university sources?">Official government or university sources</button>
-        <button data-q="What information do we have about GBA entrepreneurship policies?">GBA entrepreneurship policies</button>
+        <button data-q="Summarize the main themes covered by the indexed Venture Metrics sources, with citations.">Source library overview</button>
+        <button data-q="Which official government, university, or science park sources mention startup support in Hong Kong?">Official startup support</button>
+        <button data-q="Find sources about startup funding, grants, competitions, or incubation programmes, and separate strong evidence from weak evidence.">Funding and incubation evidence</button>
+        <button data-q="What do we know about GBA entrepreneurship policies, and what important gaps still need web verification?">GBA policy gaps</button>
+        <button data-q="Which indexed sources discuss university innovation, spin-offs, entrepreneurship education, or student startup support?">University innovation</button>
+        <button data-q="List the sources that mention incubators, accelerators, science parks, or startup hubs, grouped by source type.">Incubators and hubs</button>
+        <button data-q="Which sources look most reliable for Hong Kong startup policy research, and why?">Most reliable sources</button>
+        <button data-q="Which sources appear low-confidence, outdated, inaccessible, or in need of manual verification?">Needs verification</button>
+        <button data-q="Compare what the indexed sources say about Hong Kong versus Shenzhen startup support.">HK versus Shenzhen</button>
+        <button data-q="What questions can the current indexed source library answer well, and what questions would require web verification?">Answerability check</button>
       </section>
     </aside>
 
@@ -621,7 +593,7 @@ HTML = r"""<!doctype html>
         <div class="thread" id="thread">
           <div class="welcome" id="welcome">
             <strong>Ask a question.</strong>
-            <p>Answers use the indexed files. Turn on sources when needed.</p>
+            <p>Chat normally, or ask a research question when you want cited evidence.</p>
           </div>
         </div>
       </section>
@@ -655,8 +627,6 @@ HTML = r"""<!doctype html>
     const statusEl = document.getElementById('status');
     const inspector = document.getElementById('inspector');
     const inspectorSummary = document.getElementById('inspectorSummary');
-    const webFallback = document.getElementById('webFallback');
-    const showSources = document.getElementById('showSources');
     const newChat = document.getElementById('newChat');
 
     const turns = [];
@@ -775,7 +745,7 @@ HTML = r"""<!doctype html>
         <article class="assistant-card selected">
           <div class="answer-head">
             <div class="badges">
-              <span class="badge">Searching evidence</span>
+              <span class="badge">Thinking</span>
             </div>
           </div>
           <div class="answer-body">
@@ -799,6 +769,15 @@ HTML = r"""<!doctype html>
     function renderAssistantTurn(id, el, data) {
       const citations = data.citations || [];
       const gaps = data.gaps || [];
+      const evidence = [...(data.retrieved_evidence || []), ...(data.web_evidence || [])];
+      const isCasual = data.source_mode === 'no_tools';
+      const hasDetails = !isCasual && (citations.length || evidence.length || gaps.length);
+      const confidenceBadge = isCasual ? '' : `
+        <span class="badge ${confidenceClass(data.confidence)}">Confidence: ${escapeHtml(data.confidence || 'Unknown')}</span>
+      `;
+      const sourceButton = hasDetails ? `
+        <button class="answer-select" type="button" data-select="${escapeHtml(id)}">Sources</button>
+      ` : '';
       const sourceCards = citations.slice(0, 6).map((source, index) => {
         const url = source.url || '#';
         const domain = domainFromUrl(url);
@@ -820,15 +799,15 @@ HTML = r"""<!doctype html>
       el.innerHTML = `
         <div class="turn-label">Assistant</div>
         <article class="assistant-card selected">
-          <div class="answer-head">
-            <div class="badges">
-              <span class="badge ${confidenceClass(data.confidence)}">Confidence: ${escapeHtml(data.confidence || 'Unknown')}</span>
+          ${confidenceBadge || sourceButton ? `
+            <div class="answer-head">
+              <div class="badges">${confidenceBadge}</div>
+              ${sourceButton}
             </div>
-            <button class="answer-select" type="button" data-select="${escapeHtml(id)}">Sources</button>
-          </div>
+          ` : ''}
           <div class="answer-body">${renderMarkdownLite(data.answer || '')}</div>
           <div class="answer-foot">
-            ${sourceCards ? `<div class="source-strip">${sourceCards}</div>` : ''}
+            ${!isCasual && sourceCards ? `<div class="source-strip">${sourceCards}</div>` : ''}
             ${gapsHtml}
           </div>
         </article>
@@ -842,6 +821,7 @@ HTML = r"""<!doctype html>
       });
       bindAnswerSelection(el, id);
       selectAnswer(id);
+      hideInspector();
       scrollToBottom();
     }
 
@@ -866,7 +846,7 @@ HTML = r"""<!doctype html>
       });
       button?.addEventListener('click', event => {
         event.stopPropagation();
-        selectAnswer(id);
+        showSourcesFor(id);
       });
     }
 
@@ -874,21 +854,24 @@ HTML = r"""<!doctype html>
       document.querySelectorAll('.assistant-card.selected').forEach(card => card.classList.remove('selected'));
     }
 
-    function syncSourceVisibility() {
-      document.body.classList.toggle('sources-hidden', !showSources.checked);
-      if (showSources.checked) {
-        const selectedTurn = turns.find(item => item.id === selectedAnswerId);
-        if (selectedTurn?.data) renderInspector(selectedTurn.data);
-      }
-    }
-
     function selectAnswer(id) {
       selectedAnswerId = id;
       clearSelected();
       const turnEl = document.querySelector(`[data-answer-id="${CSS.escape(id)}"] .assistant-card`);
       turnEl?.classList.add('selected');
+    }
+
+    function hideInspector() {
+      document.body.classList.add('sources-hidden');
+    }
+
+    function showSourcesFor(id) {
+      selectAnswer(id);
       const turn = turns.find(item => item.id === id);
-      if (turn?.data) renderInspector(turn.data);
+      if (turn?.data) {
+        renderInspector(turn.data);
+        document.body.classList.remove('sources-hidden');
+      }
     }
 
     function renderInspector(data) {
@@ -896,7 +879,7 @@ HTML = r"""<!doctype html>
       const evidence = [...(data.retrieved_evidence || []), ...(data.web_evidence || [])];
       const gaps = data.gaps || [];
 
-      inspectorSummary.textContent = `Confidence: ${data.confidence || 'Unknown'}`;
+      inspectorSummary.textContent = 'Sources and evidence.';
 
       const sourceHtml = citations.length ? citations.map((source, index) => {
         const url = source.url || '#';
@@ -950,7 +933,6 @@ HTML = r"""<!doctype html>
           body: JSON.stringify({
             question: text,
             top_k: 7,
-            use_web_fallback: webFallback.checked,
             history: chatHistory()
           })
         });
@@ -981,15 +963,14 @@ HTML = r"""<!doctype html>
       button.addEventListener('click', () => runQuery(button.dataset.q));
     });
 
-    showSources.addEventListener('change', syncSourceVisibility);
-
     newChat.addEventListener('click', () => {
       turns.length = 0;
       selectedAnswerId = null;
+      hideInspector();
       thread.innerHTML = `
         <div class="welcome" id="welcome">
           <strong>Ask a question.</strong>
-          <p>Answers use the indexed files. Turn on sources when needed.</p>
+          <p>Chat normally, or ask a research question when you want cited evidence.</p>
         </div>
       `;
       inspectorSummary.textContent = 'Citations and snippets.';
@@ -998,7 +979,6 @@ HTML = r"""<!doctype html>
     });
 
     loadStatus();
-    syncSourceVisibility();
     question.focus();
   </script>
 </body>
@@ -1028,13 +1008,18 @@ class AgentHandler(BaseHTTPRequestHandler):
             user_question = str(payload.get("question") or "").strip()
             top_k = int(payload.get("top_k") or 7)
             use_web_fallback = bool(payload.get("use_web_fallback", True))
+            remember_web_results = bool(payload.get("remember_web_results", False))
             history = _clean_history(payload.get("history", []))
             if not user_question:
                 raise ValueError("Question is required.")
-            response = answer_question(
+            response = answer_question_reasoning(
                 self.db_path,
                 user_question,
-                options=QueryOptions(top_k=top_k, use_web_fallback=use_web_fallback),
+                options=ReasoningOptions(
+                    top_k=top_k,
+                    use_web_fallback=use_web_fallback,
+                    remember_web_results=remember_web_results,
+                ),
                 chat_history=history,
             )
             self._send_json(response)

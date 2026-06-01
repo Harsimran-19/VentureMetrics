@@ -224,6 +224,60 @@ If Railway shows a 502 while logs say the app is running:
 - If you copied `.env.example`, remove any manually configured `PORT` variable from Railway and redeploy.
 - Use `/api/status` as a lightweight health check path.
 
+### Zeabur (Recommended for Mainland China)
+
+Zeabur is a PaaS similar to Railway that is highly optimized for Asia-Pacific routing, making it an excellent choice for serving users in mainland China.
+
+#### Signup & Verification for Developers in India (+91)
+1. Sign up on [Zeabur](https://zeabur.com) using your GitHub account.
+2. When deploying your first service, Zeabur requires account verification.
+3. **Verification Options:**
+   - **Credit Card (Instant):** Verify using a credit card (supports international Visa/Mastercard/Amex/etc., no Chinese card required).
+   - **Phone Verification (+91):** If you choose phone verification, enter your +91 Indian phone number.
+   - **Manual Activation Bypass:** If the SMS code does not arrive or the form returns an error due to regional restrictions, email **contact@zeabur.com** or post on the [Zeabur Community Forum](https://zeabur.com/docs/en/help/community). The support team regularly activates accounts manually for developers facing regional SMS issues.
+
+#### Deployment Steps
+1. Click **New Project** in your Zeabur dashboard.
+2. Select your GitHub repository and choose the target branch. Zeabur will automatically detect the root `Dockerfile` and start building.
+3. Choose a deployment region close to mainland China:
+   - **GCP Taiwan** (Asia-East) or **AWS Tokyo** (Asia-Northeast) for optimal latency.
+   - **AWS Singapore** (Asia-Southeast) as an alternative.
+4. Add these environment variables under the service settings:
+   ```bash
+   HOST=0.0.0.0
+   DB_PATH=/data/venture_metrics.db
+   LLM_API_KEY=your_deepseek_api_key
+   LLM_BASE_URL=https://api.deepseek.com
+   LLM_MODEL=deepseek-chat
+   TAVILY_API_KEY=your_tavily_api_key
+   ```
+5. Attach a persistent volume to store the SQLite database:
+   - Under service settings, go to **Volumes**.
+   - Click **Add Volume** and set the mount path to `/data`.
+6. Set up a domain:
+   - Under the **Domains** tab, click **Generate Domain** to get a free `*.zeabur.app` subdomain (which is highly reachable in China) or bind your own custom domain.
+
+---
+
+### Koyeb (Alternative PaaS)
+
+Koyeb is a developer-friendly PaaS with built-in persistent volumes and Asia regions.
+
+#### Signup & Verification for Developers in India (+91)
+1. Sign up on [Koyeb](https://koyeb.com) using GitHub or email.
+2. Koyeb uses automated bot detection. If automatic verification succeeds, no card or phone number is required.
+3. If flagged for verification, Koyeb will ask you to link a credit card. It does **not** force phone number verification.
+
+#### Deployment Steps
+1. Create a new service and select **GitHub** as the deployment method.
+2. Select your repository and configure it to build using **Docker**.
+3. Choose **Tokyo** (`tyo`) or **Singapore** (`sin`) as the deployment region.
+4. Add the required environment variables (same as Zeabur/Railway above).
+5. Attach a persistent volume with a mount path of `/data`.
+6. Define port `8000` as the HTTP port for the web service.
+
+---
+
 ### Local Docker Run
 
 ```bash

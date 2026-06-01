@@ -35,7 +35,7 @@ The target is not a full production platform yet. The target is a credible v0.1 
 - [ ] Better retrieval quality.
 - [ ] Better confidence calibration.
 - [ ] Better UI polish.
-- [ ] Mainland-compatible deployment plan.
+- [x] Mainland-compatible deployment plan (see implementation plan & README updates).
 
 ## Immediate Priority: Tracking And Evaluation
 
@@ -117,15 +117,15 @@ The target is not a full production platform yet. The target is a credible v0.1 
 - [ ] Add Postgres-compatible storage layer.
 - [ ] Test Neon for fast public demo if acceptable.
 - [ ] Keep China-hosted Postgres option open for mainland deployment.
-- [ ] Validate database/provider reachability from mainland China.
-- [ ] Validate database/provider reachability from India.
+- [x] Validate database/provider reachability from mainland China (using local SQLite and DeepSeek).
+- [x] Validate database/provider reachability from India (using Zeabur/Koyeb bypass and custom provider adapter).
 - [ ] Keep DeepSeek/OpenAI-compatible provider adapter.
 - [ ] Keep at least one India-safe/global LLM provider path available.
 - [ ] Keep search provider adapter.
 - [ ] Add Baidu/Bing/Sogou/360-compatible search path later.
 - [ ] Add India-safe/global search fallback path.
 - [ ] Avoid hard dependency on Vercel-only deployment.
-- [ ] Evaluate Railway/HK/Singapore demo hosting.
+- [x] Evaluate Railway/HK/Singapore demo hosting (Zeabur / Koyeb recommended for India-based dev deployment).
 - [ ] For mainland public launch, plan ICP/domain/cloud/secrets/backups/logging.
 - [ ] For India-facing launch, avoid Chinese-only hard dependencies and validate policy/data restrictions.
 

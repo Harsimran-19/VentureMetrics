@@ -301,6 +301,53 @@ HTML = r"""<!doctype html>
       gap: 22px;
     }
 
+    .empty-chat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 75vh;
+      position: relative;
+    }
+    
+    .empty-hero {
+      font-family: CohereText, "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 96px;
+      font-weight: 860;
+      line-height: 1;
+      letter-spacing: -1.92px;
+      color: var(--primary, #17171c);
+      margin: 0;
+      display: inline-block;
+      position: relative;
+      animation: enterUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .word-venture {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    .word-venture::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 16px;
+      background-color: var(--coral, #ff7759);
+      border-radius: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: revealLine 0.8s cubic-bezier(0.86, 0, 0.07, 1) 0.4s forwards;
+    }
+
+    @keyframes revealLine {
+      to { transform: scaleX(1); }
+    }
+
+
     .turn {
       display: grid;
       gap: 6px;
@@ -702,7 +749,11 @@ HTML = r"""<!doctype html>
       </header>
 
       <section class="messages" id="messages" aria-label="Chat messages">
-        <div class="thread" id="thread"></div>
+        <div class="thread" id="thread">
+          <div class="empty-chat" id="emptyState">
+            <h2 class="empty-hero"><span class="word-venture">Venture</span> Metrics</h2>
+          </div>
+        </div>
       </section>
 
       <form class="composer" id="composer">
@@ -841,6 +892,9 @@ HTML = r"""<!doctype html>
     }
 
     function addUserTurn(content) {
+      const emptyState = document.getElementById('emptyState');
+      if (emptyState) emptyState.remove();
+
       turns.push({ role: 'user', content });
       const el = document.createElement('div');
       el.className = 'turn user';
@@ -1117,7 +1171,11 @@ HTML = r"""<!doctype html>
       selectedAnswerId = null;
       resetSessionId();
       hideInspector();
-      thread.innerHTML = '';
+      thread.innerHTML = `
+        <div class="empty-chat" id="emptyState">
+          <h2 class="empty-hero"><span class="word-venture">Venture</span> Metrics</h2>
+        </div>
+      `;
       inspectorSummary.textContent = 'Sources and short notes.';
       inspector.innerHTML = '<div class="empty">Sources will appear here after an answer.</div>';
       question.focus();

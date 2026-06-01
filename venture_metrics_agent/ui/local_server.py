@@ -19,32 +19,46 @@ HTML = r"""<!doctype html>
   <title>Venture Metrics</title>
   <style>
     :root {
-      --page: #fdfcfc;
-      --surface: #fdfcfc;
-      --surface-soft: #f8f7f7;
-      --surface-card: #f1eeee;
-      --surface-dark: #201d1d;
-      --line: rgba(15, 0, 0, .12);
-      --line-strong: #646262;
-      --ink: #201d1d;
-      --ink-deep: #0f0000;
-      --body: #424245;
-      --muted: #646262;
-      --muted-2: #9a9898;
-      --on-dark: #fdfcfc;
-      --green: #30d158;
-      --amber: #ff9f0a;
-      --red: #ff3b30;
-      --radius: 4px;
+      --canvas: #fdfcfc;
+      --paper: #ffffff;
+      --ink: #17151f;
+      --ink-soft: #383342;
+      --muted: #706879;
+      --faint: #a79daf;
+      --line: #e5e2df;
+      --line-strong: #cfc8c2;
+      --stone: #f4f1ed;
+      --stone-soft: #faf8f5;
+      --green: #003c33;
+      --green-soft: #eef8f4;
+      --navy: #16223a;
+      --blue: #315fd8;
+      --sky: #eaf6fb;
+      --coral: #ff6b4a;
+      --coral-soft: #fff0eb;
+      --yellow: #f7cf5f;
+      --pink: #f7eaf2;
+      --purple: #eeeaf8;
+      --success: #087a53;
+      --warning: #925b00;
+      --danger: #b42318;
+      --shadow: 0 16px 36px rgba(23, 21, 31, .08);
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius-md: 8px;
+      --radius-lg: 8px;
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
     body {
       margin: 0;
-      background: var(--page);
+      background: var(--canvas);
       color: var(--ink);
-      font-family: "Berkeley Mono", "IBM Plex Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 16px;
       line-height: 1.5;
       letter-spacing: 0;
@@ -52,502 +66,597 @@ HTML = r"""<!doctype html>
     }
     button, textarea, input { font: inherit; letter-spacing: 0; }
     button { cursor: pointer; }
+    a { color: inherit; }
 
     .app {
-      height: 100vh;
-      grid-template-columns: 280px minmax(520px, 1fr) 420px;
+      height: 100dvh;
+      min-height: 0;
       display: grid;
-      grid-template-rows: 100vh;
+      grid-template-columns: 314px minmax(0, 1fr) 420px;
+      background: var(--canvas);
+      background-image: url("data:image/svg+xml,%3Csvg width='88' height='88' viewBox='0 0 88 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M88 0H0V88' fill='none' stroke='%23eee8e1' stroke-width='1'/%3E%3Cpath d='M0 88L88 0' fill='none' stroke='%23f7eee8' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 88px 88px;
     }
-    body.sources-hidden .app {
-      grid-template-columns: 280px minmax(520px, 1fr);
-    }
-    body.sources-hidden .inspector {
-      display: none;
-    }
+    body.sources-hidden .app { grid-template-columns: 314px minmax(0, 1fr); }
+    body.sources-hidden .inspector { display: none; }
 
     .sidebar {
-      border-right: 1px solid var(--line);
-      background: var(--surface);
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-width: 0;
+      background: var(--paper);
+      border-right: 1px solid var(--line);
+      backdrop-filter: blur(18px);
     }
     .brand {
-      padding: 18px;
+      padding: 24px 22px 18px;
       border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .brand-line {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius);
+    .brand-title {
       display: grid;
-      place-items: center;
-      border: 1px solid var(--line-strong);
-      background: var(--surface-dark);
-      color: var(--on-dark);
-      font-weight: 800;
-      font-size: 13px;
+      gap: 10px;
     }
-    .brand-title { min-width: 0; }
     .brand-title strong {
-      display: block;
-      font-size: 16px;
-      line-height: 1.5;
+      display: inline-block;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 860;
+      letter-spacing: 0;
+      position: relative;
+      width: max-content;
+      max-width: 100%;
     }
-    .brand-title span {
-      display: block;
+    .brand-title strong::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1px;
+      height: 9px;
+      background: var(--coral-soft);
+      z-index: -1;
+    }
+    .brand-title em {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      max-width: 100%;
+      min-height: 20px;
+      padding: 2px 0;
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: -2px;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--green);
     }
 
     .sidebar-actions {
-      padding: 14px 18px;
+      padding: 16px 22px;
       border-bottom: 1px solid var(--line);
-    }
-    .sidebar-name {
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-      font-size: 16px;
-      line-height: 1.5;
-      font-weight: 700;
     }
     .new-chat {
       width: 100%;
-      height: 38px;
-      border: 1px solid var(--ink);
-      border-radius: var(--radius);
-      background: var(--ink);
-      color: var(--on-dark);
-      font-weight: 500;
+      min-height: 44px;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: var(--coral);
+      color: #fff;
+      font-weight: 840;
+      box-shadow: 0 10px 22px rgba(255, 107, 74, .2);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .new-chat:active { background: var(--ink-deep); }
+    .new-chat:hover { transform: translateY(-1px); background: var(--ink); box-shadow: 0 14px 28px rgba(23, 21, 31, .2); }
+    .new-chat:active { transform: translateY(0); }
 
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 820;
+    }
     .status {
-      padding: 18px;
+      padding: 20px 22px;
       border-bottom: 1px solid var(--line);
     }
-    .section-label {
-      margin: 0 0 11px;
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 2;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-    .metric-list {
-      display: grid;
-      gap: 8px;
-    }
+    .metric-list { display: grid; gap: 10px; }
     .metric-row {
-      min-height: 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      min-height: 48px;
+      padding: 10px 12px;
       border: 1px solid var(--line);
-      border-radius: 0;
-      background: var(--surface);
-      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--paper);
+      transition: transform .18s ease, border-color .18s ease;
     }
-    .metric-row span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .metric-row strong {
-      font-size: 16px;
-      line-height: 1.5;
-    }
+    .metric-row:nth-child(1) { box-shadow: inset 4px 0 0 var(--green); }
+    .metric-row:nth-child(2) { box-shadow: inset 4px 0 0 var(--blue); }
+    .metric-row:nth-child(3) { box-shadow: inset 4px 0 0 var(--coral); }
+    .metric-row:hover { transform: translateX(2px); border-color: var(--line-strong); }
+    .metric-row span { color: var(--muted); font-size: 14px; }
+    .metric-row strong { color: var(--ink); font-size: 18px; }
+
     .quick-list {
-      padding: 18px;
-      border-top: 1px solid var(--line);
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 20px 22px 24px;
       overflow: auto;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
     }
     .quick-list button {
       width: 100%;
+      min-height: 48px;
       text-align: left;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      color: var(--body);
-      padding: 10px;
-      margin-top: 8px;
+      border-radius: var(--radius-sm);
+      background: var(--paper);
+      color: var(--ink-soft);
+      padding: 12px 34px 12px 14px;
+      margin-top: 9px;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.34;
+      box-shadow: inset 0 -2px 0 var(--stone);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      position: relative;
     }
-    .quick-list button:hover { border-color: var(--line-strong); color: var(--ink); }
+    .quick-list button::after {
+      content: "→";
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      color: var(--faint);
+      font-weight: 800;
+      transform: translateY(-50%);
+      transition: transform .18s ease, color .18s ease;
+    }
+    .quick-list button:nth-of-type(2n) { box-shadow: inset 0 -2px 0 var(--sky); }
+    .quick-list button:nth-of-type(3n) { box-shadow: inset 0 -2px 0 var(--coral-soft); }
+    .quick-list button:hover {
+      transform: translateX(2px);
+      border-color: var(--green);
+      background: var(--stone-soft);
+      color: var(--ink);
+      box-shadow: inset 0 -2px 0 var(--green);
+    }
+    .quick-list button:hover::after {
+      color: var(--green);
+      transform: translate(3px, -50%);
+    }
 
     .chat-pane {
       min-width: 0;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr) auto;
-      background: var(--surface);
     }
     .chat-head {
-      min-height: 66px;
-      padding: 14px 22px;
-      border-bottom: 1px solid var(--line);
+      min-height: 62px;
+      padding: 14px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      background: var(--surface);
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 252, 252, .9);
+      backdrop-filter: blur(18px);
+      position: relative;
+    }
+    .chat-head::after {
+      content: "";
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      bottom: -1px;
+      height: 3px;
+      background: var(--line);
     }
     .chat-head h1 {
       margin: 0;
-      font-size: 16px;
-      line-height: 1.5;
-      font-weight: 700;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 820;
+      letter-spacing: 0;
     }
-    .chat-head p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .mode-pill {
-      flex: 0 0 auto;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface-soft);
-      color: var(--muted);
-      padding: 7px 10px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .chat-head p,
-    .mode-pill {
-      display: none;
-    }
+    .chat-head p, .mode-pill { display: none; }
 
     .messages {
       min-height: 0;
       overflow: auto;
-      padding: 22px;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
+      padding: 30px;
       scroll-behavior: smooth;
     }
     .thread {
-      max-width: 880px;
+      max-width: 940px;
       margin: 0 auto;
       display: grid;
-      gap: 20px;
+      gap: 22px;
     }
-    .welcome {
-      border: 1px solid var(--line);
-      border-radius: 0;
-      background: var(--surface-soft);
-      padding: 12px 18px;
-      line-height: 1.55;
-    }
-    .welcome strong { display: block; margin-bottom: 5px; }
-    .welcome p { margin: 0; color: var(--muted); }
 
     .turn {
       display: grid;
-      gap: 9px;
+      gap: 6px;
+      animation: enterUp .32s ease both;
     }
-    .turn.user {
-      justify-items: end;
-    }
+    .turn.user { justify-items: end; }
     .turn-label {
-      color: var(--muted-2);
-      font-size: 14px;
-      font-weight: 500;
+      color: var(--faint);
+      font-size: 13px;
+      font-weight: 700;
     }
+    .turn.assistant .turn-label { display: none; }
     .bubble {
       max-width: min(760px, 100%);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: 14px 15px;
-      line-height: 1.58;
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      padding: 15px 16px;
+      box-shadow: 0 8px 24px rgba(7, 24, 41, .06);
       overflow-wrap: anywhere;
     }
     .turn.user .bubble {
-      background: var(--surface-soft);
-      border-color: var(--line-strong);
-      color: var(--ink);
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(23, 21, 31, .14);
     }
     .assistant-card {
       width: 100%;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
       overflow: hidden;
+      transition: border-color .18s ease, transform .18s ease;
+      position: relative;
     }
-    .assistant-card.selected {
-      border-color: var(--line-strong);
-    }
+    .assistant-card.selected { border-color: rgba(255, 107, 74, .55); }
+    .assistant-card:hover { transform: translateY(-2px); }
     .answer-head {
-      padding: 12px 14px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--line);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 10px;
-      background: var(--surface-soft);
+      background: var(--stone-soft);
     }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
     .badge {
-      min-height: 24px;
+      min-height: 28px;
       display: inline-flex;
       align-items: center;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 3px 9px;
-      color: var(--muted);
-      background: var(--surface);
-      font-size: 14px;
-      font-weight: 500;
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 13px;
+      font-weight: 820;
     }
-    .badge.high { color: #176b3a; border-color: rgba(23,107,58,.35); }
-    .badge.medium { color: #7a4b00; border-color: rgba(255,159,10,.55); }
-    .badge.low { color: #8a1f19; border-color: rgba(255,59,48,.45); }
+    .badge.high { color: var(--success); border-color: rgba(8,122,83,.28); background: var(--green-soft); }
+    .badge.medium { color: var(--warning); border-color: rgba(146,91,0,.3); background: #fff1b6; }
+    .badge.low { color: var(--danger); border-color: rgba(180,35,24,.28); background: #ffe5df; }
+    .badge.mode { color: #2e2387; background: #efeaff; border-color: rgba(143,108,255,.24); }
     .answer-select {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--muted);
-      border-radius: var(--radius);
-      padding: 5px 8px;
-      font-size: 14px;
-      font-weight: 500;
+      border: 0;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      padding: 9px 13px;
+      font-size: 13px;
+      font-weight: 820;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
+    .answer-select:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(23,23,28,.17); }
     .answer-body {
-      padding: 16px 16px 10px;
-      line-height: 1.62;
+      padding: 18px 20px 12px;
+      color: var(--ink-soft);
+      line-height: 1.64;
     }
-    .answer-body p { margin: 0 0 12px; }
+    .answer-body p { margin: 0 0 13px; }
     .answer-body p:last-child { margin-bottom: 0; }
-    .answer-body ul {
-      margin: 0 0 12px 20px;
-      padding: 0;
-    }
+    .answer-body ul { margin: 0 0 13px 20px; padding: 0; }
     .answer-body li { margin: 5px 0; }
     .answer-foot {
-      padding: 0 16px 15px;
+      padding: 0 20px 20px;
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
+    .answer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    .answer-meta strong { color: var(--ink-soft); font-weight: 760; }
     .source-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 8px;
+      gap: 10px;
     }
     .source-chip {
       border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 10px;
+      border-radius: var(--radius-sm);
+      padding: 12px;
       text-decoration: none;
       color: inherit;
-      background: var(--surface-soft);
+      background: #fff8e8;
       min-width: 0;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
-    .source-chip:hover {
-      border-color: var(--line-strong);
-      background: var(--surface-card);
-    }
+    .source-chip:nth-child(2n) { background: var(--sky); }
+    .source-chip:nth-child(3n) { background: var(--coral-soft); }
+    .source-chip:hover { transform: translateY(-2px); border-color: var(--green); background: var(--green-soft); }
     .source-chip strong {
-      display: block;
+      display: -webkit-box;
       color: var(--ink);
       font-size: 14px;
-      line-height: 1.3;
+      line-height: 1.34;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
     .source-chip span {
       display: block;
-      margin-top: 5px;
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     details.gaps {
       border-top: 1px solid var(--line);
-      padding-top: 9px;
+      padding-top: 10px;
       color: var(--muted);
       font-size: 14px;
     }
-    details.gaps summary {
-      cursor: pointer;
-      font-weight: 750;
-      color: var(--body);
-    }
-    details.gaps ul { margin: 8px 0 0 18px; padding: 0; }
+    details.gaps summary { cursor: pointer; font-weight: 760; color: var(--ink-soft); }
+    details.gaps ul { margin: 9px 0 0 18px; padding: 0; }
 
     .composer {
       border-top: 1px solid var(--line);
-      background: var(--surface);
-      padding: 14px 22px 18px;
+      background: rgba(253, 252, 252, .9);
+      backdrop-filter: blur(18px);
+      padding: 16px 30px 20px;
     }
     .composer-inner {
-      max-width: 880px;
+      max-width: 940px;
       margin: 0 auto;
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius);
-      background: var(--surface);
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      background: var(--paper);
+      border-color: var(--line-strong);
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 10px;
-      padding: 10px;
+      gap: 12px;
+      padding: 12px;
+      box-shadow: 0 16px 42px rgba(69, 43, 18, .14);
     }
     textarea {
       width: 100%;
-      min-height: 48px;
+      min-height: 52px;
       max-height: 150px;
       resize: none;
       border: 0;
       outline: 0;
+      color: var(--ink);
       line-height: 1.45;
-      padding: 5px 3px;
+      padding: 8px 5px;
+      background: transparent;
     }
+    textarea::placeholder { color: var(--faint); }
     .send {
       align-self: end;
-      min-width: 82px;
-      height: 40px;
+      min-width: 104px;
+      height: 44px;
       border: 0;
-      border-radius: var(--radius);
-      background: var(--ink);
-      color: var(--on-dark);
-      font-weight: 500;
+      border-radius: var(--radius-sm);
+      background: var(--coral);
+      color: #fff;
+      font-weight: 860;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .send:hover { background: var(--ink-deep); }
-    .send:disabled { opacity: .55; cursor: wait; }
+    .send:hover { transform: translateY(-1px); background: var(--green); box-shadow: 0 12px 24px rgba(0,60,51,.18); }
+    .send:disabled { opacity: .62; cursor: wait; transform: none; box-shadow: none; }
 
     .inspector {
-      border-left: 1px solid var(--line);
-      background: var(--surface);
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr);
-      min-width: 0;
+      border-left: 1px solid var(--line);
+      background: var(--stone-soft);
+      animation: slideIn .22s ease both;
     }
     .inspector-head {
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
+      padding: 22px;
+      border-bottom: 1px solid var(--line-strong);
+      background: var(--paper);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
     }
-    .inspector-head h2 {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.5;
+    .inspector-title { min-width: 0; }
+    .inspector-head h2 { margin: 0; font-size: 32px; line-height: 1.05; font-weight: 760; }
+    .inspector-head p { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
+    .close-sources {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--stone-soft);
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 700;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
     }
-    .inspector-head p {
-      margin: 5px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
+    .close-sources:hover {
+      background: var(--coral-soft);
+      border-color: var(--coral);
+      transform: translateY(-1px);
     }
     .inspector-scroll {
       min-height: 0;
       overflow: auto;
-      padding: 18px;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
+      padding: 20px;
     }
-    .panel-section {
-      margin-bottom: 20px;
-    }
-    .panel-list {
-      display: grid;
-      gap: 9px;
-    }
-    .source-row, .evidence-row {
+    .panel-section { margin-bottom: 22px; }
+    .panel-list { display: grid; gap: 10px; }
+    .source-row, .evidence-row, .empty {
       border: 1px solid var(--line);
-      border-radius: 0;
-      background: var(--surface);
-      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: var(--paper);
+      padding: 13px;
+    }
+    .source-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      transition: border-color .18s ease, transform .18s ease, background .18s ease;
+    }
+    .source-row:hover {
+      border-color: var(--green);
+      background: var(--stone-soft);
+      transform: translateY(-1px);
+    }
+    .source-number {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 820;
     }
     .source-row a {
       display: block;
       color: var(--ink);
       text-decoration: none;
-      font-weight: 800;
-      line-height: 1.32;
+      font-weight: 760;
+      line-height: 1.34;
     }
-    .source-row a:hover { text-decoration: underline; }
-    .meta {
-      margin-top: 6px;
+    .source-row a:hover { color: var(--blue); }
+    .source-content { min-width: 0; }
+    .meta { margin-top: 7px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .evidence-row {
+      background: var(--stone-soft);
+      border-left: 4px solid var(--line-strong);
+    }
+    .evidence-row { display: block; font-size: 14px; line-height: 1.34; margin-bottom: 7px; }
+    .snippet { color: var(--ink-soft); font-size: 14px; line-height: 1.48; }
+    .empty { color: var(--muted); font-size: 14px; line-height: 1.45; border-style: dashed; }
+    strong {
+      font-weight: 820;
+      color: var(--ink);
+    }
+    .research-progress {
+      max-width: 520px;
+      padding: 2px 0;
+    }
+    .progress-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.35;
+      font-weight: 650;
     }
-    .evidence-row strong {
-      display: block;
-      font-size: 14px;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-    .snippet {
-      color: var(--body);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .empty {
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius);
-      padding: 14px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-      background: var(--surface);
+    .progress-ring {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--line-strong);
+      border-top-color: var(--coral);
+      animation: spin .8s linear infinite;
+      flex: 0 0 auto;
     }
 
-    .typing {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: var(--muted);
-    }
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #98a2b3;
-      animation: pulse 1.1s infinite ease-in-out;
-    }
-    .dot:nth-child(2) { animation-delay: .15s; }
-    .dot:nth-child(3) { animation-delay: .3s; }
     @keyframes pulse {
       0%, 80%, 100% { opacity: .35; transform: translateY(0); }
-      40% { opacity: 1; transform: translateY(-2px); }
+      40% { opacity: 1; transform: translateY(-3px); }
     }
-
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes enterUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(16px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes floatLine {
+      0%, 100% { transform: translateY(0); opacity: .9; }
+      50% { transform: translateY(-8px); opacity: .65; }
+    }
+    @keyframes driftLines {
+      from { transform: translateX(-12px) rotate(-8deg); }
+      to { transform: translateX(12px) rotate(-8deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition: none !important; scroll-behavior: auto !important; }
+    }
     @media (max-width: 1180px) {
       body { overflow: auto; }
-      .app {
-        min-height: 100vh;
-        height: auto;
-        grid-template-columns: 240px minmax(0, 1fr);
-      }
-      .inspector {
-        grid-column: 1 / -1;
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        min-height: 420px;
-      }
-      .chat-pane { min-height: 100vh; }
+      .app { min-height: 100dvh; height: auto; grid-template-columns: 270px minmax(0, 1fr); }
+      body.sources-hidden .app { grid-template-columns: 270px minmax(0, 1fr); }
+      .inspector { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); min-height: 420px; height: 420px; }
+      .chat-pane { min-height: 100dvh; height: auto; }
     }
-
-    @media (max-width: 760px) {
+    @media (max-width: 820px) {
       .app { display: block; }
       .sidebar { display: none; }
-      .chat-pane { min-height: 100vh; }
-      .chat-head { padding: 13px 14px; align-items: flex-start; }
-      .mode-pill { display: none; }
-      .messages { padding: 14px; }
-      .composer { padding: 10px 12px 14px; }
-      .composer-inner { grid-template-columns: 1fr; }
+      .chat-pane { min-height: 100dvh; }
+      .chat-head { padding: 18px 16px; align-items: flex-start; }
+      .chat-head p { font-size: 14px; }
+      .messages { padding: 16px; }
+      .composer { padding: 12px 14px 16px; }
+      .composer-inner { grid-template-columns: 1fr; border-radius: var(--radius-md); }
       .send { width: 100%; }
       .inspector { display: none; }
     }
@@ -556,29 +665,32 @@ HTML = r"""<!doctype html>
 <body class="sources-hidden">
   <div class="app">
     <aside class="sidebar">
-      <div class="sidebar-name">Venture Metrics</div>
+      <div class="brand">
+        <div class="brand-line">
+          <div class="brand-title">
+            <strong>Venture Metrics</strong>
+            MVP Version
+          </div>
+        </div>
+      </div>
 
       <div class="sidebar-actions">
         <button class="new-chat" id="newChat">New chat</button>
       </div>
 
       <section class="status">
-        <h2 class="section-label">Data</h2>
+        <h2 class="section-label">Library</h2>
         <div class="metric-list" id="status"></div>
       </section>
 
       <section class="quick-list">
-        <h2 class="section-label">Try these</h2>
-        <button data-q="Summarize the main themes covered by the indexed Venture Metrics sources, with citations.">Source library overview</button>
-        <button data-q="Which official government, university, or science park sources mention startup support in Hong Kong?">Official startup support</button>
-        <button data-q="Find sources about startup funding, grants, competitions, or incubation programmes, and separate strong evidence from weak evidence.">Funding and incubation evidence</button>
-        <button data-q="What do we know about GBA entrepreneurship policies, and what important gaps still need web verification?">GBA policy gaps</button>
-        <button data-q="Which indexed sources discuss university innovation, spin-offs, entrepreneurship education, or student startup support?">University innovation</button>
-        <button data-q="List the sources that mention incubators, accelerators, science parks, or startup hubs, grouped by source type.">Incubators and hubs</button>
-        <button data-q="Which sources look most reliable for Hong Kong startup policy research, and why?">Most reliable sources</button>
-        <button data-q="Which sources appear low-confidence, outdated, inaccessible, or in need of manual verification?">Needs verification</button>
-        <button data-q="Compare what the indexed sources say about Hong Kong versus Shenzhen startup support.">HK versus Shenzhen</button>
-        <button data-q="What questions can the current indexed source library answer well, and what questions would require web verification?">Answerability check</button>
+        <h2 class="section-label">Questions</h2>
+        <button data-q="What topics are covered in the saved sources?">What topics are covered?</button>
+        <button data-q="Which official sources mention startup support in Hong Kong?">Find official startup support</button>
+        <button data-q="Which sources mention funding, grants, competitions, or incubation programmes?">Find funding and grants</button>
+        <button data-q="What do we know about GBA entrepreneurship policies, and what is still missing?">Check GBA policy evidence</button>
+        <button data-q="Which sources discuss university innovation, spin-offs, or student startup support?">Find university innovation sources</button>
+        <button data-q="Which sources need manual review?">Show sources to review</button>
       </section>
     </aside>
 
@@ -590,17 +702,12 @@ HTML = r"""<!doctype html>
       </header>
 
       <section class="messages" id="messages" aria-label="Chat messages">
-        <div class="thread" id="thread">
-          <div class="welcome" id="welcome">
-            <strong>Ask a question.</strong>
-            <p>Chat normally, or ask a research question when you want cited evidence.</p>
-          </div>
-        </div>
+        <div class="thread" id="thread"></div>
       </section>
 
       <form class="composer" id="composer">
         <div class="composer-inner">
-          <textarea id="question" placeholder="Ask a question..."></textarea>
+          <textarea id="question" placeholder="Ask about Venture Metrics sources..."></textarea>
           <button class="send" id="send" type="submit">Ask</button>
         </div>
       </form>
@@ -608,11 +715,14 @@ HTML = r"""<!doctype html>
 
     <aside class="inspector">
       <div class="inspector-head">
-        <h2>Sources</h2>
-        <p id="inspectorSummary">Citations and snippets.</p>
+        <div class="inspector-title">
+          <h2>Sources</h2>
+          <p id="inspectorSummary">Sources and short notes.</p>
+        </div>
+        <button class="close-sources" id="closeSources" type="button" aria-label="Close sources">×</button>
       </div>
       <div class="inspector-scroll" id="inspector">
-        <div class="empty">Source details are hidden by default.</div>
+        <div class="empty">Sources will appear here after an answer.</div>
       </div>
     </aside>
   </div>
@@ -620,7 +730,6 @@ HTML = r"""<!doctype html>
   <script>
     const messages = document.getElementById('messages');
     const thread = document.getElementById('thread');
-    const welcome = document.getElementById('welcome');
     const question = document.getElementById('question');
     const composer = document.getElementById('composer');
     const send = document.getElementById('send');
@@ -628,8 +737,10 @@ HTML = r"""<!doctype html>
     const inspector = document.getElementById('inspector');
     const inspectorSummary = document.getElementById('inspectorSummary');
     const newChat = document.getElementById('newChat');
+    const closeSources = document.getElementById('closeSources');
 
     const turns = [];
+    const loadingTimers = new Map();
     let selectedAnswerId = null;
     let telemetrySessionId = getOrCreateSessionId();
 
@@ -662,13 +773,6 @@ HTML = r"""<!doctype html>
       } catch {
         return '';
       }
-    }
-
-    function confidenceClass(value) {
-      const text = String(value || '').toLowerCase();
-      if (text.includes('high')) return 'high';
-      if (text.includes('medium')) return 'medium';
-      return 'low';
     }
 
     function renderMarkdownLite(text) {
@@ -720,12 +824,12 @@ HTML = r"""<!doctype html>
         const response = await fetch('/api/status');
         const data = await response.json();
         statusEl.innerHTML = `
-          <div class="metric-row"><span>Documents</span><strong>${data.documents}</strong></div>
-          <div class="metric-row"><span>Sources</span><strong>${data.sources_total}</strong></div>
-          <div class="metric-row"><span>Failed URLs</span><strong>${data.sources_failed}</strong></div>
+          <div class="metric-row"><span>Pages read</span><strong>${data.documents}</strong></div>
+          <div class="metric-row"><span>Saved sources</span><strong>${data.sources_total}</strong></div>
+          <div class="metric-row"><span>Links to review</span><strong>${data.sources_failed}</strong></div>
         `;
       } catch {
-        statusEl.innerHTML = '<div class="empty">Index status is unavailable.</div>';
+        statusEl.innerHTML = '<div class="empty">Library status is not available right now.</div>';
       }
     }
 
@@ -737,12 +841,10 @@ HTML = r"""<!doctype html>
     }
 
     function addUserTurn(content) {
-      document.getElementById('welcome')?.remove();
       turns.push({ role: 'user', content });
       const el = document.createElement('div');
       el.className = 'turn user';
       el.innerHTML = `
-        <div class="turn-label">You</div>
         <div class="bubble">${escapeHtml(content)}</div>
       `;
       thread.appendChild(el);
@@ -755,19 +857,13 @@ HTML = r"""<!doctype html>
       el.className = 'turn assistant';
       el.dataset.answerId = id;
       el.innerHTML = `
-        <div class="turn-label">Assistant</div>
         <article class="assistant-card selected">
-          <div class="answer-head">
-            <div class="badges">
-              <span class="badge">Thinking</span>
-            </div>
-          </div>
           <div class="answer-body">
-            <div class="typing">
-              <span>Working</span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
+            <div class="research-progress" aria-label="Research progress">
+              <div class="progress-main">
+                <span class="progress-ring" aria-hidden="true"></span>
+                <span data-loading-title>Checking sources...</span>
+              </div>
             </div>
           </div>
         </article>
@@ -776,28 +872,51 @@ HTML = r"""<!doctype html>
       selectedAnswerId = id;
       clearSelected();
       el.querySelector('.assistant-card').classList.add('selected');
+      startLoadingStatus(id, el);
       scrollToBottom(true);
       return { id, el };
     }
 
+    function startLoadingStatus(id, el) {
+      const states = [
+        'Checking sources...',
+        'Reading matches...',
+        'Writing answer...'
+      ];
+      let index = 0;
+      const title = el.querySelector('[data-loading-title]');
+      const timer = window.setInterval(() => {
+        index = Math.min(index + 1, states.length - 1);
+        if (title) title.textContent = states[index];
+      }, 1400);
+      loadingTimers.set(id, timer);
+    }
+
+    function stopLoadingStatus(id) {
+      const timer = loadingTimers.get(id);
+      if (timer) {
+        window.clearInterval(timer);
+        loadingTimers.delete(id);
+      }
+    }
+
     function renderAssistantTurn(id, el, data) {
+      stopLoadingStatus(id);
+      const shouldKeepSourcesOpen = !document.body.classList.contains('sources-hidden');
       const citations = data.citations || [];
       const gaps = data.gaps || [];
       const evidence = [...(data.retrieved_evidence || []), ...(data.web_evidence || [])];
       const isCasual = data.source_mode === 'no_tools';
       const hasDetails = !isCasual && (citations.length || evidence.length || gaps.length);
-      const confidenceBadge = isCasual ? '' : `
-        <span class="badge ${confidenceClass(data.confidence)}">Confidence: ${escapeHtml(data.confidence || 'Unknown')}</span>
-      `;
       const sourceButton = hasDetails ? `
-        <button class="answer-select" type="button" data-select="${escapeHtml(id)}">Sources</button>
+        <button class="answer-select" type="button" data-select="${escapeHtml(id)}">Show sources</button>
       ` : '';
       const sourceCards = citations.slice(0, 6).map((source, index) => {
         const url = source.url || '#';
         const domain = domainFromUrl(url);
         return `
           <a class="source-chip" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">
-            <strong>[${index + 1}] ${escapeHtml(source.title || domain || 'Untitled source')}</strong>
+            <strong>[${index + 1}] ${escapeHtml(source.title || domain || 'Source')}</strong>
             <span>${escapeHtml(domain || source.source_type || 'source')}</span>
           </a>
         `;
@@ -805,17 +924,21 @@ HTML = r"""<!doctype html>
 
       const gapsHtml = gaps.length ? `
         <details class="gaps">
-          <summary>Data gaps and caveats</summary>
+          <summary>What is still unclear</summary>
           <ul>${gaps.map(gap => `<li>${escapeHtml(gap)}</li>`).join('')}</ul>
         </details>
       ` : '';
+      const metaHtml = !isCasual ? `
+        <div class="answer-meta">
+          <span><strong>Confidence:</strong> ${escapeHtml(data.confidence || 'Unknown')}</span>
+          <span><strong>Sources:</strong> ${citations.length}</span>
+        </div>
+      ` : '';
 
       el.innerHTML = `
-        <div class="turn-label">Assistant</div>
         <article class="assistant-card selected">
-          ${confidenceBadge || sourceButton ? `
+          ${sourceButton ? `
             <div class="answer-head">
-              <div class="badges">${confidenceBadge}</div>
               ${sourceButton}
             </div>
           ` : ''}
@@ -823,6 +946,7 @@ HTML = r"""<!doctype html>
           <div class="answer-foot">
             ${!isCasual && sourceCards ? `<div class="source-strip">${sourceCards}</div>` : ''}
             ${gapsHtml}
+            ${metaHtml}
           </div>
         </article>
       `;
@@ -835,16 +959,22 @@ HTML = r"""<!doctype html>
       });
       bindAnswerSelection(el, id);
       selectAnswer(id);
-      hideInspector();
+      if (shouldKeepSourcesOpen) {
+        renderInspector(data);
+        document.body.classList.remove('sources-hidden');
+      } else {
+        hideInspector();
+      }
       scrollToBottom();
     }
 
     function renderErrorTurn(el, message) {
+      const id = el.dataset.answerId;
+      if (id) stopLoadingStatus(id);
       el.innerHTML = `
-        <div class="turn-label">Assistant</div>
         <article class="assistant-card">
           <div class="answer-head">
-            <div class="badges"><span class="badge low">Error</span></div>
+            <div class="badges"><span class="badge low">Could not answer</span></div>
           </div>
           <div class="answer-body"><p>${escapeHtml(message)}</p></div>
         </article>
@@ -893,43 +1023,47 @@ HTML = r"""<!doctype html>
       const evidence = [...(data.retrieved_evidence || []), ...(data.web_evidence || [])];
       const gaps = data.gaps || [];
 
-      inspectorSummary.textContent = 'Sources and evidence.';
+      inspectorSummary.textContent = 'Sources and short notes.';
 
       const sourceHtml = citations.length ? citations.map((source, index) => {
         const url = source.url || '#';
         const domain = domainFromUrl(url);
         return `
           <div class="source-row">
-            <a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">[${index + 1}] ${escapeHtml(source.title || domain || 'Untitled source')}</a>
-            <div class="meta">${escapeHtml(domain || source.source_type || 'source')}</div>
+            <div class="source-number">${index + 1}</div>
+            <div class="source-content">
+              <a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title || domain || 'Source')}</a>
+              <div class="meta">${escapeHtml(domain || source.source_type || 'source')}</div>
+            </div>
           </div>
         `;
-      }).join('') : '<div class="empty">No sources were returned for this answer.</div>';
+      }).join('') : '<div class="empty">No source links were returned for this answer.</div>';
 
       const evidenceHtml = evidence.length ? evidence.map((item, index) => `
         <div class="evidence-row">
-          <strong>${index + 1}. ${escapeHtml(item.title || 'Evidence snippet')}</strong>
+          <strong>${index + 1}. ${escapeHtml(item.title || 'Source note')}</strong>
           <div class="snippet">${escapeHtml(item.snippet || '')}</div>
           <div class="meta">${escapeHtml(item.source_type || 'source')}</div>
         </div>
-      `).join('') : '<div class="empty">No retrieved evidence snippets are available.</div>';
+      `).join('') : '<div class="empty">No short notes are available.</div>';
 
-      const gapsHtml = gaps.length ? gaps.map(gap => `<div class="evidence-row"><div class="snippet">${escapeHtml(gap)}</div></div>`).join('') : '<div class="empty">No gaps reported for this answer.</div>';
+      const gapsHtml = gaps.length ? gaps.map(gap => `<div class="evidence-row"><div class="snippet">${escapeHtml(gap)}</div></div>`).join('') : '<div class="empty">No open gaps were reported.</div>';
 
       inspector.innerHTML = `
         <section class="panel-section">
-          <h2 class="section-label">Sources for this answer</h2>
+          <h2 class="section-label">Source links</h2>
           <div class="panel-list">${sourceHtml}</div>
         </section>
         <section class="panel-section">
-          <h2 class="section-label">Evidence snippets</h2>
+          <h2 class="section-label">Source notes</h2>
           <div class="panel-list">${evidenceHtml}</div>
         </section>
         <section class="panel-section">
-          <h2 class="section-label">Gaps</h2>
+          <h2 class="section-label">Still unclear</h2>
           <div class="panel-list">${gapsHtml}</div>
         </section>
       `;
+      inspector.scrollTop = 0;
     }
 
     async function runQuery(prompt) {
@@ -983,14 +1117,14 @@ HTML = r"""<!doctype html>
       selectedAnswerId = null;
       resetSessionId();
       hideInspector();
-      thread.innerHTML = `
-        <div class="welcome" id="welcome">
-          <strong>Ask a question.</strong>
-          <p>Chat normally, or ask a research question when you want cited evidence.</p>
-        </div>
-      `;
-      inspectorSummary.textContent = 'Citations and snippets.';
-      inspector.innerHTML = '<div class="empty">Source details are hidden by default.</div>';
+      thread.innerHTML = '';
+      inspectorSummary.textContent = 'Sources and short notes.';
+      inspector.innerHTML = '<div class="empty">Sources will appear here after an answer.</div>';
+      question.focus();
+    });
+
+    closeSources.addEventListener('click', () => {
+      hideInspector();
       question.focus();
     });
 

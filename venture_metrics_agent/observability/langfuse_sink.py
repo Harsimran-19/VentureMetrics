@@ -5,12 +5,14 @@ from __future__ import annotations
 import importlib
 import importlib.util
 import os
+from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 
 TRUE_VALUES = {"1", "true", "yes", "on"}
+MAX_LANGFUSE_SESSION_ID_LENGTH = 200
 
 
 @dataclass(frozen=True)
@@ -126,9 +128,11 @@ def _export_trace(
     metadata: dict[str, Any],
 ) -> None:
     root_name = f"venture_metrics.{agent_name}"
+    langfuse_session_id = _langfuse_session_id(session_external_id)
     trace_metadata = {
         **metadata,
         "local_run_id": local_run_id,
+        "session_external_id": session_external_id,
         "confidence": response.get("confidence"),
         "source_mode": response.get("source_mode"),
         "used_web_fallback": bool(response.get("used_web_fallback")),
@@ -136,24 +140,54 @@ def _export_trace(
         "gap_count": len(response.get("gaps") or []),
     }
 
-    with client.start_as_current_observation(as_type="agent", name=root_name) as root:
-        _update_current_trace(
-            client,
+    langfuse_module = importlib.import_module("langfuse")
+    with _propagate_session_attributes(langfuse_module, langfuse_session_id):
+        root_context = client.start_as_current_observation(
+            as_type="agent",
             name=root_name,
-            question=question,
-            response=response,
-            session_external_id=session_external_id,
-            metadata=trace_metadata,
-        )
-        root.update(
             input=question,
             output=response.get("answer", ""),
             metadata=trace_metadata,
         )
-        _export_steps(root, response.get("reasoning_trace") or [])
-        _export_retrieval(root, "internal_retrieval", response.get("retrieved_evidence") or [])
-        _export_retrieval(root, "web_retrieval", response.get("web_evidence") or [])
-        _export_citations(root, response.get("citations") or [])
+        with root_context as root:
+            _update_current_trace(
+                client,
+                name=root_name,
+                question=question,
+                response=response,
+                session_external_id=langfuse_session_id,
+                metadata=trace_metadata,
+            )
+            root.update(
+                input=question,
+                output=response.get("answer", ""),
+                metadata=trace_metadata,
+            )
+            _export_steps(root, response.get("reasoning_trace") or [])
+            _export_retrieval(root, "internal_retrieval", response.get("retrieved_evidence") or [])
+            _export_retrieval(root, "web_retrieval", response.get("web_evidence") or [])
+            _export_citations(root, response.get("citations") or [])
+
+
+def _propagate_session_attributes(langfuse_module: Any, session_id: str | None) -> Any:
+    if not session_id:
+        return nullcontext()
+    propagate_attributes = getattr(langfuse_module, "propagate_attributes", None)
+    if not callable(propagate_attributes):
+        return nullcontext()
+    return propagate_attributes(session_id=session_id)
+
+
+def _langfuse_session_id(session_external_id: str | None) -> str | None:
+    if not session_external_id:
+        return None
+    session_id = "".join(
+        character if 32 <= ord(character) <= 126 else "-"
+        for character in str(session_external_id).strip()
+    )
+    if not session_id:
+        return None
+    return session_id[:MAX_LANGFUSE_SESSION_ID_LENGTH]
 
 
 def _update_current_trace(
@@ -166,22 +200,26 @@ def _update_current_trace(
     metadata: dict[str, Any],
 ) -> None:
     update_current_trace = getattr(client, "update_current_trace", None)
-    if not callable(update_current_trace):
+    if callable(update_current_trace):
+        kwargs = {
+            "name": name,
+            "input": question,
+            "output": response.get("answer", ""),
+            "metadata": metadata,
+            "tags": [
+                "venture-metrics",
+                str(response.get("source_mode") or "unknown"),
+                str(response.get("confidence") or "unknown"),
+            ],
+        }
+        if session_external_id:
+            kwargs["session_id"] = session_external_id
+        update_current_trace(**kwargs)
         return
-    kwargs = {
-        "name": name,
-        "input": question,
-        "output": response.get("answer", ""),
-        "metadata": metadata,
-        "tags": [
-            "venture-metrics",
-            str(response.get("source_mode") or "unknown"),
-            str(response.get("confidence") or "unknown"),
-        ],
-    }
-    if session_external_id:
-        kwargs["session_id"] = session_external_id
-    update_current_trace(**kwargs)
+
+    set_current_trace_io = getattr(client, "set_current_trace_io", None)
+    if callable(set_current_trace_io):
+        set_current_trace_io(input=question, output=response.get("answer", ""))
 
 
 def _export_steps(root: Any, trace: list[Any]) -> None:
@@ -219,7 +257,7 @@ def _export_retrieval(root: Any, name: str, results: list[Any]) -> None:
 def _export_citations(root: Any, citations: list[Any]) -> None:
     if not citations:
         return
-    with root.start_as_current_observation(as_type="event", name="answer_citations") as observation:
+    with root.start_as_current_observation(as_type="span", name="answer_citations") as observation:
         observation.update(
             output=[_compact_result(citation) for citation in citations[:10] if isinstance(citation, dict)],
             metadata={"citation_count": len(citations)},

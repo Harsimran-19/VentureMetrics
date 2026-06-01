@@ -1014,6 +1014,15 @@ class AgentHandler(BaseHTTPRequestHandler):
             return
         self.send_error(404)
 
+    def do_HEAD(self) -> None:
+        if self.path == "/" or self.path.startswith("/?"):
+            self._send_html(HTML, include_body=False)
+            return
+        if self.path == "/api/status":
+            self._send_json(_status(self.db_path), include_body=False)
+            return
+        self.send_error(404)
+
     def do_POST(self) -> None:
         if self.path != "/api/query":
             self.send_error(404)
@@ -1047,21 +1056,23 @@ class AgentHandler(BaseHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:
         return
 
-    def _send_html(self, html: str) -> None:
+    def _send_html(self, html: str, *, include_body: bool = True) -> None:
         body = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        self.wfile.write(body)
+        if include_body:
+            self.wfile.write(body)
 
-    def _send_json(self, payload: dict, *, status: int = 200) -> None:
+    def _send_json(self, payload: dict, *, status: int = 200, include_body: bool = True) -> None:
         body = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        self.wfile.write(body)
+        if include_body:
+            self.wfile.write(body)
 
 
 def run_server(host: str = "127.0.0.1", port: int = 8000, db_path: str | Path = DEFAULT_DB_PATH) -> None:

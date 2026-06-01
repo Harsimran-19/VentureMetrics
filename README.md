@@ -148,6 +148,8 @@ Tracked tables include:
 
 Langfuse is supported as a best-effort dashboard sink. A failed Langfuse export does not break the local agent or SQLite telemetry.
 
+Each user message is exported as its own Langfuse trace. The browser UI sends a stable `session_id` for the active chat, and Langfuse groups those per-message traces under one session. Use the Langfuse Sessions view, or filter traces by the same session id, when you want to inspect a full chat.
+
 Install dependencies, then set:
 
 ```bash
@@ -212,6 +214,15 @@ TAVILY_API_KEY=...
 6. Deploy the service.
 
 The startup script copies the bundled demo database into `DB_PATH` on first boot if the mounted volume is empty. After that, the Railway volume keeps the SQLite file across restarts and redeploys.
+
+Do not manually set `PORT=8000` on Railway unless the public domain target port is also set to `8000`. The preferred setup is to leave `PORT` undefined in Railway so Railway injects the correct value and the startup script binds to it. Railway's 502 "Application failed to respond" error usually means the service is listening on a different host/port than the edge proxy expects.
+
+If Railway shows a 502 while logs say the app is running:
+
+- Confirm the log says `Research prototype UI running at http://0.0.0.0:<PORT>`.
+- In Railway, open the service domain settings and make sure the target port matches that logged port.
+- If you copied `.env.example`, remove any manually configured `PORT` variable from Railway and redeploy.
+- Use `/api/status` as a lightweight health check path.
 
 ### Local Docker Run
 

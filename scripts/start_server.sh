@@ -14,4 +14,5 @@ if [ ! -f "$DB_PATH" ] && [ -f "$BUNDLED_DB_PATH" ]; then
   cp "$BUNDLED_DB_PATH" "$DB_PATH"
 fi
 
+echo "Starting Venture Metrics server on ${HOST}:${PORT} with DB_PATH=${DB_PATH}"
 exec python scripts/serve_agent.py --host "$HOST" --port "$PORT" --db "$DB_PATH"

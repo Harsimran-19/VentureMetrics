@@ -2,13 +2,20 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import sys
+from types import SimpleNamespace
 from pathlib import Path
 
 from venture_metrics_agent.observability import (
+    LangfuseConfig,
     langfuse_status,
     load_langfuse_config,
     record_agent_response,
     record_eval_report,
+)
+from venture_metrics_agent.observability.langfuse_sink import (
+    _langfuse_session_id,
+    export_agent_response_to_langfuse,
 )
 
 
@@ -172,6 +179,96 @@ def test_load_langfuse_config_reads_optional_env_file(tmp_path: Path, monkeypatc
     status = langfuse_status(config)
     assert status["enabled"] is True
     assert status["configured"] is True
+
+
+def test_langfuse_export_propagates_session_id(monkeypatch) -> None:
+    fake_module = SimpleNamespace(propagated=[])
+
+    class FakePropagation:
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+        def __enter__(self):
+            fake_module.propagated.append(self.kwargs)
+
+        def __exit__(self, exc_type, exc, traceback):
+            return False
+
+    class FakeObservation:
+        def __init__(self, client, kwargs):
+            self.client = client
+            self.kwargs = kwargs
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, traceback):
+            return False
+
+        def update(self, **kwargs):
+            self.client.observation_updates.append(kwargs)
+
+        def start_as_current_observation(self, **kwargs):
+            self.client.child_observations.append(kwargs)
+            return FakeObservation(self.client, kwargs)
+
+    class FakeLangfuse:
+        instances = []
+
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+            self.root_observations = []
+            self.child_observations = []
+            self.observation_updates = []
+            self.trace_updates = []
+            self.flushed = False
+            self.__class__.instances.append(self)
+
+        def start_as_current_observation(self, **kwargs):
+            self.root_observations.append(kwargs)
+            return FakeObservation(self, kwargs)
+
+        def update_current_trace(self, **kwargs):
+            self.trace_updates.append(kwargs)
+
+        def flush(self):
+            self.flushed = True
+
+    fake_module.Langfuse = FakeLangfuse
+    fake_module.propagate_attributes = lambda **kwargs: FakePropagation(**kwargs)
+    monkeypatch.setitem(sys.modules, "langfuse", fake_module)
+
+    export_agent_response_to_langfuse(
+        "Which sources mention grants?",
+        {
+            "answer": "Supported answer.",
+            "confidence": "Medium",
+            "source_mode": "internal_only",
+            "reasoning_trace": [{"phase": "route", "decision": "internal_research"}],
+            "retrieved_evidence": [{"title": "Grant page", "url": "https://example.edu/grants"}],
+            "citations": [{"title": "Grant page", "url": "https://example.edu/grants"}],
+        },
+        agent_name="reasoning_agent",
+        session_external_id="test-session",
+        local_run_id=123,
+        config=LangfuseConfig(enabled=True, public_key="pk-test", secret_key="sk-test"),
+    )
+
+    client = FakeLangfuse.instances[0]
+    assert fake_module.propagated == [{"session_id": "test-session"}]
+    assert client.trace_updates[0]["session_id"] == "test-session"
+    assert client.root_observations[0]["metadata"]["session_external_id"] == "test-session"
+    assert client.child_observations[0]["as_type"] == "span"
+    assert client.flushed is True
+
+
+def test_langfuse_session_id_is_ascii_and_bounded() -> None:
+    session_id = _langfuse_session_id(" session-你好-" + ("x" * 220))
+
+    assert session_id is not None
+    assert len(session_id) == 200
+    assert all(32 <= ord(character) <= 126 for character in session_id)
+    assert session_id.startswith("session----")
 
 
 def _count(conn: sqlite3.Connection, table_name: str) -> int:

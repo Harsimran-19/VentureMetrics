@@ -7,6 +7,8 @@ import sqlite3
 from pathlib import Path
 from urllib.parse import urlparse, urlunparse
 
+from venture_metrics_agent.observability.telemetry import create_observability_tables
+
 
 GOV_HINTS = ("gov", "政府", "policy", "grant")
 UNIVERSITY_HINTS = (
@@ -86,6 +88,7 @@ def init_db(db_path: str | Path) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
     conn.execute("PRAGMA foreign_keys = ON")
     _create_tables(conn)
+    create_observability_tables(conn)
     return conn
 
 

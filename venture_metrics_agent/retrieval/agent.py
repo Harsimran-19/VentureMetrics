@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-import json
 import re
-import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from venture_metrics_agent.llm.prompts import SYSTEM_PROMPT, answer_prompt
 from venture_metrics_agent.llm.provider import LLMProvider
+from venture_metrics_agent.observability import record_agent_response
 from venture_metrics_agent.retrieval.evidence_scorer import assess_evidence
 from venture_metrics_agent.retrieval.retriever import (
     RetrievalResult,
@@ -35,6 +34,7 @@ def answer_question(
     options: QueryOptions | None = None,
     llm: LLMProvider | None = None,
     chat_history: list[dict[str, str]] | None = None,
+    telemetry_session_id: str | None = None,
 ) -> dict[str, Any]:
     options = options or QueryOptions()
     llm = llm or LLMProvider()
@@ -64,7 +64,7 @@ def answer_question(
             "retrieved_evidence": [],
             "web_evidence": [],
         }
-        _log_query(db_path, question, response)
+        _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
         return response
 
     if llm.is_configured:
@@ -109,7 +109,7 @@ def answer_question(
     response["used_web_fallback"] = bool(should_use_web)
     response["retrieved_evidence"] = [_evidence_payload(result) for result in results]
     response["web_evidence"] = [_web_payload(result) for result in web_results]
-    _log_query(db_path, question, response)
+    _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
     return response
 
 
@@ -328,30 +328,17 @@ def _asks_for_current_data(question: str) -> bool:
     return bool(re.search(r"\b(latest|current|today|this week|recent|now|2026)\b|最新|目前|本周|今年", question, re.I))
 
 
-def _log_query(db_path: str | Path, question: str, response: dict[str, Any]) -> None:
-    conn = sqlite3.connect(db_path)
-    try:
-        conn.execute(
-            """
-            INSERT INTO query_logs (
-                question,
-                answer,
-                confidence,
-                source_mode,
-                used_web_fallback,
-                citations_json
-            )
-            VALUES (?, ?, ?, ?, ?, ?)
-            """,
-            (
-                question,
-                response.get("answer", ""),
-                response.get("confidence", "Insufficient evidence"),
-                response.get("source_mode", "insufficient"),
-                1 if response.get("used_web_fallback") else 0,
-                json.dumps(response.get("citations", []), ensure_ascii=False),
-            ),
-        )
-        conn.commit()
-    finally:
-        conn.close()
+def _log_query(
+    db_path: str | Path,
+    question: str,
+    response: dict[str, Any],
+    *,
+    telemetry_session_id: str | None = None,
+) -> None:
+    record_agent_response(
+        db_path,
+        question,
+        response,
+        agent_name="retrieval_agent",
+        session_external_id=telemetry_session_id,
+    )

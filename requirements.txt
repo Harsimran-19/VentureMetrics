@@ -1,4 +1,4 @@
 pandas>=2.2
 openpyxl>=3.1
 pytest>=8.0
-
+langfuse>=3.3.1

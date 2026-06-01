@@ -12,6 +12,7 @@ Lightweight local prototype for a Venture Metrics research assistant. The first 
 - Fetches source content into local markdown documents.
 - Chunks and indexes fetched documents in SQLite FTS.
 - Runs a local internal-evidence agent with citations.
+- Stores local agent telemetry in SQLite for sessions, messages, runs, reasoning steps, retrieval events, citations, feedback, and eval records.
 
 ## Setup
 
@@ -115,9 +116,57 @@ Run the fixed reasoning eval suite against a temporary database copy:
 
 ```bash
 PYTHONPATH=. python scripts/run_reasoning_eval.py
+make eval
 ```
 
-By default, web search is simulated so the eval does not require network access or mutate the real database.
+By default, web search is simulated so the eval does not require network access or mutate source data. `make eval` records the scored eval summary into the local observability tables.
+
+## Inspect Local Observability
+
+Every agent query still writes the legacy `query_logs` row, but it also writes a richer local telemetry record into SQLite. This local schema is the source of truth; Langfuse is available as an optional exporter, and Opik can be added later if needed.
+
+```bash
+make telemetry-status
+PYTHONPATH=. python scripts/telemetry_status.py --json
+```
+
+Tracked tables include:
+
+- `chat_sessions`
+- `chat_messages`
+- `agent_runs`
+- `agent_run_steps`
+- `retrieval_events`
+- `retrieval_event_results`
+- `answer_citations`
+- `user_feedback`
+- `eval_cases`
+- `eval_runs`
+- `eval_results`
+
+### Optional Langfuse Export
+
+Langfuse is supported as a best-effort dashboard sink. A failed Langfuse export does not break the local agent or SQLite telemetry.
+
+Install dependencies, then set:
+
+```bash
+LANGFUSE_ENABLED=true
+LANGFUSE_PUBLIC_KEY=pk-lf-...
+LANGFUSE_SECRET_KEY=sk-lf-...
+LANGFUSE_BASE_URL=https://cloud.langfuse.com
+LANGFUSE_ENVIRONMENT=local
+LANGFUSE_RELEASE=prototype
+```
+
+Then run:
+
+```bash
+make reasoning-query QUESTION='Which sources mention startup funding or grants?'
+make telemetry-status
+```
+
+`make telemetry-status` reports whether Langfuse is enabled, configured, and whether the SDK is installed.
 
 ## Run The Local Web UI
 

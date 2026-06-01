@@ -631,6 +631,20 @@ HTML = r"""<!doctype html>
 
     const turns = [];
     let selectedAnswerId = null;
+    let telemetrySessionId = getOrCreateSessionId();
+
+    function getOrCreateSessionId() {
+      const existing = window.localStorage.getItem('ventureMetricsSessionId');
+      if (existing) return existing;
+      const value = `web-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      window.localStorage.setItem('ventureMetricsSessionId', value);
+      return value;
+    }
+
+    function resetSessionId() {
+      telemetrySessionId = `web-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      window.localStorage.setItem('ventureMetricsSessionId', telemetrySessionId);
+    }
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, char => ({
@@ -933,7 +947,8 @@ HTML = r"""<!doctype html>
           body: JSON.stringify({
             question: text,
             top_k: 7,
-            history: chatHistory()
+            history: chatHistory(),
+            session_id: telemetrySessionId
           })
         });
         const data = await response.json();
@@ -966,6 +981,7 @@ HTML = r"""<!doctype html>
     newChat.addEventListener('click', () => {
       turns.length = 0;
       selectedAnswerId = null;
+      resetSessionId();
       hideInspector();
       thread.innerHTML = `
         <div class="welcome" id="welcome">
@@ -1010,6 +1026,7 @@ class AgentHandler(BaseHTTPRequestHandler):
             use_web_fallback = bool(payload.get("use_web_fallback", True))
             remember_web_results = bool(payload.get("remember_web_results", False))
             history = _clean_history(payload.get("history", []))
+            session_id = str(payload.get("session_id") or "").strip() or None
             if not user_question:
                 raise ValueError("Question is required.")
             response = answer_question_reasoning(
@@ -1021,6 +1038,7 @@ class AgentHandler(BaseHTTPRequestHandler):
                     remember_web_results=remember_web_results,
                 ),
                 chat_history=history,
+                telemetry_session_id=session_id,
             )
             self._send_json(response)
         except Exception as exc:  # noqa: BLE001 - local demo server should expose actionable errors.

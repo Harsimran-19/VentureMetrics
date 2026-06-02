@@ -323,13 +323,13 @@ HTML = r"""<!doctype html>
       animation: enterUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    .word-venture {
+    .word-metrics {
       position: relative;
       display: inline-block;
       padding-bottom: 8px;
     }
 
-    .word-venture::after {
+    .word-metrics::after {
       content: "";
       position: absolute;
       left: 0;
@@ -751,7 +751,7 @@ HTML = r"""<!doctype html>
       <section class="messages" id="messages" aria-label="Chat messages">
         <div class="thread" id="thread">
           <div class="empty-chat" id="emptyState">
-            <h2 class="empty-hero"><span class="word-venture">Venture</span> Metrics</h2>
+            <h2 class="empty-hero">Venture <span class="word-metrics">Metrics</span></h2>
           </div>
         </div>
       </section>
@@ -1173,7 +1173,7 @@ HTML = r"""<!doctype html>
       hideInspector();
       thread.innerHTML = `
         <div class="empty-chat" id="emptyState">
-          <h2 class="empty-hero"><span class="word-venture">Venture</span> Metrics</h2>
+          <h2 class="empty-hero">Venture <span class="word-metrics">Metrics</span></h2>
         </div>
       `;
       inspectorSummary.textContent = 'Sources and short notes.';

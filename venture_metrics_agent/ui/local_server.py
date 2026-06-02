@@ -731,13 +731,16 @@ HTML = r"""<!doctype html>
       </section>
 
       <section class="quick-list">
-        <h2 class="section-label">Questions</h2>
-        <button data-q="What topics are covered in the saved sources?">What topics are covered?</button>
-        <button data-q="Which official sources mention startup support in Hong Kong?">Find official startup support</button>
-        <button data-q="Which sources mention funding, grants, competitions, or incubation programmes?">Find funding and grants</button>
-        <button data-q="What do we know about GBA entrepreneurship policies, and what is still missing?">Check GBA policy evidence</button>
-        <button data-q="Which sources discuss university innovation, spin-offs, or student startup support?">Find university innovation sources</button>
-        <button data-q="Which sources need manual review?">Show sources to review</button>
+        <h2 class="section-label">Research Questions</h2>
+        <button data-q="Where can a founder get official startup support in Hong Kong, including government programmes, science parks, and incubators?">Startup support in Hong Kong</button>
+        <button data-q="Which grants, funds, or competition-based programmes appear most relevant for early-stage startups in the indexed evidence?">Grants, funds, and competitions</button>
+        <button data-q="Compare the startup support options mentioned for Hong Kong and Shenzhen, including policy, funding, and ecosystem support.">Compare Hong Kong vs Shenzhen</button>
+        <button data-q="What do the Shenzhen policy sources say about startup subsidies, talent support, and commercialising research?">Shenzhen policy and commercialisation</button>
+        <button data-q="Which Hong Kong universities provide spinout, technology transfer, or incubator support for founders?">Hong Kong university spinouts</button>
+        <button data-q="Which mainland university incubators or science parks look most relevant as benchmarks for commercialization and startup support?">Mainland incubator benchmarks</button>
+        <button data-q="What patent, intellectual property, or commercialization support is available in Hong Kong for startups or university-linked founders?">Patent and IP support</button>
+        <button data-q="Which associations, alliances, or ecosystem organisations could help a startup build connections across Hong Kong and Shenzhen?">GBA ecosystem connectors</button>
+        <button data-q="Which hiring platforms, labour portals, or talent programmes look most relevant for startup recruitment in Hong Kong, the UK, and Canada?">Startup hiring channels</button>
       </section>
     </aside>
 

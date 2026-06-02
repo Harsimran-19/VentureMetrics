@@ -34,7 +34,7 @@ The target is not a full production platform yet. The target is a credible v0.1 
 - [ ] Strong tracking and evaluation.
 - [ ] Better retrieval quality.
 - [ ] Better confidence calibration.
-- [ ] Better UI polish.
+- [x] Better UI polish.
 - [x] Mainland-compatible deployment plan (see implementation plan & README updates).
 
 ## Immediate Priority: Tracking And Evaluation
@@ -99,29 +99,29 @@ The target is not a full production platform yet. The target is a credible v0.1 
 
 ## UI Improvements
 
-- [ ] Add persistent session ID.
+- [x] Add persistent session ID.
 - [ ] Add feedback buttons.
 - [ ] Add answer run metadata in source drawer.
-- [ ] Add clearer source drawer.
-- [ ] Add evaluation/admin page or local report view.
-- [ ] Improve mobile layout.
-- [ ] Improve loading and error states.
-- [ ] Hide internal trace from normal users.
+- [x] Add clearer source drawer.
+- [x] Add evaluation/admin page or local report view.
+- [x] Improve mobile layout.
+- [x] Improve loading and error states.
+- [x] Hide internal trace from normal users.
 - [ ] Add demo prompts grouped by use case.
-- [ ] Avoid external fonts/CDNs for mainland compatibility.
+- [x] Avoid external fonts/CDNs for mainland compatibility.
 
 ## Database And Deployment Direction
 
-- [ ] Keep SQLite default for local demos.
+- [x] Keep SQLite default for local demos.
 - [ ] Add `DATABASE_URL` support.
 - [ ] Add Postgres-compatible storage layer.
 - [ ] Test Neon for fast public demo if acceptable.
 - [ ] Keep China-hosted Postgres option open for mainland deployment.
 - [x] Validate database/provider reachability from mainland China (using local SQLite and DeepSeek).
 - [x] Validate database/provider reachability from India (using Zeabur/Koyeb bypass and custom provider adapter).
-- [ ] Keep DeepSeek/OpenAI-compatible provider adapter.
+- [x] Keep DeepSeek/OpenAI-compatible provider adapter.
 - [ ] Keep at least one India-safe/global LLM provider path available.
-- [ ] Keep search provider adapter.
+- [x] Keep search provider adapter.
 - [ ] Add Baidu/Bing/Sogou/360-compatible search path later.
 - [ ] Add India-safe/global search fallback path.
 - [ ] Avoid hard dependency on Vercel-only deployment.
@@ -134,7 +134,7 @@ The target is not a full production platform yet. The target is a credible v0.1 
 - [x] Add Makefile.
 - [ ] Add README section for Makefile.
 - [ ] Add one-command local demo flow.
-- [ ] Add one-command eval.
+- [x] Add one-command eval.
 - [ ] Add one-command Docker run.
 - [ ] Add deployment notes.
 
@@ -142,7 +142,7 @@ The target is not a full production platform yet. The target is a credible v0.1 
 
 - [x] Tracking tables implemented.
 - [ ] UI records session and feedback.
-- [ ] Recent run report works.
+- [x] Recent run report works.
 - [ ] Eval suite expanded and runnable.
 - [ ] Retrieval overconfidence reduced.
 - [ ] README updated with exact demo commands.

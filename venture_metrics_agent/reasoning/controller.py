@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from venture_metrics_agent.llm.prompts import (
     CONTEXTUALIZE_SYSTEM_PROMPT,
@@ -53,9 +53,11 @@ def answer_question_reasoning(
     chat_history: list[dict[str, str]] | None = None,
     toolbox: ReasoningToolbox | None = None,
     telemetry_session_id: str | None = None,
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     options = options or ReasoningOptions()
     llm = llm or LLMProvider()
+    _emit_progress(progress_callback, "thinking", "Thinking...")
 
     combined_history = _combined_chat_history(
         db_path,
@@ -76,8 +78,10 @@ def answer_question_reasoning(
         reason=route.reason,
         observation={**route.as_dict(), "route_source": route_source},
     )
+    _emit_progress(progress_callback, "route", _route_status_message(route), route=route.as_dict())
 
     if not route.needs_research:
+        _emit_progress(progress_callback, "writing", _direct_status_message(route))
         response = _direct_response(question, route, workspace, llm=llm, chat_history=combined_history)
         _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
         return response
@@ -95,6 +99,7 @@ def answer_question_reasoning(
     internal_observation: InternalSearchObservation | None = None
     internal_verification: VerifiedEvidence | None = None
     if route.allow_internal_search:
+        _emit_progress(progress_callback, "internal_search", "Searching saved sources...")
         internal_observation, internal_verification = _run_internal_iterations(
             research_question,
             toolbox,
@@ -105,6 +110,7 @@ def answer_question_reasoning(
 
     web_observation: WebSearchObservation | None = None
     if _should_use_web(route, internal_observation, internal_verification):
+        _emit_progress(progress_callback, "web_search", "Searching the web...")
         workspace.add_step(
             phase="act",
             decision="use_web_search",
@@ -128,7 +134,7 @@ def answer_question_reasoning(
                 reason="Useful controlled web-search results were stored for future reuse.",
                 tool="source_registry",
                 observation=memory_stats,
-            )
+        )
     else:
         workspace.add_step(
             phase="act",
@@ -141,6 +147,7 @@ def answer_question_reasoning(
     web_results = web_observation.results if web_observation else []
     assessment = internal_observation.assessment if internal_observation else None
     web_error = web_observation.error if web_observation else None
+    _emit_progress(progress_callback, "writing", "Writing the answer...")
     response = _synthesize_response(
         question,
         research_question,
@@ -155,6 +162,33 @@ def answer_question_reasoning(
     )
     _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
     return response
+
+
+def _emit_progress(
+    callback: Callable[[dict[str, Any]], None] | None,
+    stage: str,
+    message: str,
+    **metadata: Any,
+) -> None:
+    if not callback:
+        return
+    callback({"type": "progress", "stage": stage, "message": message, **metadata})
+
+
+def _route_status_message(route: RouteDecision) -> str:
+    if route.intent == "chat_summary":
+        return "Reading this chat..."
+    if route.needs_research:
+        return "Planning the research path..."
+    return "Preparing a reply..."
+
+
+def _direct_status_message(route: RouteDecision) -> str:
+    if route.intent == "chat_summary":
+        return "Summarizing the chat..."
+    if route.needs_clarification:
+        return "Writing a clarification..."
+    return "Writing a reply..."
 
 
 def _combined_chat_history(

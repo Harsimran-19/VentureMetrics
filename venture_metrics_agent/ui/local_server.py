@@ -929,24 +929,13 @@ HTML = r"""<!doctype html>
       selectedAnswerId = id;
       clearSelected();
       el.querySelector('.assistant-card').classList.add('selected');
-      startLoadingStatus(id, el);
       scrollToBottom(true);
       return { id, el };
     }
 
-    function startLoadingStatus(id, el) {
-      const states = [
-        'Checking sources...',
-        'Reading matches...',
-        'Writing answer...'
-      ];
-      let index = 0;
+    function updatePendingStatus(el, message) {
       const title = el.querySelector('[data-loading-title]');
-      const timer = window.setInterval(() => {
-        index = Math.min(index + 1, states.length - 1);
-        if (title) title.textContent = states[index];
-      }, 1400);
-      loadingTimers.set(id, timer);
+      if (title && message) title.textContent = message;
     }
 
     function stopLoadingStatus(id) {
@@ -1132,7 +1121,7 @@ HTML = r"""<!doctype html>
       const pending = addPendingTurn();
 
       try {
-        const response = await fetch('/api/query', {
+        const response = await fetch('/api/query-stream', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1142,8 +1131,11 @@ HTML = r"""<!doctype html>
             session_id: telemetrySessionId
           })
         });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Query failed');
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          throw new Error(data.error || 'Query failed');
+        }
+        const data = await readQueryStream(response, pending.el);
         renderAssistantTurn(pending.id, pending.el, data);
       } catch (error) {
         renderErrorTurn(pending.el, error.message || 'Query failed');
@@ -1151,6 +1143,45 @@ HTML = r"""<!doctype html>
         send.disabled = false;
         question.focus();
       }
+    }
+
+    async function readQueryStream(response, pendingEl) {
+      if (!response.body || !response.body.getReader) {
+        updatePendingStatus(pendingEl, 'Writing answer...');
+        return response.json();
+      }
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let finalPayload = null;
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed) continue;
+          const event = JSON.parse(trimmed);
+          if (event.type === 'progress') {
+            updatePendingStatus(pendingEl, event.message);
+          } else if (event.type === 'final') {
+            finalPayload = event.response;
+          } else if (event.type === 'error') {
+            throw new Error(event.error || 'Query failed');
+          }
+        }
+      }
+
+      if (buffer.trim()) {
+        const event = JSON.parse(buffer.trim());
+        if (event.type === 'final') finalPayload = event.response;
+        if (event.type === 'error') throw new Error(event.error || 'Query failed');
+      }
+      if (!finalPayload) throw new Error('Query finished without an answer.');
+      return finalPayload;
     }
 
     composer.addEventListener('submit', event => {
@@ -1225,6 +1256,9 @@ class AgentHandler(BaseHTTPRequestHandler):
             if self.path == "/api/query":
                 self._handle_query(payload)
                 return
+            if self.path == "/api/query-stream":
+                self._handle_query_stream(payload)
+                return
             self.send_error(404)
         except Exception as exc:  # noqa: BLE001 - local demo server should expose actionable errors.
             self._send_json({"error": str(exc)}, status=500)
@@ -1250,6 +1284,42 @@ class AgentHandler(BaseHTTPRequestHandler):
             telemetry_session_id=session_id,
         )
         self._send_json(response)
+
+    def _handle_query_stream(self, payload: dict) -> None:
+        user_question = str(payload.get("question") or "").strip()
+        top_k = int(payload.get("top_k") or 7)
+        use_web_fallback = bool(payload.get("use_web_fallback", True))
+        remember_web_results = bool(payload.get("remember_web_results", True))
+        history = _clean_history(payload.get("history", []))
+        session_id = str(payload.get("session_id") or "").strip() or None
+        if not user_question:
+            raise ValueError("Question is required.")
+
+        self.send_response(200)
+        self.send_header("Content-Type", "application/x-ndjson; charset=utf-8")
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+
+        def emit(event: dict) -> None:
+            self.wfile.write((json.dumps(event, ensure_ascii=False) + "\n").encode("utf-8"))
+            self.wfile.flush()
+
+        try:
+            response = answer_question_reasoning(
+                self.db_path,
+                user_question,
+                options=ReasoningOptions(
+                    top_k=top_k,
+                    use_web_fallback=use_web_fallback,
+                    remember_web_results=remember_web_results,
+                ),
+                chat_history=history,
+                telemetry_session_id=session_id,
+                progress_callback=emit,
+            )
+            emit({"type": "final", "response": response})
+        except Exception as exc:  # noqa: BLE001 - stream local demo errors to the client.
+            emit({"type": "error", "error": str(exc)})
 
     def log_message(self, format: str, *args: object) -> None:
         return

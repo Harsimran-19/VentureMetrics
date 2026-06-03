@@ -1219,34 +1219,37 @@ class AgentHandler(BaseHTTPRequestHandler):
         self.send_error(404)
 
     def do_POST(self) -> None:
-        if self.path != "/api/query":
-            self.send_error(404)
-            return
         try:
             length = int(self.headers.get("Content-Length", "0"))
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
-            user_question = str(payload.get("question") or "").strip()
-            top_k = int(payload.get("top_k") or 7)
-            use_web_fallback = bool(payload.get("use_web_fallback", True))
-            remember_web_results = bool(payload.get("remember_web_results", False))
-            history = _clean_history(payload.get("history", []))
-            session_id = str(payload.get("session_id") or "").strip() or None
-            if not user_question:
-                raise ValueError("Question is required.")
-            response = answer_question_reasoning(
-                self.db_path,
-                user_question,
-                options=ReasoningOptions(
-                    top_k=top_k,
-                    use_web_fallback=use_web_fallback,
-                    remember_web_results=remember_web_results,
-                ),
-                chat_history=history,
-                telemetry_session_id=session_id,
-            )
-            self._send_json(response)
+            if self.path == "/api/query":
+                self._handle_query(payload)
+                return
+            self.send_error(404)
         except Exception as exc:  # noqa: BLE001 - local demo server should expose actionable errors.
             self._send_json({"error": str(exc)}, status=500)
+
+    def _handle_query(self, payload: dict) -> None:
+        user_question = str(payload.get("question") or "").strip()
+        top_k = int(payload.get("top_k") or 7)
+        use_web_fallback = bool(payload.get("use_web_fallback", True))
+        remember_web_results = bool(payload.get("remember_web_results", True))
+        history = _clean_history(payload.get("history", []))
+        session_id = str(payload.get("session_id") or "").strip() or None
+        if not user_question:
+            raise ValueError("Question is required.")
+        response = answer_question_reasoning(
+            self.db_path,
+            user_question,
+            options=ReasoningOptions(
+                top_k=top_k,
+                use_web_fallback=use_web_fallback,
+                remember_web_results=remember_web_results,
+            ),
+            chat_history=history,
+            telemetry_session_id=session_id,
+        )
+        self._send_json(response)
 
     def log_message(self, format: str, *args: object) -> None:
         return

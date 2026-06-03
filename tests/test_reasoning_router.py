@@ -35,3 +35,28 @@ def test_social_question_does_not_allow_tools() -> None:
     assert route.needs_research is False
     assert route.allow_internal_search is False
     assert route.allow_web_search is False
+
+
+def test_open_domain_factual_question_requires_research() -> None:
+    route = route_message("What is T-Hub in Hyderabad?")
+
+    assert route.intent == "external_research"
+    assert route.needs_research is True
+    assert route.allow_internal_search is True
+    assert route.allow_web_search is True
+
+
+def test_intro_question_is_system_help_not_canned_greeting() -> None:
+    route = route_message("give me your introduction")
+
+    assert route.intent == "system_help"
+    assert route.needs_research is False
+
+
+def test_summarize_chat_does_not_allow_tools() -> None:
+    route = route_message("can you summarize this chat?")
+
+    assert route.intent == "chat_summary"
+    assert route.needs_research is False
+    assert route.allow_internal_search is False
+    assert route.allow_web_search is False

@@ -1,7 +1,28 @@
 # Venture Metrics — Current Architecture
 
-> Last updated: 2026-05-21  
+> Last updated: 2026-06-03  
 > Status: **Working prototype + reasoning controller** — pipeline complete, UI live, LLM/web fallback adapter-ready, reasoning-first path under test.
+
+---
+
+## Architecture Classification
+
+The current product is **not a full Recursive Language Model (RLM)** implementation.
+
+The accurate architecture label is:
+
+```text
+Internal-first RAG with an RLM-inspired deterministic research controller.
+```
+
+In practical terms:
+
+- **RAG is implemented** as the evidence infrastructure: Excel source map, source registry, fetched documents, chunks, SQLite FTS retrieval, citations, and answer synthesis.
+- **RLM is not fully implemented** because there is no persistent REPL, no model-written code loop over the corpus, and no recursive worker model calls.
+- **The reasoning controller is RLM-inspired** because it routes, plans, selects tools, observes, verifies, and answers instead of blindly retrieving context for every message.
+- **The controller is deterministic/branching**, not true ReAct. Python decides the tool flow; the LLM does not drive a Thought/Action/Observation loop.
+
+For a detailed terminology breakdown, see [ARCHITECTURE_TAXONOMY.md](ARCHITECTURE_TAXONOMY.md).
 
 ---
 
@@ -114,6 +135,8 @@ PYTHONPATH=. python scripts/compare_agents.py --no-llm "hi"
 
 The old retrieval system is currently used only as the implementation behind the internal corpus search tool. The experiment is to validate whether the reasoning controller should replace the linear agent as the product brain.
 
+This is a bridge architecture, not full RLM. A true RLM experiment would add a persistent read-only execution environment, model-written corpus inspection code, recursive worker calls, and explicit stopping/guardrail primitives.
+
 ---
 
 ## Directory Structure
@@ -198,8 +221,8 @@ VentureMetrics/
 
 | Module | Role |
 |---|---|
-| `provider.py` | HTTP adapter for any OpenAI-compatible `/chat/completions` endpoint. Reads `LLM_PROVIDER`, `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL` from `.env`. Default: DeepSeek. |
-| `prompts.py` | System prompt (research assistant rules). `answer_prompt()` function formats evidence + chat history for the LLM. |
+| `provider.py` | HTTP adapter for any OpenAI-compatible `/chat/completions` endpoint. Reads `LLM_PROVIDER`, `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`, and `LLM_REASONING_MODEL` from `.env`. Default: DeepSeek chat + DeepSeek reasoner. |
+| `prompts.py` | Research, routing, contextualization, and answer prompts. Chat history is used for both routing and answer synthesis. |
 
 ### `ui/`
 
@@ -280,6 +303,7 @@ LLM_PROVIDER=deepseek
 LLM_BASE_URL=https://api.deepseek.com
 LLM_API_KEY=sk-...
 LLM_MODEL=deepseek-chat
+LLM_REASONING_MODEL=deepseek-reasoner
 
 # Web fallback + extraction
 WEB_SEARCH_PROVIDER=tavily

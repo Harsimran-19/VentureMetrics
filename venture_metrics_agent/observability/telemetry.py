@@ -241,6 +241,46 @@ def record_agent_response(
     return record
 
 
+def load_chat_history(
+    db_path: str | Path,
+    session_external_id: str | None,
+    *,
+    limit: int = 12,
+) -> list[dict[str, str]]:
+    if not session_external_id:
+        return []
+
+    conn = init_observability_db(db_path)
+    try:
+        row = conn.execute(
+            "SELECT id FROM chat_sessions WHERE external_id = ?",
+            (session_external_id,),
+        ).fetchone()
+        if row is None:
+            return []
+        session_id = int(row[0])
+        rows = conn.execute(
+            """
+            SELECT role, content
+            FROM chat_messages
+            WHERE session_id = ?
+            ORDER BY id DESC
+            LIMIT ?
+            """,
+            (session_id, limit),
+        ).fetchall()
+    finally:
+        conn.close()
+
+    history: list[dict[str, str]] = []
+    for role, content in reversed(rows):
+        role_text = str(role or "").strip()
+        content_text = str(content or "").strip()
+        if role_text in {"user", "assistant"} and content_text:
+            history.append({"role": role_text, "content": content_text})
+    return history
+
+
 def record_eval_report(
     db_path: str | Path,
     report: dict[str, Any],

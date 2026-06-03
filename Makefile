@@ -8,7 +8,7 @@ HOST ?= 127.0.0.1
 IMAGE ?= venture-metrics
 QUESTION ?= Which sources mention startup funding or grants?
 
-.PHONY: help setup profile ingest fetch index test eval query reasoning-query compare serve docker-build docker-run status telemetry-status
+.PHONY: help setup profile ingest fetch index test eval arch-eval query reasoning-query compare serve docker-build docker-run status telemetry-status
 
 help:
 	@echo "Venture Metrics commands"
@@ -32,7 +32,8 @@ help:
 	@echo ""
 	@echo "Quality:"
 	@echo "  make test               Run pytest"
-	@echo "  make eval               Run reasoning eval suite"
+	@echo "  make eval               Run quick reasoning smoke eval suite"
+	@echo "  make arch-eval          Run structured architecture evaluation report"
 	@echo ""
 	@echo "Docker:"
 	@echo "  make docker-build       Build Docker image"
@@ -66,6 +67,10 @@ test:
 
 eval:
 	$(PYTHON) scripts/run_reasoning_eval.py --db $(DB) --record
+
+arch-eval:
+	$(PYTHON) scripts/run_architecture_eval.py --db $(DB) --cases eval_cases/architecture_research_v2.json --quiet
+	$(PYTHON) scripts/build_eval_dashboard.py --report-json "$$(cat reports/evaluations/LATEST_RUN.txt)/summary.json" --output "$$(cat reports/evaluations/LATEST_RUN.txt)/dashboard.html"
 
 query:
 	$(PYTHON) scripts/query_agent.py --db $(DB) "$(QUESTION)"

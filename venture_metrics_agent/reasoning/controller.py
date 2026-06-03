@@ -2,13 +2,21 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from venture_metrics_agent.llm.prompts import SYSTEM_PROMPT, answer_prompt
+from venture_metrics_agent.llm.prompts import (
+    CONTEXTUALIZE_SYSTEM_PROMPT,
+    ROUTER_SYSTEM_PROMPT,
+    SYSTEM_PROMPT,
+    answer_prompt,
+    contextualize_prompt,
+    routing_prompt,
+)
 from venture_metrics_agent.llm.provider import LLMProvider
-from venture_metrics_agent.observability import record_agent_response
+from venture_metrics_agent.observability import load_chat_history, record_agent_response
 from venture_metrics_agent.retrieval.agent import unique_web_citations
 from venture_metrics_agent.retrieval.evidence_scorer import EvidenceAssessment
 from venture_metrics_agent.retrieval.retriever import (
@@ -49,22 +57,34 @@ def answer_question_reasoning(
     options = options or ReasoningOptions()
     llm = llm or LLMProvider()
 
-    route = route_message(question, use_web_fallback=options.use_web_fallback)
+    combined_history = _combined_chat_history(
+        db_path,
+        telemetry_session_id=telemetry_session_id,
+        supplied_history=chat_history or [],
+        current_question=question,
+    )
+    route, route_source = _route_with_reasoner(
+        question,
+        use_web_fallback=options.use_web_fallback,
+        llm=llm,
+        chat_history=combined_history,
+    )
     workspace = ResearchWorkspace(question=question, route=route.as_dict())
     workspace.add_step(
         phase="route",
         decision=route.intent,
         reason=route.reason,
-        observation=route.as_dict(),
+        observation={**route.as_dict(), "route_source": route_source},
     )
 
     if not route.needs_research:
-        response = _direct_response(question, route, workspace, llm=llm, chat_history=chat_history or [])
+        response = _direct_response(question, route, workspace, llm=llm, chat_history=combined_history)
         _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
         return response
 
+    research_question = _standalone_research_question(question, combined_history, llm, workspace)
     toolbox = toolbox or ReasoningToolbox(db_path)
-    plan = _build_plan(route, question)
+    plan = _build_plan(route, research_question)
     workspace.add_step(
         phase="plan",
         decision="create_research_plan",
@@ -76,7 +96,7 @@ def answer_question_reasoning(
     internal_verification: VerifiedEvidence | None = None
     if route.allow_internal_search:
         internal_observation, internal_verification = _run_internal_iterations(
-            question,
+            research_question,
             toolbox,
             workspace,
             top_k=options.top_k,
@@ -90,9 +110,9 @@ def answer_question_reasoning(
             decision="use_web_search",
             reason=_web_reason(route, internal_observation, internal_verification),
             tool="web_search",
-            observation={"query": question, "max_results": options.max_web_results},
+            observation={"query": research_question, "max_results": options.max_web_results},
         )
-        web_observation = toolbox.web_search(question, max_results=options.max_web_results)
+        web_observation = toolbox.web_search(research_question, max_results=options.max_web_results)
         workspace.add_step(
             phase="observe",
             decision="inspect_web_evidence",
@@ -101,7 +121,7 @@ def answer_question_reasoning(
             observation=web_observation.summary(),
         )
         if options.remember_web_results and web_observation.results:
-            memory_stats = remember_web_results(db_path, question=question, results=web_observation.results)
+            memory_stats = remember_web_results(db_path, question=research_question, results=web_observation.results)
             workspace.add_step(
                 phase="act",
                 decision="remember_web_evidence",
@@ -123,17 +143,247 @@ def answer_question_reasoning(
     web_error = web_observation.error if web_observation else None
     response = _synthesize_response(
         question,
+        research_question,
         results,
         web_results,
         assessment,
         route,
         workspace,
         llm,
-        chat_history or [],
+        combined_history,
         web_error,
     )
     _log_query(db_path, question, response, telemetry_session_id=telemetry_session_id)
     return response
+
+
+def _combined_chat_history(
+    db_path: str | Path,
+    *,
+    telemetry_session_id: str | None,
+    supplied_history: list[dict[str, str]],
+    current_question: str,
+) -> list[dict[str, str]]:
+    stored = load_chat_history(db_path, telemetry_session_id, limit=14)
+    merged: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for item in [*stored, *supplied_history]:
+        role = str(item.get("role") or "").strip()
+        content = " ".join(str(item.get("content") or "").split())
+        if role not in {"user", "assistant"} or not content:
+            continue
+        if role == "user" and content == " ".join(current_question.split()):
+            continue
+        key = (role, content)
+        if key in seen:
+            continue
+        merged.append({"role": role, "content": content[:1600]})
+        seen.add(key)
+    return merged[-14:]
+
+
+def _route_with_reasoner(
+    question: str,
+    *,
+    use_web_fallback: bool,
+    llm: LLMProvider,
+    chat_history: list[dict[str, str]],
+) -> tuple[RouteDecision, str]:
+    deterministic = route_message(question, use_web_fallback=use_web_fallback)
+    if _is_memory_follow_up(question, chat_history):
+        deterministic = RouteDecision(
+            intent="external_research",
+            needs_research=True,
+            allow_internal_search=True,
+            allow_web_search=use_web_fallback,
+            needs_clarification=False,
+            reason="The message is a follow-up to the current chat topic.",
+            constraints=["Resolve the topic from chat memory before retrieval."],
+        )
+    if deterministic.intent in {"chat_summary", "system_help"}:
+        return deterministic, "deterministic_guardrail"
+    if not llm.is_configured:
+        return deterministic, "deterministic"
+
+    try:
+        payload = llm.complete_json(
+            [
+                {"role": "system", "content": ROUTER_SYSTEM_PROMPT},
+                {
+                    "role": "user",
+                    "content": routing_prompt(
+                        question,
+                        use_web_fallback=use_web_fallback,
+                        chat_history=chat_history,
+                    ),
+                },
+            ],
+            reasoning=True,
+        )
+        reasoned = _route_from_payload(payload, use_web_fallback=use_web_fallback)
+    except RuntimeError:
+        return deterministic, "deterministic"
+
+    if deterministic.needs_research and not reasoned.needs_research:
+        return deterministic, "deterministic_guardrail"
+    if deterministic.intent in {"current_research", "external_research"} and reasoned.intent == "internal_research":
+        return deterministic, "deterministic_guardrail"
+    if reasoned.needs_research and not deterministic.needs_research:
+        return reasoned, "deepseek_reasoner"
+    if deterministic.needs_research and reasoned.needs_research:
+        return reasoned, "deepseek_reasoner"
+    return reasoned, "deepseek_reasoner"
+
+
+def _route_from_payload(payload: dict[str, Any], *, use_web_fallback: bool) -> RouteDecision:
+    intent = str(payload.get("intent") or "clarification_needed").strip()
+    valid_intents = {
+        "casual_chat",
+        "chat_summary",
+        "system_help",
+        "clarification_needed",
+        "internal_research",
+        "current_research",
+        "external_research",
+    }
+    if intent not in valid_intents:
+        intent = "clarification_needed"
+
+    needs_research = intent in {"internal_research", "current_research", "external_research"} or bool(
+        payload.get("needs_research")
+    )
+    allow_internal = needs_research and bool(payload.get("allow_internal_search", True))
+    allow_web = needs_research and use_web_fallback and bool(payload.get("allow_web_search", use_web_fallback))
+    needs_clarification = intent == "clarification_needed" or bool(payload.get("needs_clarification"))
+    constraints = payload.get("constraints")
+    if not isinstance(constraints, list):
+        constraints = []
+
+    return RouteDecision(
+        intent=intent,
+        needs_research=needs_research,
+        allow_internal_search=allow_internal,
+        allow_web_search=allow_web,
+        needs_clarification=needs_clarification,
+        reason=str(payload.get("reason") or "DeepSeek reasoner classified the message."),
+        constraints=[str(item) for item in constraints[:4]],
+    )
+
+
+def _standalone_research_question(
+    question: str,
+    chat_history: list[dict[str, str]],
+    llm: LLMProvider,
+    workspace: ResearchWorkspace,
+) -> str:
+    if not chat_history:
+        return question
+
+    fallback = _fallback_standalone_question(question, chat_history)
+    if _is_memory_follow_up(question, chat_history):
+        workspace.add_step(
+            phase="plan",
+            decision="contextualize_question",
+            reason="The user asked a short follow-up, so the controller resolved the topic from chat memory before searching.",
+            observation={"standalone_question": fallback, "context_source": "deterministic_follow_up"},
+        )
+        return fallback
+    if not llm.is_configured:
+        workspace.add_step(
+            phase="plan",
+            decision="contextualize_question",
+            reason="Recent chat memory was available, so the controller built a standalone search question.",
+            observation={"standalone_question": fallback, "context_source": "deterministic"},
+        )
+        return fallback
+
+    try:
+        payload = llm.complete_json(
+            [
+                {"role": "system", "content": CONTEXTUALIZE_SYSTEM_PROMPT},
+                {"role": "user", "content": contextualize_prompt(question, chat_history)},
+            ],
+            reasoning=True,
+        )
+        standalone = str(payload.get("standalone_question") or "").strip() or fallback
+    except RuntimeError:
+        standalone = fallback
+
+    workspace.add_step(
+        phase="plan",
+        decision="contextualize_question",
+        reason="Recent chat memory was available, so the controller built a standalone search question.",
+        observation={"standalone_question": standalone},
+    )
+    return standalone
+
+
+def _fallback_standalone_question(question: str, chat_history: list[dict[str, str]]) -> str:
+    lowered = question.lower()
+    topic = _recent_chat_topic(chat_history)
+    if _is_memory_follow_up(question, chat_history) and topic:
+        return f"{question} about {topic}"
+    if any(token in lowered for token in (" it", " this", " that", " them", " those", "same", "more", "compare")):
+        previous = _previous_user_question(chat_history)
+        if previous:
+            return f"{question} Context from previous user question: {previous}"
+    return question
+
+
+def _is_memory_follow_up(question: str, chat_history: list[dict[str, str]]) -> bool:
+    if not chat_history:
+        return False
+    lowered = " ".join(question.lower().split())
+    compact = lowered.strip(" ?!.")
+    follow_up_patterns = (
+        r"^(can|could|would) you (tell me|explain|give me) more$",
+        r"^(tell me|explain|give me) more$",
+        r"^more$",
+        r"^what else$",
+        r"^go deeper$",
+        r"^expand on (that|this|it)$",
+        r"^what about (this|that|it)\b",
+    )
+    return any(re.search(pattern, compact) for pattern in follow_up_patterns)
+
+
+def _recent_chat_topic(chat_history: list[dict[str, str]]) -> str | None:
+    for item in reversed(chat_history):
+        content = str(item.get("content") or "").strip()
+        if not content:
+            continue
+        topic = _topic_from_text(content)
+        if topic:
+            return topic
+    previous = _previous_user_question(chat_history)
+    return previous
+
+
+def _topic_from_text(text: str) -> str | None:
+    patterns = (
+        r"\b(T[-\s]?Hub)\b(?:[^.]{0,40}\bHyderabad\b)?",
+        r"\b(AIC T[-\s]?Hub)\b",
+        r"\b(Hong Kong startup grants?)\b",
+        r"\b(Shenzhen startup grants?)\b",
+        r"\b([A-Z][A-Za-z0-9&.\- ]{1,40}(?:Hub|Park|Programme|Program|Fund|Grant|Center|Centre|Incubator))\b",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text)
+        if match:
+            topic = " ".join(match.group(1).replace("\n", " ").split())
+            if topic.lower() == "t hub":
+                topic = "T-Hub in Hyderabad"
+            return topic
+    return None
+
+
+def _previous_user_question(chat_history: list[dict[str, str]]) -> str | None:
+    for item in reversed(chat_history):
+        if item.get("role") == "user":
+            previous = str(item.get("content") or "").strip()
+            if previous:
+                return previous
+    return None
 
 
 def _build_plan(route: RouteDecision, question: str) -> list[str]:
@@ -284,6 +534,7 @@ def _direct_response(
 
 def _synthesize_response(
     question: str,
+    evidence_question: str,
     results: list[RetrievalResult],
     web_results: list[WebResult],
     assessment: EvidenceAssessment | None,
@@ -293,11 +544,12 @@ def _synthesize_response(
     chat_history: list[dict[str, str]],
     web_error: str | None,
 ) -> dict[str, Any]:
-    verified = verify_evidence(question, results, assessment, web_results)
+    verified = verify_evidence(evidence_question, results, assessment, web_results)
     accepted_results = verified.accepted_internal
     accepted_web_results = verified.accepted_web
     source_mode = _source_mode(accepted_results, accepted_web_results)
-    citations = [*unique_citations(accepted_results), *unique_web_citations(accepted_web_results)]
+    answer_results, answer_web_results = _select_answer_evidence(accepted_results, accepted_web_results)
+    citations = [*unique_citations(answer_results), *unique_web_citations(answer_web_results)]
     confidence = _combined_confidence(route, assessment, accepted_web_results, verified)
     gaps = list(verified.missing_information)
     if web_error:
@@ -328,9 +580,9 @@ def _synthesize_response(
         }
     elif llm.is_configured:
         response = _answer_with_llm(
-            question,
-            accepted_results,
-            accepted_web_results,
+            evidence_question,
+            answer_results,
+            answer_web_results,
             confidence,
             gaps,
             source_mode,
@@ -338,9 +590,10 @@ def _synthesize_response(
             chat_history,
         )
         response["citations"] = citations
+        response["confidence"] = confidence
         response.setdefault("gaps", gaps)
     else:
-        response = _extractive_answer(accepted_results, accepted_web_results, confidence, source_mode, citations, gaps)
+        response = _extractive_answer(answer_results, answer_web_results, confidence, source_mode, citations, gaps)
 
     response["source_mode"] = source_mode if citations else "insufficient"
     response["used_web_fallback"] = bool(web_results or web_error)
@@ -350,6 +603,19 @@ def _synthesize_response(
     response["route"] = route.as_dict()
     response["reasoning_trace"] = workspace.trace()
     return response
+
+
+def _select_answer_evidence(
+    internal_results: list[RetrievalResult],
+    web_results: list[WebResult],
+) -> tuple[list[RetrievalResult], list[WebResult]]:
+    if internal_results and web_results:
+        return internal_results[:1], web_results[:3]
+    if internal_results:
+        return internal_results[:4], []
+    if web_results:
+        return [], web_results[:4]
+    return [], []
 
 
 def _answer_with_llm(
@@ -364,9 +630,9 @@ def _answer_with_llm(
 ) -> dict[str, Any]:
     context_parts = []
     if results:
-        context_parts.append("Indexed Venture Metrics evidence:\n" + results_to_context(results))
+        context_parts.append("Sources:\n" + results_to_context(results, start_index=1))
     if web_results:
-        context_parts.append("Controlled web evidence:\n" + web_results_to_context(web_results))
+        context_parts.append("Sources:\n" + web_results_to_context(web_results, start_index=len(results) + 1))
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {
@@ -408,9 +674,9 @@ def _extractive_answer(
         points.append(f"- {snippet or clean_display_text(result.title)} [{index}]")
 
     if points:
-        answer = "The controlled research loop found these supported points:\n" + "\n".join(points)
+        answer = "\n".join(points)
     else:
-        answer = "The controller found potentially relevant sources, but not enough clean text to make a stronger claim."
+        answer = "I do not have enough clean source text to answer that well yet."
 
     return {
         "answer": answer,

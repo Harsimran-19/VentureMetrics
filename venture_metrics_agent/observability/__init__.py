@@ -4,6 +4,7 @@ from venture_metrics_agent.observability.telemetry import (
     EvalTelemetryRecord,
     TelemetryRecord,
     init_observability_db,
+    load_chat_history,
     record_agent_response,
     record_eval_report,
 )
@@ -19,6 +20,7 @@ __all__ = [
     "LangfuseConfig",
     "init_observability_db",
     "langfuse_status",
+    "load_chat_history",
     "load_langfuse_config",
     "record_agent_response",
     "record_eval_report",

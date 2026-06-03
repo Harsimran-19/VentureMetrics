@@ -1,8 +1,30 @@
 # Venture Metrics Research Architecture Report
 
 > Working document for mentor/team review.  
-> Current status: working local prototype, source-ingestion pipeline complete, RLM-style reasoning controller under active testing.  
-> Last updated: 2026-05-26.
+> Current status: working local prototype, source-ingestion pipeline complete, RLM-inspired deterministic reasoning controller under active testing.  
+> Last updated: 2026-06-03.
+
+## 0. Architecture Classification
+
+The current system has **not** moved to a full Recursive Language Model implementation yet.
+
+The accurate current label is:
+
+```text
+Internal-first RAG with an RLM-inspired deterministic research controller.
+```
+
+This distinction matters:
+
+| Architecture term | Meaning | Venture Metrics status |
+|---|---|---|
+| RAG | Retrieve source chunks, pass evidence to an LLM, generate cited answer. | Implemented as the evidence infrastructure. |
+| RLM | Recursive Language Model: model uses an external environment/REPL, writes code to inspect data, spawns worker model calls, recursively aggregates results, then calls a final answer. | Not fully implemented yet. |
+| RLM-inspired controller | Controller borrows RLM ideas: route, plan, inspect tools, verify, iterate, answer. | Implemented in `venture_metrics_agent/reasoning/`. |
+| ReAct | LLM-driven Thought/Action/Observation tool loop. | Not implemented as true ReAct; Python controls tool decisions. |
+| Deterministic branching workflow | Rule-based branches for casual chat, internal research, web fallback, and insufficient evidence. | Implemented. |
+
+For the project-wide terminology reference, see `ARCHITECTURE_TAXONOMY.md`.
 
 ## 1. Executive Summary
 
@@ -20,7 +42,9 @@ The current direction is to move from a RAG-first chatbot to an RLM-inspired rea
 user message -> route intent -> plan -> choose tools -> observe -> verify -> answer
 ```
 
-In this design, internal retrieval and web search are tools selected by a controller. They are not automatic first steps. This matches the practical lesson from the RLM research direction: the model/controller should interact with data as an environment and decide what to inspect, rather than blindly stuffing or retrieving context for every message.
+In this design, internal retrieval and web search are tools selected by a controller. They are not automatic first steps. This borrows one practical lesson from RLMs: the system should interact with data as an environment and decide what to inspect, rather than blindly stuffing or retrieving context for every message.
+
+However, this is not full RLM. The current implementation does not yet include a persistent REPL, model-written corpus-inspection code, recursive worker LLM calls, or a literal `FINAL(answer)` stopping primitive.
 
 ## 2. Process Timeline
 
@@ -31,7 +55,7 @@ In this design, internal retrieval and web search are tools selected by a contro
 | Phase 2: Evidence library | Fetch URL content, store markdown documents, chunk content, and index it. | Build reusable evidence memory before improving chat behavior. |
 | Phase 3: Linear RAG | Retrieve chunks, score evidence, use web fallback, synthesize cited answer. | RAG proved grounding, but not thinking or action selection. |
 | Phase 4: Failure analysis | Casual prompts and weak prompts exposed over-searching and fixed responses. | Add a routing layer before retrieval. |
-| Phase 5: RLM-style controller | Implement route -> plan -> act -> observe -> verify -> answer. | Make retrieval and web search tools, not automatic behavior. |
+| Phase 5: RLM-inspired controller | Implement route -> plan -> act -> observe -> verify -> answer. | Make retrieval and web search tools, not automatic behavior. |
 | Phase 6: Product cleanup | Remove agent selectors, technical badges, toggles, and debug panels from the UI. | Present the system as an assistant, not an architecture demo. |
 | Phase 7: Next research | Compare current controller with deeper RLM mechanisms. | Test whether recursive/programmatic exploration improves answerability. |
 
@@ -44,7 +68,7 @@ In this design, internal retrieval and web search are tools selected by a contro
 | Retrieval | SQLite FTS first, vector/reranker later. | Good enough for prototype and easier to inspect. |
 | LLM provider | OpenAI-compatible adapter with DeepSeek default. | Keeps Qwen, Hunyuan, Kimi, GLM, ERNIE, or other compatible providers possible later. |
 | Search provider | Tavily as development adapter only. | Useful now, but not a core dependency for mainland-compatible deployment. |
-| Agent brain | Move from linear RAG to RLM-style reasoning controller. | The assistant needs intent routing, action selection, verification, and non-search conversation. |
+| Agent brain | Move from linear RAG to an RLM-inspired reasoning controller. | The assistant needs intent routing, action selection, verification, and non-search conversation. |
 | UI philosophy | Hide architecture internals from users. | The demo should show product behavior, not implementation switches. |
 
 ## 3. Research Motivation
@@ -61,7 +85,7 @@ The system needs to:
 | Use web only when justified | Web search should be a controlled action, not a default behavior. |
 | Preserve source lineage | Every answer should trace back to source URLs, rows, chunks, or web results. |
 | Support mainland China constraints | LLM, search, and extraction providers must be replaceable. |
-| Support experimentation | We need to compare RAG, RLM-style control, and future deeper research agents. |
+| Support experimentation | We need to compare RAG, RLM-inspired control, and future true RLM research agents. |
 
 ## 4. Starting Point: Source-Map RAG Prototype
 
@@ -170,9 +194,9 @@ The RLM article does not mean "delete all retrieval infrastructure immediately."
 | Should web search be automatic? | No. It should be triggered only by current/external/weak-evidence conditions. |
 | Should the next experiment be closer to RLM? | Yes. The controller should plan, inspect, verify, and iterate. |
 
-## 7. RAG vs RLM-style Architecture
+## 7. RAG vs RLM-Inspired Architecture
 
-| Dimension | Linear RAG | Current RLM-style Controller |
+| Dimension | Linear RAG | Current RLM-inspired Controller |
 |---|---|---|
 | Entry behavior | Assumes user asks a research question | Classifies intent first |
 | Casual chat | Poor or fixed | Direct conversational response |
@@ -184,7 +208,7 @@ The RLM article does not mean "delete all retrieval infrastructure immediately."
 | Debuggability | Query logs and chunks | Query logs plus structured reasoning trace |
 | Research fit | Good baseline | Better architecture for testing thinking behavior |
 
-## 8. Current RLM-style Architecture
+## 8. Current RLM-Inspired Architecture
 
 The current implementation is an RLM-inspired controller, not yet a full academic RLM implementation. A full RLM would use a persistent REPL environment, recursive worker sub-calls, and programmatic data exploration over large external state. Our current version implements the first production-useful layer: a reasoning controller that decides whether to answer directly, search internally, use web, or refuse.
 
@@ -368,7 +392,7 @@ Current local test result:
 
 Pure RAG is good when the user always asks evidence questions. Our product is a chat assistant, not a search endpoint. It must decide whether the next action is conversation, clarification, internal research, web verification, or refusal.
 
-| Problem with pure RAG | Why RLM-style control is better |
+| Problem with pure RAG | Why RLM-inspired control is better |
 |---|---|
 | Retrieval happens too early | Controller routes first, searches later. |
 | Every message becomes a search problem | Casual chat is handled directly. |
@@ -459,7 +483,7 @@ Recommended mentor/team demo:
 
 ## 20. Next Research Steps
 
-### Step 1: Strengthen RLM-style Controller
+### Step 1: Strengthen RLM-Inspired Controller
 
 - Add more route categories: compare, summarize, list, source-audit, gap-analysis.
 - Add route confidence and fallback to clarification when uncertain.
@@ -516,11 +540,11 @@ Minimum viable RLM experiment:
 
 The project began as a RAG prototype because RAG was the fastest way to prove source ingestion, evidence indexing, and cited answers. That phase succeeded.
 
-The project is now moving toward an RLM-style architecture because the product needs more than retrieval. It needs action selection, reasoning, verification, and the ability to decide not to search. The core insight is:
+The project is now moving toward an RLM-inspired architecture because the product needs more than retrieval. It needs action selection, reasoning, verification, and the ability to decide not to search. The core insight is:
 
 ```text
 RAG is useful evidence infrastructure.
-RLM-style control is the candidate product brain.
+RLM-inspired control is the candidate product brain.
 ```
 
 The current system should therefore be evaluated as a reasoning-first assistant with retrieval and web search as tools. The next research question is whether deeper RLM mechanisms, especially programmatic corpus exploration and recursive worker calls, improve accuracy and answerability enough to justify their complexity.

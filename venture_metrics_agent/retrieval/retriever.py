@@ -198,10 +198,10 @@ def _important_terms(question: str) -> list[str]:
     return terms
 
 
-def results_to_context(results: list[RetrievalResult], *, max_chars: int = 12000) -> str:
+def results_to_context(results: list[RetrievalResult], *, max_chars: int = 12000, start_index: int = 1) -> str:
     blocks: list[str] = []
     remaining = max_chars
-    for index, result in enumerate(results, start=1):
+    for index, result in enumerate(results, start=start_index):
         text = clean_display_text(result.text)
         if len(text) > 1600:
             text = text[:1600].rsplit(" ", 1)[0].strip() + "..."

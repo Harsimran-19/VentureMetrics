@@ -78,12 +78,12 @@ def tavily_search(query: str, *, max_results: int = 5, api_key: str | None = Non
     return results
 
 
-def web_results_to_context(results: list[WebResult], *, max_chars: int = 5000) -> str:
+def web_results_to_context(results: list[WebResult], *, max_chars: int = 5000, start_index: int = 1) -> str:
     blocks: list[str] = []
     remaining = max_chars
-    for index, result in enumerate(results, start=1):
+    for index, result in enumerate(results, start=start_index):
         content = result.content[:900].strip()
-        block = f"[W{index}] {result.title}\nURL: {result.url}\nEvidence: {content}"
+        block = f"[{index}] {result.title}\nURL: {result.url}\nEvidence: {content}"
         if len(block) > remaining:
             break
         blocks.append(block)

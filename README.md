@@ -14,6 +14,78 @@ Lightweight local prototype for a Venture Metrics research assistant. The first 
 - Runs a local internal-evidence agent with citations.
 - Stores local agent telemetry in SQLite for sessions, messages, runs, reasoning steps, retrieval events, citations, feedback, and eval records.
 
+## Architecture Classification
+
+Current architecture:
+
+```text
+Internal-first RAG with an RLM-inspired deterministic research controller.
+```
+
+Important boundary: this is **not** a full Recursive Language Model implementation yet. RAG is implemented as the evidence infrastructure; the reasoning controller borrows RLM ideas such as routing, planning, tool use, observation, verification, and bounded iteration. A true RLM experiment would require a persistent REPL, model-written corpus inspection code, recursive worker model calls, and stricter execution guardrails.
+
+See `ARCHITECTURE_TAXONOMY.md` for the full terminology breakdown.
+
+## Evaluation Reports
+
+Evaluation reports are stored as immutable timestamped runs:
+
+- `reports/evaluations/runs/<timestamp>/summary.md`
+- `reports/evaluations/runs/<timestamp>/summary.json`
+- `reports/evaluations/runs/<timestamp>/architecture_scorecard.csv`
+- `reports/evaluations/runs/<timestamp>/retrieval_metrics.csv`
+- `reports/evaluations/runs/<timestamp>/rag_judge_scores.csv`
+- `reports/evaluations/runs/<timestamp>/failures.json`
+- `reports/evaluations/runs/<timestamp>/human_review_queue.csv`
+- `reports/evaluations/runs/<timestamp>/dashboard.html`
+
+The newest run path is written to:
+
+- `reports/evaluations/LATEST_RUN.txt`
+
+The latest stored run compared 4 architecture adapters across the 20-question Venture Metrics benchmark. It is the current evidence base for deciding what to fix next.
+
+List available architecture adapters:
+
+```bash
+PYTHONPATH=. .venv/bin/python scripts/query_architecture.py --list
+```
+
+Run one architecture on one question:
+
+```bash
+PYTHONPATH=. .venv/bin/python scripts/query_architecture.py \
+  --architecture coverage_rag \
+  --no-llm \
+  "Compare the startup support options mentioned for Hong Kong and Shenzhen."
+```
+
+Run benchmark mode across the fixed 20-question eval set and write a report bundle:
+
+```bash
+PYTHONPATH=. .venv/bin/python scripts/run_architecture_eval.py \
+  --cases eval_cases/architecture_research_v2.json \
+  --quiet
+```
+
+Run the structured submission-style evaluation pipeline:
+
+```bash
+make arch-eval
+```
+
+This uses `eval_cases/architecture_research_v2.json` and writes a report bundle with architecture scorecards, retrieval metrics, six RAG-dimension scores, failure details, and a human-review queue.
+
+Open the visual evaluation board:
+
+```bash
+open "$(cat reports/evaluations/LATEST_RUN.txt)/dashboard.html"
+```
+
+The local website no longer exposes architecture selection. Normal chat now calls the memory-backed reasoning agent directly. Architecture comparison remains available only through CLI/evaluation scripts.
+
+See `EVALUATION_PIPELINE.md` for the evaluation strategy, benchmark questions, metrics, and reporting workflow.
+
 ## Setup
 
 ```bash
@@ -209,6 +281,7 @@ DB_PATH=/data/venture_metrics.db
 LLM_API_KEY=...
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL=deepseek-chat
+LLM_REASONING_MODEL=deepseek-reasoner
 TAVILY_API_KEY=...
 ```
 
@@ -251,6 +324,7 @@ Zeabur is a PaaS similar to Railway that is highly optimized for Asia-Pacific ro
    LLM_API_KEY=your_deepseek_api_key
    LLM_BASE_URL=https://api.deepseek.com
    LLM_MODEL=deepseek-chat
+   LLM_REASONING_MODEL=deepseek-reasoner
    TAVILY_API_KEY=your_tavily_api_key
    ```
 5. Attach a persistent volume to store the SQLite database:

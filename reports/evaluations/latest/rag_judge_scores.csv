@@ -1,0 +1,385 @@
+case_id,category,architecture,dimension,score,passed,label,critique
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,context_relevance,0.8235,True,pass,Matched 14 of 17 question terms in retrieved context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,faithfulness,0.8571,True,pass,6 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,answer_relevance,0.5471,False,fail,Answer matched 6 of 17 key question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,context_support,1.0,True,pass,Context contained 2 of 2 required claim(s).
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,context_relevance,0.8235,True,pass,Matched 14 of 17 question terms in retrieved context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,answer_relevance,0.5059,False,fail,Answer matched 5 of 17 key question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,context_support,1.0,True,pass,Context contained 2 of 2 required claim(s).
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,coverage_rag,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,context_relevance,0.7647,True,pass,Matched 13 of 17 question terms in retrieved context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,answer_relevance,0.5059,False,fail,Answer matched 5 of 17 key question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,context_support,1.0,True,pass,Context contained 2 of 2 required claim(s).
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,plan_execute,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,context_relevance,0.8235,True,pass,Matched 14 of 17 question terms in retrieved context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,answer_relevance,0.5059,False,fail,Answer matched 5 of 17 key question terms.
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,context_support,1.0,True,pass,Context contained 2 of 2 required claim(s).
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_hku,hong_kong_university_commercialization,react_loop,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,answer_relevance,0.5545,True,pass,Answer matched 4 of 11 key question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,deterministic_controller,self_containment,0.625,True,pass,Answer includes 5 of 8 important question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,answer_relevance,0.5545,True,pass,Answer matched 4 of 11 key question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,coverage_rag,self_containment,0.625,True,pass,Answer includes 5 of 8 important question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,answer_relevance,0.5545,True,pass,Answer matched 4 of 11 key question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,plan_execute,self_containment,0.625,True,pass,Answer includes 5 of 8 important question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,answer_relevance,0.5545,True,pass,Answer matched 4 of 11 key question terms.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_commercialization_cuhk,hong_kong_university_commercialization,react_loop,self_containment,0.625,True,pass,Answer includes 5 of 8 important question terms.
+hk_university_support_comparison,comparison,deterministic_controller,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+hk_university_support_comparison,comparison,deterministic_controller,faithfulness,0.8571,True,pass,6 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_support_comparison,comparison,deterministic_controller,answer_relevance,0.3692,False,fail,Answer matched 5 of 13 key question terms.
+hk_university_support_comparison,comparison,deterministic_controller,context_support,1.0,True,pass,Context contained 3 of 3 required claim(s).
+hk_university_support_comparison,comparison,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_support_comparison,comparison,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_support_comparison,comparison,coverage_rag,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+hk_university_support_comparison,comparison,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_support_comparison,comparison,coverage_rag,answer_relevance,0.3692,False,fail,Answer matched 5 of 13 key question terms.
+hk_university_support_comparison,comparison,coverage_rag,context_support,1.0,True,pass,Context contained 3 of 3 required claim(s).
+hk_university_support_comparison,comparison,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_support_comparison,comparison,coverage_rag,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_support_comparison,comparison,plan_execute,context_relevance,0.4615,False,fail,Matched 6 of 13 question terms in retrieved context.
+hk_university_support_comparison,comparison,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_support_comparison,comparison,plan_execute,answer_relevance,0.3692,False,fail,Answer matched 5 of 13 key question terms.
+hk_university_support_comparison,comparison,plan_execute,context_support,0.3333,False,fail,Context contained 1 of 3 required claim(s).
+hk_university_support_comparison,comparison,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_support_comparison,comparison,plan_execute,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_university_support_comparison,comparison,react_loop,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+hk_university_support_comparison,comparison,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_university_support_comparison,comparison,react_loop,answer_relevance,0.3692,False,fail,Answer matched 5 of 13 key question terms.
+hk_university_support_comparison,comparison,react_loop,context_support,1.0,True,pass,Context contained 3 of 3 required claim(s).
+hk_university_support_comparison,comparison,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hk_university_support_comparison,comparison,react_loop,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,context_relevance,0.6667,True,pass,Matched 8 of 12 question terms in retrieved context.
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,faithfulness,0.8,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,answer_relevance,0.5333,False,fail,Answer matched 4 of 12 key question terms.
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hk_startup_support_official_sources,official_source_audit,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_startup_support_official_sources,official_source_audit,coverage_rag,context_relevance,0.6667,True,pass,Matched 8 of 12 question terms in retrieved context.
+hk_startup_support_official_sources,official_source_audit,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_startup_support_official_sources,official_source_audit,coverage_rag,answer_relevance,0.5333,False,fail,Answer matched 4 of 12 key question terms.
+hk_startup_support_official_sources,official_source_audit,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_startup_support_official_sources,official_source_audit,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hk_startup_support_official_sources,official_source_audit,coverage_rag,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_startup_support_official_sources,official_source_audit,plan_execute,context_relevance,0.5833,True,pass,Matched 7 of 12 question terms in retrieved context.
+hk_startup_support_official_sources,official_source_audit,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_startup_support_official_sources,official_source_audit,plan_execute,answer_relevance,0.5333,False,fail,Answer matched 4 of 12 key question terms.
+hk_startup_support_official_sources,official_source_audit,plan_execute,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_startup_support_official_sources,official_source_audit,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hk_startup_support_official_sources,official_source_audit,plan_execute,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hk_startup_support_official_sources,official_source_audit,react_loop,context_relevance,0.6667,True,pass,Matched 8 of 12 question terms in retrieved context.
+hk_startup_support_official_sources,official_source_audit,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hk_startup_support_official_sources,official_source_audit,react_loop,answer_relevance,0.5333,False,fail,Answer matched 4 of 12 key question terms.
+hk_startup_support_official_sources,official_source_audit,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hk_startup_support_official_sources,official_source_audit,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hk_startup_support_official_sources,official_source_audit,react_loop,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,context_relevance,0.5714,True,pass,Matched 4 of 7 question terms in retrieved context.
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,answer_relevance,0.4,False,fail,Answer matched 1 of 7 key question terms.
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hku_cuhk_startup_examples,startup_examples,deterministic_controller,self_containment,0.4286,False,fail,Answer includes 3 of 7 important question terms.
+hku_cuhk_startup_examples,startup_examples,coverage_rag,context_relevance,0.5714,True,pass,Matched 4 of 7 question terms in retrieved context.
+hku_cuhk_startup_examples,startup_examples,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hku_cuhk_startup_examples,startup_examples,coverage_rag,answer_relevance,0.4,False,fail,Answer matched 1 of 7 key question terms.
+hku_cuhk_startup_examples,startup_examples,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hku_cuhk_startup_examples,startup_examples,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hku_cuhk_startup_examples,startup_examples,coverage_rag,self_containment,0.4286,False,fail,Answer includes 3 of 7 important question terms.
+hku_cuhk_startup_examples,startup_examples,plan_execute,context_relevance,0.4286,False,fail,Matched 3 of 7 question terms in retrieved context.
+hku_cuhk_startup_examples,startup_examples,plan_execute,faithfulness,1.0,True,pass,3 answer sentence(s) were strongly supported; 0 were weakly supported.
+hku_cuhk_startup_examples,startup_examples,plan_execute,answer_relevance,0.4,False,fail,Answer matched 1 of 7 key question terms.
+hku_cuhk_startup_examples,startup_examples,plan_execute,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hku_cuhk_startup_examples,startup_examples,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hku_cuhk_startup_examples,startup_examples,plan_execute,self_containment,0.4286,False,fail,Answer includes 3 of 7 important question terms.
+hku_cuhk_startup_examples,startup_examples,react_loop,context_relevance,0.5714,True,pass,Matched 4 of 7 question terms in retrieved context.
+hku_cuhk_startup_examples,startup_examples,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hku_cuhk_startup_examples,startup_examples,react_loop,answer_relevance,0.4,False,fail,Answer matched 1 of 7 key question terms.
+hku_cuhk_startup_examples,startup_examples,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+hku_cuhk_startup_examples,startup_examples,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hku_cuhk_startup_examples,startup_examples,react_loop,self_containment,0.4286,False,fail,Answer includes 3 of 7 important question terms.
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,context_relevance,0.8,True,pass,Matched 8 of 10 question terms in retrieved context.
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,answer_relevance,0.28,False,fail,Answer matched 4 of 10 key question terms.
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_commercialization_policy,shenzhen_policy,deterministic_controller,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,context_relevance,0.8,True,pass,Matched 8 of 10 question terms in retrieved context.
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,answer_relevance,0.28,False,fail,Answer matched 4 of 10 key question terms.
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_commercialization_policy,shenzhen_policy,coverage_rag,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,context_relevance,0.7,True,pass,Matched 7 of 10 question terms in retrieved context.
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,answer_relevance,0.28,False,fail,Answer matched 4 of 10 key question terms.
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_commercialization_policy,shenzhen_policy,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,context_relevance,0.8,True,pass,Matched 8 of 10 question terms in retrieved context.
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,answer_relevance,0.28,False,fail,Answer matched 4 of 10 key question terms.
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_commercialization_policy,shenzhen_policy,react_loop,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,faithfulness,0.8571,True,pass,6 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_talent_and_training_support,shenzhen_policy,deterministic_controller,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,answer_relevance,0.0538,False,fail,Answer matched 1 of 13 key question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_talent_and_training_support,shenzhen_policy,coverage_rag,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,context_relevance,0.3846,False,fail,Matched 5 of 13 question terms in retrieved context.
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_talent_and_training_support,shenzhen_policy,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,answer_relevance,0.0538,False,fail,Answer matched 1 of 13 key question terms.
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_talent_and_training_support,shenzhen_policy,react_loop,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,context_relevance,0.625,True,pass,Matched 10 of 16 question terms in retrieved context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,faithfulness,0.8571,True,pass,6 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,answer_relevance,0.2625,False,fail,Answer matched 6 of 16 key question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,context_relevance,0.625,True,pass,Matched 10 of 16 question terms in retrieved context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,answer_relevance,0.2188,False,fail,Answer matched 5 of 16 key question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,coverage_rag,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,context_relevance,0.4375,False,fail,Matched 7 of 16 question terms in retrieved context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,answer_relevance,0.2188,False,fail,Answer matched 5 of 16 key question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,plan_execute,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,context_relevance,0.625,True,pass,Matched 10 of 16 question terms in retrieved context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,answer_relevance,0.2188,False,fail,Answer matched 5 of 16 key question terms.
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+shenzhen_vc_and_sme_policy,shenzhen_policy,react_loop,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,faithfulness,0.8571,True,pass,6 answer sentence(s) were strongly supported; 0 were weakly supported.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,deterministic_controller,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,coverage_rag,self_containment,0.125,False,fail,Answer includes 1 of 8 important question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,context_relevance,0.7273,True,pass,Matched 8 of 11 question terms in retrieved context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,plan_execute,self_containment,0.125,False,fail,Answer includes 1 of 8 important question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,context_relevance,0.6364,True,pass,Matched 7 of 11 question terms in retrieved context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+hong_kong_vs_shenzhen_support_model,cross_border_comparison,react_loop,self_containment,0.125,False,fail,Answer includes 1 of 8 important question terms.
+cross_border_data_gaps,gap_analysis,deterministic_controller,context_relevance,0.6,True,pass,Matched 9 of 15 question terms in retrieved context.
+cross_border_data_gaps,gap_analysis,deterministic_controller,faithfulness,0.8889,True,pass,8 answer sentence(s) were strongly supported; 0 were weakly supported.
+cross_border_data_gaps,gap_analysis,deterministic_controller,answer_relevance,0.3833,False,fail,Answer matched 5 of 15 key question terms.
+cross_border_data_gaps,gap_analysis,deterministic_controller,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+cross_border_data_gaps,gap_analysis,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+cross_border_data_gaps,gap_analysis,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+cross_border_data_gaps,gap_analysis,coverage_rag,context_relevance,0.6,True,pass,Matched 9 of 15 question terms in retrieved context.
+cross_border_data_gaps,gap_analysis,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+cross_border_data_gaps,gap_analysis,coverage_rag,answer_relevance,0.14,False,fail,Answer matched 3 of 15 key question terms.
+cross_border_data_gaps,gap_analysis,coverage_rag,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+cross_border_data_gaps,gap_analysis,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+cross_border_data_gaps,gap_analysis,coverage_rag,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+cross_border_data_gaps,gap_analysis,plan_execute,context_relevance,0.6,True,pass,Matched 9 of 15 question terms in retrieved context.
+cross_border_data_gaps,gap_analysis,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+cross_border_data_gaps,gap_analysis,plan_execute,answer_relevance,0.14,False,fail,Answer matched 3 of 15 key question terms.
+cross_border_data_gaps,gap_analysis,plan_execute,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+cross_border_data_gaps,gap_analysis,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+cross_border_data_gaps,gap_analysis,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+cross_border_data_gaps,gap_analysis,react_loop,context_relevance,0.6,True,pass,Matched 9 of 15 question terms in retrieved context.
+cross_border_data_gaps,gap_analysis,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+cross_border_data_gaps,gap_analysis,react_loop,answer_relevance,0.14,False,fail,Answer matched 3 of 15 key question terms.
+cross_border_data_gaps,gap_analysis,react_loop,context_support,0.5,False,fail,Context contained 1 of 2 required claim(s).
+cross_border_data_gaps,gap_analysis,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+cross_border_data_gaps,gap_analysis,react_loop,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+source_reliability_audit,source_quality,deterministic_controller,context_relevance,0.4615,False,fail,Matched 6 of 13 question terms in retrieved context.
+source_reliability_audit,source_quality,deterministic_controller,faithfulness,0.875,True,pass,7 answer sentence(s) were strongly supported; 0 were weakly supported.
+source_reliability_audit,source_quality,deterministic_controller,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+source_reliability_audit,source_quality,deterministic_controller,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+source_reliability_audit,source_quality,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+source_reliability_audit,source_quality,deterministic_controller,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+source_reliability_audit,source_quality,coverage_rag,context_relevance,0.4615,False,fail,Matched 6 of 13 question terms in retrieved context.
+source_reliability_audit,source_quality,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+source_reliability_audit,source_quality,coverage_rag,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+source_reliability_audit,source_quality,coverage_rag,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+source_reliability_audit,source_quality,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+source_reliability_audit,source_quality,coverage_rag,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+source_reliability_audit,source_quality,plan_execute,context_relevance,0.4615,False,fail,Matched 6 of 13 question terms in retrieved context.
+source_reliability_audit,source_quality,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+source_reliability_audit,source_quality,plan_execute,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+source_reliability_audit,source_quality,plan_execute,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+source_reliability_audit,source_quality,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+source_reliability_audit,source_quality,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+source_reliability_audit,source_quality,react_loop,context_relevance,0.4615,False,fail,Matched 6 of 13 question terms in retrieved context.
+source_reliability_audit,source_quality,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+source_reliability_audit,source_quality,react_loop,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+source_reliability_audit,source_quality,react_loop,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+source_reliability_audit,source_quality,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+source_reliability_audit,source_quality,react_loop,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,context_relevance,0.5833,True,pass,Matched 7 of 12 question terms in retrieved context.
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,answer_relevance,0.475,False,fail,Answer matched 3 of 12 key question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+latest_hong_kong_grants_requires_web,current_web_needed,deterministic_controller,self_containment,0.625,True,pass,Answer includes 5 of 8 important question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,context_relevance,0.5833,True,pass,Matched 7 of 12 question terms in retrieved context.
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,answer_relevance,0.0583,False,fail,Answer matched 1 of 12 key question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+latest_hong_kong_grants_requires_web,current_web_needed,coverage_rag,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,context_relevance,0.75,True,pass,Matched 9 of 12 question terms in retrieved context.
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,answer_relevance,0.1167,False,fail,Answer matched 2 of 12 key question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+latest_hong_kong_grants_requires_web,current_web_needed,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,context_relevance,0.5833,True,pass,Matched 7 of 12 question terms in retrieved context.
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,answer_relevance,0.0583,False,fail,Answer matched 1 of 12 key question terms.
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+latest_hong_kong_grants_requires_web,current_web_needed,react_loop,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,context_relevance,0.6154,True,pass,Matched 8 of 13 question terms in retrieved context.
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,faithfulness,0.9,True,pass,9 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,answer_relevance,0.2154,False,fail,Answer matched 4 of 13 key question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+latest_shenzhen_policy_requires_web,current_web_needed,deterministic_controller,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,context_relevance,0.6154,True,pass,Matched 8 of 13 question terms in retrieved context.
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+latest_shenzhen_policy_requires_web,current_web_needed,coverage_rag,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,context_relevance,0.5385,False,fail,Matched 7 of 13 question terms in retrieved context.
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+latest_shenzhen_policy_requires_web,current_web_needed,plan_execute,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,context_relevance,0.6154,True,pass,Matched 8 of 13 question terms in retrieved context.
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,answer_relevance,0.1077,False,fail,Answer matched 2 of 13 key question terms.
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,context_support,1.0,True,pass,Context contained 1 of 1 required claim(s).
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+latest_shenzhen_policy_requires_web,current_web_needed,react_loop,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+outside_scope_france_startup_visa,external_current,deterministic_controller,context_relevance,0.5455,False,fail,Matched 6 of 11 question terms in retrieved context.
+outside_scope_france_startup_visa,external_current,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+outside_scope_france_startup_visa,external_current,deterministic_controller,answer_relevance,0.1909,False,fail,Answer matched 3 of 11 key question terms.
+outside_scope_france_startup_visa,external_current,deterministic_controller,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+outside_scope_france_startup_visa,external_current,deterministic_controller,answerability,1.0,True,pass,Answerability matched available context.
+outside_scope_france_startup_visa,external_current,deterministic_controller,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+outside_scope_france_startup_visa,external_current,coverage_rag,context_relevance,0.5455,False,fail,Matched 6 of 11 question terms in retrieved context.
+outside_scope_france_startup_visa,external_current,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+outside_scope_france_startup_visa,external_current,coverage_rag,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+outside_scope_france_startup_visa,external_current,coverage_rag,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+outside_scope_france_startup_visa,external_current,coverage_rag,answerability,1.0,True,pass,Answerability matched available context.
+outside_scope_france_startup_visa,external_current,coverage_rag,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+outside_scope_france_startup_visa,external_current,plan_execute,context_relevance,0.5455,False,fail,Matched 6 of 11 question terms in retrieved context.
+outside_scope_france_startup_visa,external_current,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+outside_scope_france_startup_visa,external_current,plan_execute,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+outside_scope_france_startup_visa,external_current,plan_execute,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+outside_scope_france_startup_visa,external_current,plan_execute,answerability,1.0,True,pass,Answerability matched available context.
+outside_scope_france_startup_visa,external_current,plan_execute,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+outside_scope_france_startup_visa,external_current,react_loop,context_relevance,0.5455,False,fail,Matched 6 of 11 question terms in retrieved context.
+outside_scope_france_startup_visa,external_current,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+outside_scope_france_startup_visa,external_current,react_loop,answer_relevance,0.0636,False,fail,Answer matched 1 of 11 key question terms.
+outside_scope_france_startup_visa,external_current,react_loop,context_support,0.0,False,fail,Context contained 0 of 1 required claim(s).
+outside_scope_france_startup_visa,external_current,react_loop,answerability,1.0,True,pass,Answerability matched available context.
+outside_scope_france_startup_visa,external_current,react_loop,self_containment,0.375,False,fail,Answer includes 3 of 8 important question terms.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,context_relevance,0.7143,True,pass,Matched 10 of 14 question terms in retrieved context.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_exact_last_week_grant_count,unanswerable,deterministic_controller,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,context_relevance,0.7143,True,pass,Matched 10 of 14 question terms in retrieved context.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_exact_last_week_grant_count,unanswerable,coverage_rag,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,context_relevance,0.6429,True,pass,Matched 9 of 14 question terms in retrieved context.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_exact_last_week_grant_count,unanswerable,plan_execute,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,context_relevance,0.7143,True,pass,Matched 10 of 14 question terms in retrieved context.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_exact_last_week_grant_count,unanswerable,react_loop,self_containment,0.5,True,pass,Answer includes 4 of 8 important question terms.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,context_relevance,0.75,True,pass,Matched 9 of 12 question terms in retrieved context.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,faithfulness,0.8333,True,pass,5 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_best_architecture_claim,unanswerable,deterministic_controller,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,context_relevance,0.75,True,pass,Matched 9 of 12 question terms in retrieved context.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_best_architecture_claim,unanswerable,coverage_rag,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,context_relevance,0.5833,True,pass,Matched 7 of 12 question terms in retrieved context.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_best_architecture_claim,unanswerable,plan_execute,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.
+unanswerable_best_architecture_claim,unanswerable,react_loop,context_relevance,0.75,True,pass,Matched 9 of 12 question terms in retrieved context.
+unanswerable_best_architecture_claim,unanswerable,react_loop,faithfulness,1.0,True,pass,4 answer sentence(s) were strongly supported; 0 were weakly supported.
+unanswerable_best_architecture_claim,unanswerable,react_loop,answer_relevance,0.0,False,fail,Unanswerable case should refuse instead of answering.
+unanswerable_best_architecture_claim,unanswerable,react_loop,context_support,0.0,False,fail,Unanswerable case should not require supporting context.
+unanswerable_best_architecture_claim,unanswerable,react_loop,answerability,0.0,False,fail,The case is labeled unanswerable; the system should refuse or mark insufficiency.
+unanswerable_best_architecture_claim,unanswerable,react_loop,self_containment,0.25,False,fail,Answer includes 2 of 8 important question terms.

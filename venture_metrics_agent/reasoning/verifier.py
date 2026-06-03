@@ -17,6 +17,13 @@ STOPWORDS = {
     "where",
     "when",
     "who",
+    "could",
+    "would",
+    "you",
+    "me",
+    "more",
+    "tell",
+    "please",
     "does",
     "do",
     "are",
@@ -128,11 +135,22 @@ def verify_evidence(
 
 def _internal_relevance(question: str, query_terms: list[str], result: RetrievalResult) -> tuple[int, str]:
     haystack = _haystack(result)
+    required_phrases = _required_entity_phrases(question)
+    missing_phrases = [phrase for phrase in required_phrases if not _contains_phrase(haystack, phrase)]
+    if missing_phrases:
+        return (
+            -2,
+            "The source text does not mention the required entity phrase(s): "
+            + ", ".join(missing_phrases[:4])
+            + ".",
+        )
     if not query_terms:
         return (1, "No specific query terms were available for relevance checking.")
 
     hits = [term for term in query_terms if term in haystack]
     score = len(hits)
+    if required_phrases:
+        score += 2
 
     question_regions = [term for term in query_terms if term in REGION_TERMS]
     if question_regions and not _matches_requested_region(question_regions, result, haystack):
@@ -162,6 +180,8 @@ def _confidence(
         if result.source_type in {"government", "university", "science_park", "company", "investor", "report", "database"}
     }
 
+    if accepted_web and not accepted_internal:
+        return "Medium" if len(accepted_web) >= 2 else "Low"
     if accepted_web and base in {"Insufficient evidence", "Low"}:
         return "Medium"
     if base == "High" and len(unique_sources) >= 2 and credible:
@@ -213,6 +233,15 @@ def query_terms_for_question(question: str) -> list[str]:
     return terms[:12]
 
 
+def _required_entity_phrases(question: str) -> list[str]:
+    phrases: list[str] = []
+    for match in re.findall(r"\b[\w\u4e00-\u9fff]+(?:[-'][\w\u4e00-\u9fff]+)+\b", question.lower()):
+        normalized = _normalize_phrase(match)
+        if normalized and normalized not in phrases:
+            phrases.append(normalized)
+    return phrases[:4]
+
+
 def _normalize_term(term: str) -> str:
     if term.endswith("ies") and len(term) > 4:
         return term[:-3] + "y"
@@ -222,9 +251,19 @@ def _normalize_term(term: str) -> str:
 
 
 def _haystack(result: RetrievalResult) -> str:
-    return clean_display_text(
+    return _normalize_phrase(
+        clean_display_text(
         f"{result.title or ''} {result.source_domain or ''} {result.source_type or ''} {result.text}"
-    ).lower()
+        ).lower()
+    )
+
+
+def _normalize_phrase(text: str) -> str:
+    return re.sub(r"[-'_]+", " ", text).strip()
+
+
+def _contains_phrase(haystack: str, phrase: str) -> bool:
+    return bool(re.search(rf"(?<!\w){re.escape(phrase)}(?!\w)", haystack))
 
 
 def _asks_for_region(question: str) -> bool:

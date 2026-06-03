@@ -71,6 +71,8 @@ HELP_PATTERNS = (
     r"\bwhat can you do\b",
     r"\bhow do you work\b",
     r"\bhelp\b",
+    r"\bintroduce yourself\b",
+    r"\bgive me your intro(duction)?\b",
     r"\bwhat data (do you|is)\b",
     r"\bwho are you\b",
     r"\bwhat are you\b",
@@ -84,6 +86,28 @@ SOCIAL_PATTERNS = (
     r"\bgood morning\b",
     r"\bgood afternoon\b",
     r"\bgood evening\b",
+)
+SUMMARY_PATTERNS = (
+    r"\bsummarize (this|our|the) chat\b",
+    r"\bsummarise (this|our|the) chat\b",
+    r"\bsummarize (this|our|the) conversation\b",
+    r"\bsummarise (this|our|the) conversation\b",
+    r"\brecap (this|our|the) chat\b",
+    r"\brecap (this|our|the) conversation\b",
+)
+FACTUAL_START_PATTERNS = (
+    r"\bwhat('?s| is| are)\b",
+    r"\bwhat about\b",
+    r"\bwhere (is|are|can|do|does)\b",
+    r"\bwho (is|are|runs|founded)\b",
+    r"\bwhich\b",
+    r"\bwhen\b",
+    r"\bwhy\b",
+    r"\bhow (does|do|can|to|is|are)\b",
+    r"\btell me about\b",
+    r"\bexplain\b",
+    r"\bdefine\b",
+    r"\bcompare\b",
 )
 
 
@@ -123,7 +147,7 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
             reason="The message is empty.",
         )
 
-    if _is_casual_chat(lowered):
+    if _is_casual_chat(lowered) and not _looks_like_factual_question(lowered):
         return RouteDecision(
             intent="casual_chat",
             needs_research=False,
@@ -131,6 +155,16 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
             allow_web_search=False,
             needs_clarification=False,
             reason="The message is conversational and does not ask for research.",
+        )
+
+    if any(re.search(pattern, lowered) for pattern in SUMMARY_PATTERNS):
+        return RouteDecision(
+            intent="chat_summary",
+            needs_research=False,
+            allow_internal_search=False,
+            allow_web_search=False,
+            needs_clarification=False,
+            reason="The user asked to summarize the current chat session, not external evidence.",
         )
 
     if any(re.search(pattern, lowered) for pattern in HELP_PATTERNS):
@@ -156,6 +190,7 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
     asks_current = _contains_any(lowered, CURRENT_TERMS)
     asks_web = _contains_any(lowered, WEB_TERMS)
     looks_research = _contains_any(lowered, RESEARCH_TERMS)
+    looks_factual = _looks_like_factual_question(lowered)
 
     if asks_current or asks_web:
         return RouteDecision(
@@ -168,14 +203,18 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
             constraints=["Prefer internal evidence first when relevant.", "Use web only as a controlled tool."],
         )
 
-    if looks_research:
+    if looks_research or looks_factual:
         return RouteDecision(
-            intent="internal_research",
+            intent="internal_research" if looks_research else "external_research",
             needs_research=True,
             allow_internal_search=True,
             allow_web_search=use_web_fallback,
             needs_clarification=False,
-            reason="The message asks a research-style question that may be answerable from indexed sources.",
+            reason=(
+                "The message asks a research-style question that may be answerable from indexed sources."
+                if looks_research
+                else "The message asks a factual question and should not be handled as casual chat."
+            ),
             constraints=["Start with local indexed evidence.", "Escalate only if evidence is weak or missing."],
         )
 
@@ -220,6 +259,20 @@ def _is_too_vague(lowered: str) -> bool:
     compact = re.sub(r"[^\w\u4e00-\u9fff]+", " ", lowered).strip()
     vague = {"tell me more", "explain", "research this", "find this", "more", "why", "how"}
     return compact in vague
+
+
+def _looks_like_factual_question(lowered: str) -> bool:
+    if any(re.search(pattern, lowered) for pattern in SOCIAL_PATTERNS):
+        return False
+    if any(re.search(pattern, lowered) for pattern in SUMMARY_PATTERNS):
+        return False
+    if any(re.search(pattern, lowered) for pattern in HELP_PATTERNS):
+        return False
+    if any(re.search(pattern, lowered) for pattern in FACTUAL_START_PATTERNS):
+        return True
+    if "?" in lowered and len(lowered.split()) >= 4:
+        return True
+    return False
 
 
 def _contains_any(lowered: str, terms: tuple[str, ...]) -> bool:

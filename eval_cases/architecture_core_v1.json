@@ -1,0 +1,111 @@
+[
+  {
+    "id": "casual_hi",
+    "question": "hi",
+    "category": "casual",
+    "expected_intent": "casual_chat",
+    "expect_web": false,
+    "expected_source_mode": "no_tools",
+    "notes": "Greeting should not retrieve, cite, or search."
+  },
+  {
+    "id": "system_capability",
+    "question": "What can you do for Venture Metrics?",
+    "category": "capability",
+    "expected_intent": "system_help",
+    "expect_web": false,
+    "expected_source_mode": "no_tools",
+    "required_terms": ["Venture Metrics"],
+    "notes": "Capability question should explain product behavior, not run source search."
+  },
+  {
+    "id": "vague_research",
+    "question": "research this",
+    "category": "clarification",
+    "expected_intent": "clarification_needed",
+    "expect_web": false,
+    "expected_source_mode": "insufficient",
+    "unanswerable": true,
+    "notes": "Underspecified research requests should ask for a narrower topic."
+  },
+  {
+    "id": "internal_hk_support",
+    "question": "Which sources are related to Hong Kong entrepreneurship support?",
+    "category": "internal_answerable",
+    "expected_intent": "internal_research",
+    "expect_web": false,
+    "min_citations": 1,
+    "required_terms": ["Hong Kong"],
+    "required_claims": ["Hong Kong"],
+    "notes": "Should be answerable from indexed internal evidence."
+  },
+  {
+    "id": "official_hk_startup_support",
+    "question": "Where can a founder get official startup support in Hong Kong, including government programmes, science parks, and incubators?",
+    "category": "official_sources",
+    "min_citations": 1,
+    "required_terms": ["Hong Kong"],
+    "required_claims": ["Hong Kong"],
+    "notes": "Should prefer official government/science park/incubator evidence."
+  },
+  {
+    "id": "hk_university_spinouts",
+    "question": "Which Hong Kong universities provide spinout, technology transfer, or incubator support for founders?",
+    "category": "university_commercialization",
+    "min_citations": 1,
+    "required_terms": ["Hong Kong", "university"],
+    "required_claims": ["university"],
+    "notes": "Tests university commercialization and technology-transfer coverage."
+  },
+  {
+    "id": "gba_ecosystem_connectors",
+    "question": "Which associations, alliances, or ecosystem organisations could help a startup build connections across Hong Kong and Shenzhen?",
+    "category": "ecosystem",
+    "min_citations": 1,
+    "required_terms": ["Hong Kong", "Shenzhen"],
+    "required_claims": ["Hong Kong", "Shenzhen"],
+    "notes": "Known weak area: cross-border ecosystem coverage."
+  },
+  {
+    "id": "latest_hk_grants",
+    "question": "What are the latest Hong Kong startup grants?",
+    "category": "current_web_needed",
+    "expected_intent": "current_research",
+    "expect_web": true,
+    "min_citations": 1,
+    "required_terms": ["Hong Kong", "grant"],
+    "required_claims": ["Hong Kong", "grant"],
+    "notes": "Latest/current question should use web fallback or clearly explain web unavailability."
+  },
+  {
+    "id": "hk_shenzhen_compare",
+    "question": "Compare the startup support options mentioned for Hong Kong and Shenzhen, including policy, funding, and ecosystem support.",
+    "category": "comparison",
+    "min_citations": 1,
+    "required_terms": ["Hong Kong", "Shenzhen"],
+    "required_claims": ["Hong Kong", "Shenzhen"],
+    "notes": "Tests multi-part comparison and coverage verification."
+  },
+  {
+    "id": "outside_corpus_global_latest",
+    "question": "What are the latest startup visa changes in France?",
+    "category": "external_current",
+    "expected_intent": "current_research",
+    "expect_web": true,
+    "min_citations": 1,
+    "required_terms": ["France"],
+    "required_claims": ["France"],
+    "notes": "Outside-corpus current question should trigger web fallback."
+  },
+  {
+    "id": "impossible_internal_stat",
+    "question": "From internal Venture Metrics sources only, what exact number of Hong Kong startups received grants last week?",
+    "category": "unanswerable",
+    "expected_intent": "internal_research",
+    "expect_web": false,
+    "expected_source_mode": "insufficient",
+    "unanswerable": true,
+    "forbidden_claims": ["last week"],
+    "notes": "Negative case: system should not invent exact recent statistics from internal sources."
+  }
+]

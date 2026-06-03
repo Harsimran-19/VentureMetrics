@@ -21,6 +21,8 @@ class LLMConfig:
     base_url: str = "https://api.deepseek.com"
     api_key: str | None = None
     model: str = "deepseek-chat"
+    reasoning_model: str = "deepseek-reasoner"
+    reasoning_effort: str | None = None
     timeout: float = 60.0
 
 
@@ -32,19 +34,28 @@ class LLMProvider:
     def is_configured(self) -> bool:
         return bool(self.config.api_key)
 
-    def complete_json(self, messages: list[dict[str, str]], *, temperature: float = 0.1) -> dict[str, Any]:
+    def complete_json(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        temperature: float = 0.1,
+        reasoning: bool = False,
+    ) -> dict[str, Any]:
         if not self.config.api_key:
             raise RuntimeError("LLM_API_KEY is missing. Add it to .env or export it in the shell.")
 
         endpoint = self.config.base_url.rstrip("/") + "/chat/completions"
-        payload = json.dumps(
-            {
-                "model": self.config.model,
-                "messages": messages,
-                "temperature": temperature,
-                "response_format": {"type": "json_object"},
-            }
-        ).encode("utf-8")
+        request_payload: dict[str, Any] = {
+            "model": self.config.reasoning_model if reasoning else self.config.model,
+            "messages": _clean_messages_for_request(messages),
+            "response_format": {"type": "json_object"},
+        }
+        if reasoning:
+            if self.config.reasoning_effort:
+                request_payload["reasoning_effort"] = self.config.reasoning_effort
+        else:
+            request_payload["temperature"] = temperature
+        payload = json.dumps(request_payload).encode("utf-8")
         request = Request(
             endpoint,
             data=payload,
@@ -74,7 +85,35 @@ def load_llm_config(env_path: str | Path = ".env") -> LLMConfig:
     base_url = os.environ.get("LLM_BASE_URL") or env_values.get("LLM_BASE_URL") or "https://api.deepseek.com"
     api_key = os.environ.get("LLM_API_KEY") or env_values.get("LLM_API_KEY")
     model = os.environ.get("LLM_MODEL") or env_values.get("LLM_MODEL") or "deepseek-chat"
-    return LLMConfig(provider=provider, base_url=base_url, api_key=api_key, model=model)
+    reasoning_model = (
+        os.environ.get("LLM_REASONING_MODEL")
+        or env_values.get("LLM_REASONING_MODEL")
+        or os.environ.get("DEEPSEEK_REASONING_MODEL")
+        or env_values.get("DEEPSEEK_REASONING_MODEL")
+        or "deepseek-reasoner"
+    )
+    reasoning_effort = os.environ.get("LLM_REASONING_EFFORT") or env_values.get("LLM_REASONING_EFFORT")
+    return LLMConfig(
+        provider=provider,
+        base_url=base_url,
+        api_key=api_key,
+        model=model,
+        reasoning_model=reasoning_model,
+        reasoning_effort=reasoning_effort,
+    )
+
+
+def _clean_messages_for_request(messages: list[dict[str, str]]) -> list[dict[str, str]]:
+    cleaned: list[dict[str, str]] = []
+    for message in messages:
+        cleaned.append(
+            {
+                key: value
+                for key, value in message.items()
+                if key in {"role", "content", "name"} and value is not None
+            }
+        )
+    return cleaned
 
 
 def _parse_json_content(content: str) -> dict[str, Any]:

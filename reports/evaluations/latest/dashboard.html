@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Venture Metrics Evaluation Review Board</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f7f7f4;
+      color: #202420;
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.45;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 22px 48px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+    h2 {
+      margin: 30px 0 10px;
+      font-size: 20px;
+      border-bottom: 2px solid #d6d8d1;
+      padding-bottom: 6px;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 16px;
+    }
+    p { margin: 8px 0; }
+    .muted { color: #626b63; }
+    .box {
+      background: #fff;
+      border: 1px solid #d6d8d1;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .warning {
+      border-left: 5px solid #b76b1f;
+    }
+    .ok {
+      border-left: 5px solid #287347;
+    }
+    .bad {
+      border-left: 5px solid #b54a3d;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric {
+      background: #fff;
+      border: 1px solid #d6d8d1;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin: 10px 0 22px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #d6d8d1;
+      padding: 8px 9px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #eceee8;
+      font-weight: 700;
+    }
+    .pass { color: #287347; font-weight: 700; }
+    .fail { color: #b54a3d; font-weight: 700; }
+    .review { color: #b76b1f; font-weight: 700; }
+    code {
+      background: #eceee8;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    ul { margin-top: 8px; }
+    li { margin: 5px 0; }
+    @media (max-width: 780px) {
+      .grid { grid-template-columns: 1fr; }
+      main { padding: 20px 12px; }
+      table { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Venture Metrics Evaluation Review Board</h1>
+  <p class="muted">Generated at 2026-06-02T21:45:37.781941+00:00. This page is meant to be read directly, not decoded from CSV files.</p>
+
+  <div class="box warning">
+    <h3>Plain-English Verdict</h3>
+    <p><strong>Do not select a final production architecture yet.</strong></p>
+    <p>The pipeline structure now follows the evaluation roadmap closely, but the current results still require human labeling and evaluator validation before they can support final submission claims.</p>
+    <p>Current best score: <strong>deterministic_controller</strong> with average score 0.543.</p>
+  </div>
+
+  <div class="grid">
+    <div class="metric"><strong>16</strong><span class="muted">Questions<br>research cases</span></div>
+    <div class="metric"><strong>64</strong><span class="muted">Architecture Rows<br>architecture x question</span></div>
+    <div class="metric"><strong>64</strong><span class="muted">Human Review Rows<br>must be checked</span></div>
+    <div class="metric"><strong>3</strong><span class="muted">Unlabeled Cases<br>need source/chunk labels</span></div>
+  </div>
+
+  <h2>1. Does This Match The Article?</h2>
+  <div class="box ok">
+    <p><strong>Architecture alignment: about 80%.</strong> The shape is right: dataset, harness, code evaluators, retrieval metrics, RAG Q/C/A scoring, report artifacts, and a human review queue.</p>
+    <p><strong>Validation maturity: about 55%.</strong> The missing parts are exactly where I need you: human labels, judge calibration, and evaluator agreement checks.</p>
+  </div>
+  <table><thead><tr><th>Article Requirement</th><th>Status</th><th>Project Implementation</th></tr></thead><tbody><tr><td>Development optimization</td><td>Implemented</td><td>Run architecture experiments on a fixed dataset.</td></tr>
+<tr><td>Regression before merge</td><td>Implemented</td><td>Same command can be used after architecture or prompt changes.</td></tr>
+<tr><td>Production monitoring</td><td>Partial</td><td>Telemetry exists, but live sampling policies are not active yet.</td></tr>
+<tr><td>Dataset growth by error analysis</td><td>Implemented</td><td>Human review queue feeds back into versioned eval cases.</td></tr>
+<tr><td>Code-based evaluators</td><td>Implemented</td><td>Smoke checks, retrieval metrics, deterministic RAG proxies.</td></tr>
+<tr><td>RAG Q/C/A metrics</td><td>Implemented as proxies</td><td>Six dimensions are reported for every architecture answer.</td></tr>
+<tr><td>Evaluate the evaluator</td><td>Missing / needs you</td><td>Requires human labels and judge calibration.</td></tr>
+<tr><td>Calibrated LLM judges</td><td>Missing</td><td>Next after human-labeled examples exist.</td></tr></tbody></table>
+
+  <h2>2. What Needs Your Review Now?</h2>
+  <div class="box warning">
+    <p><strong>Human labeling is needed now.</strong> That is the next article-required step. Without your labels, the system can produce structured reports but cannot honestly claim the evaluators are trusted.</p>
+    <p>Review these files in this order:</p>
+    <ul>
+      <li><code>reports/evaluations/latest/human_review_queue.csv</code> - rows that need judgment.</li>
+      <li><code>reports/evaluations/latest/failures.json</code> - full answer/context details.</li>
+      <li><code>eval_cases/architecture_research_v2.json</code> - where labels should be added.</li>
+    </ul>
+  </div>
+  <table><thead><tr><th>Case</th><th>Category</th><th>Question</th><th>Human Task</th></tr></thead><tbody><tr><td>latest_hong_kong_grants_requires_web</td><td>current_web_needed</td><td>What are the latest active Hong Kong startup grants or funding programmes a founder should verify today?</td><td>Add relevant_source_ids or relevant_chunk_ids</td></tr>
+<tr><td>latest_shenzhen_policy_requires_web</td><td>current_web_needed</td><td>Are there any newer Shenzhen startup or commercialization policy updates after the indexed 2025-2026 sources?</td><td>Add relevant_source_ids or relevant_chunk_ids</td></tr>
+<tr><td>outside_scope_france_startup_visa</td><td>external_current</td><td>What are the latest startup visa changes in France, and can internal Venture Metrics sources answer this without web fallback?</td><td>Add relevant_source_ids or relevant_chunk_ids</td></tr></tbody></table>
+
+  <h2>3. Architecture Scores</h2>
+  <table><thead><tr><th>Architecture</th><th>Pass Rate</th><th>Average Score</th><th>Web Used</th><th>Avg Latency</th></tr></thead><tbody><tr><td>deterministic_controller</td><td>0%</td><td>0.543</td><td>6</td><td>19.4 ms</td></tr>
+<tr><td>coverage_rag</td><td>0%</td><td>0.542</td><td>6</td><td>16.3 ms</td></tr>
+<tr><td>plan_execute</td><td>0%</td><td>0.518</td><td>2</td><td>21.6 ms</td></tr>
+<tr><td>react_loop</td><td>0%</td><td>0.542</td><td>6</td><td>16.6 ms</td></tr></tbody></table>
+
+  <h2>4. Category Scores</h2>
+  <table><thead><tr><th>Category</th><th>Pass Rate</th><th>Average Score</th><th>Rows</th></tr></thead><tbody><tr><td>hong_kong_university_commercialization</td><td>0%</td><td>0.76</td><td>8</td></tr>
+<tr><td>comparison</td><td>0%</td><td>0.607</td><td>4</td></tr>
+<tr><td>official_source_audit</td><td>0%</td><td>0.657</td><td>4</td></tr>
+<tr><td>startup_examples</td><td>0%</td><td>0.753</td><td>4</td></tr>
+<tr><td>shenzhen_policy</td><td>0%</td><td>0.44</td><td>12</td></tr>
+<tr><td>cross_border_comparison</td><td>0%</td><td>0.448</td><td>4</td></tr>
+<tr><td>gap_analysis</td><td>0%</td><td>0.4</td><td>4</td></tr>
+<tr><td>source_quality</td><td>0%</td><td>0.381</td><td>4</td></tr>
+<tr><td>current_web_needed</td><td>0%</td><td>0.644</td><td>8</td></tr>
+<tr><td>external_current</td><td>0%</td><td>0.509</td><td>4</td></tr>
+<tr><td>unanswerable</td><td>0%</td><td>0.348</td><td>8</td></tr></tbody></table>
+
+  <h2>5. RAG Failure Reasons</h2>
+  <table><thead><tr><th>RAG Dimension</th><th>Failure Count</th></tr></thead><tbody><tr><td>answer_relevance</td><td>60</td></tr>
+<tr><td>self_containment</td><td>38</td></tr>
+<tr><td>context_support</td><td>34</td></tr>
+<tr><td>context_relevance</td><td>19</td></tr>
+<tr><td>answerability</td><td>8</td></tr></tbody></table>
+
+  <h2>6. Most Important Failed Rows</h2>
+  <table><thead><tr><th>Case</th><th>Architecture</th><th>Score</th><th>Question</th><th>Main Failure Reasons</th></tr></thead><tbody><tr><td>unanswerable_best_architecture_claim</td><td>deterministic_controller</td><td>0.229</td><td>Which architecture is definitely best for production deployment based only on the current unlabeled evaluation report?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: source_mode</td></tr>
+<tr><td>unanswerable_best_architecture_claim</td><td>coverage_rag</td><td>0.25</td><td>Which architecture is definitely best for production deployment based only on the current unlabeled evaluation report?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: source_mode</td></tr>
+<tr><td>unanswerable_best_architecture_claim</td><td>react_loop</td><td>0.25</td><td>Which architecture is definitely best for production deployment based only on the current unlabeled evaluation report?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: source_mode</td></tr>
+<tr><td>unanswerable_best_architecture_claim</td><td>plan_execute</td><td>0.312</td><td>Which architecture is definitely best for production deployment based only on the current unlabeled evaluation report?</td><td>Smoke check failed: intent; Smoke check failed: source_mode; RAG dimension failed: answer_relevance - Unanswerable case should refuse instead of answering.</td></tr>
+<tr><td>shenzhen_talent_and_training_support</td><td>plan_execute</td><td>0.351</td><td>What Shenzhen policy evidence exists for entrepreneurship support through overseas returnee subsidies, doctoral innovation carriers, and entrepreneurship training?</td><td>Smoke check failed: web_used; Smoke check failed: answer_contains:Shenzhen; Smoke check failed: answer_contains:subsidy</td></tr>
+<tr><td>source_reliability_audit</td><td>deterministic_controller</td><td>0.372</td><td>Which internal sources should be treated as high-reliability evidence, and which source types still need manual verification?</td><td>Smoke check failed: answer_contains:high-reliability; Smoke check failed: answer_contains:manual verification; Retrieval missed all labeled relevant chunks/sources.</td></tr>
+<tr><td>source_reliability_audit</td><td>coverage_rag</td><td>0.384</td><td>Which internal sources should be treated as high-reliability evidence, and which source types still need manual verification?</td><td>Smoke check failed: answer_contains:high-reliability; Smoke check failed: answer_contains:manual verification; Retrieval missed all labeled relevant chunks/sources.</td></tr>
+<tr><td>source_reliability_audit</td><td>plan_execute</td><td>0.384</td><td>Which internal sources should be treated as high-reliability evidence, and which source types still need manual verification?</td><td>Smoke check failed: answer_contains:high-reliability; Smoke check failed: answer_contains:manual verification; Retrieval missed all labeled relevant chunks/sources.</td></tr>
+<tr><td>source_reliability_audit</td><td>react_loop</td><td>0.384</td><td>Which internal sources should be treated as high-reliability evidence, and which source types still need manual verification?</td><td>Smoke check failed: answer_contains:high-reliability; Smoke check failed: answer_contains:manual verification; Retrieval missed all labeled relevant chunks/sources.</td></tr>
+<tr><td>cross_border_data_gaps</td><td>coverage_rag</td><td>0.387</td><td>What data gaps remain if we want to compare Hong Kong and Shenzhen startup support rigorously from the current internal source library?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: answer_contains:Hong Kong</td></tr>
+<tr><td>cross_border_data_gaps</td><td>plan_execute</td><td>0.387</td><td>What data gaps remain if we want to compare Hong Kong and Shenzhen startup support rigorously from the current internal source library?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: answer_contains:Hong Kong</td></tr>
+<tr><td>cross_border_data_gaps</td><td>react_loop</td><td>0.387</td><td>What data gaps remain if we want to compare Hong Kong and Shenzhen startup support rigorously from the current internal source library?</td><td>Smoke check failed: intent; Smoke check failed: web_used; Smoke check failed: answer_contains:Hong Kong</td></tr>
+<tr><td>shenzhen_commercialization_policy</td><td>deterministic_controller</td><td>0.415</td><td>What do Shenzhen government sources say about technology commercialization, science and technology plans, and R&amp;D funding management?</td><td>Smoke check failed: answer_contains:Shenzhen; Smoke check failed: answer_contains:commercialization; Smoke check failed: answer_contains:funding</td></tr>
+<tr><td>shenzhen_commercialization_policy</td><td>plan_execute</td><td>0.421</td><td>What do Shenzhen government sources say about technology commercialization, science and technology plans, and R&amp;D funding management?</td><td>Smoke check failed: answer_contains:Shenzhen; Smoke check failed: answer_contains:commercialization; Smoke check failed: answer_contains:funding</td></tr>
+<tr><td>unanswerable_exact_last_week_grant_count</td><td>deterministic_controller</td><td>0.423</td><td>Using internal sources only, what exact number of Hong Kong startups received government grants last week?</td><td>Smoke check failed: source_mode; RAG dimension failed: answer_relevance - Unanswerable case should refuse instead of answering.; RAG dimension failed: context_support - Unanswerable case should not require supporting context.</td></tr>
+<tr><td>shenzhen_commercialization_policy</td><td>coverage_rag</td><td>0.431</td><td>What do Shenzhen government sources say about technology commercialization, science and technology plans, and R&amp;D funding management?</td><td>Smoke check failed: answer_contains:Shenzhen; Smoke check failed: answer_contains:commercialization; Smoke check failed: answer_contains:funding</td></tr>
+<tr><td>shenzhen_commercialization_policy</td><td>react_loop</td><td>0.431</td><td>What do Shenzhen government sources say about technology commercialization, science and technology plans, and R&amp;D funding management?</td><td>Smoke check failed: answer_contains:Shenzhen; Smoke check failed: answer_contains:commercialization; Smoke check failed: answer_contains:funding</td></tr>
+<tr><td>unanswerable_exact_last_week_grant_count</td><td>plan_execute</td><td>0.435</td><td>Using internal sources only, what exact number of Hong Kong startups received government grants last week?</td><td>Smoke check failed: source_mode; RAG dimension failed: answer_relevance - Unanswerable case should refuse instead of answering.; RAG dimension failed: context_support - Unanswerable case should not require supporting context.</td></tr></tbody></table>
+
+  <h2>7. How To Run This Again</h2>
+  <div class="box">
+    <p>Run the full evaluation and regenerate this page:</p>
+    <p><code>make arch-eval</code></p>
+    <p>Open this page:</p>
+    <p><code>open reports/evaluations/latest/dashboard.html</code></p>
+  </div>
+
+  <h2>8. Submission Use</h2>
+  <div class="box">
+    <p>Use this HTML page as the readable evaluation board. Use <code>summary.md</code> for the written narrative. Use the CSV and JSON files only as evidence attachments.</p>
+    <p>Do not claim “best architecture selected” until the human labels are added and the evaluator validation step is complete.</p>
+  </div>
+</main>
+</body>
+</html>

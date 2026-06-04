@@ -223,6 +223,30 @@ def test_reasoning_refines_internal_query_before_answering(tmp_path: Path) -> No
     assert any(step["decision"] == "refine_internal_query" for step in response["reasoning_trace"])
 
 
+def test_reasoning_does_not_require_generic_hyphenated_descriptors(tmp_path: Path) -> None:
+    toolbox = FakeToolbox(
+        _internal_observation(
+            confidence="High",
+            sufficient=True,
+            text="Government funding schemes and grant programmes support startups through awards and competitions.",
+            title="Government Funding Scheme & Support",
+            url="https://www.startmeup.hk/startup-resources/government-funding-scheme-and-support",
+        )
+    )
+
+    response = answer_question_reasoning(
+        tmp_path / "test.db",
+        "Which grants, funds, or competition-based programmes appear most relevant for early-stage startups?",
+        options=ReasoningOptions(use_web_fallback=True, max_internal_iterations=1, remember_web_results=False),
+        llm=FakeLLM(),
+        toolbox=toolbox,
+    )
+
+    assert toolbox.web_calls == 0
+    assert response["source_mode"] == "internal_only"
+    assert response["retrieved_evidence"]
+
+
 def test_reasoning_loads_session_memory_for_follow_up_search(tmp_path: Path) -> None:
     db_path = tmp_path / "test.db"
     session_id = "memory-test-session"

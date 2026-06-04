@@ -170,11 +170,21 @@ def _important_terms(question: str) -> list[str]:
         "which",
         "where",
         "when",
+        "search",
+        "web",
+        "too",
+        "answer",
         "about",
         "sources",
         "source",
+        "evidence",
         "mention",
         "mentions",
+        "appear",
+        "appears",
+        "most",
+        "relevant",
+        "indexed",
         "related",
         "have",
         "does",
@@ -191,11 +201,20 @@ def _important_terms(question: str) -> list[str]:
     }
     terms: list[str] = []
     for term in raw_terms:
+        term = _normalize_term(term)
         if term in stopwords:
             continue
         if term not in terms:
             terms.append(term)
     return terms
+
+
+def _normalize_term(term: str) -> str:
+    if term.endswith("ies") and len(term) > 4:
+        return term[:-3] + "y"
+    if term.endswith("s") and len(term) > 4:
+        return term[:-1]
+    return term
 
 
 def results_to_context(results: list[RetrievalResult], *, max_chars: int = 12000, start_index: int = 1) -> str:

@@ -43,10 +43,20 @@ STOPWORDS = {
     "show",
     "find",
     "list",
+    "search",
+    "web",
+    "too",
+    "answer",
     "mention",
     "mentions",
+    "appear",
+    "appears",
+    "most",
+    "relevant",
+    "indexed",
     "source",
     "sources",
+    "evidence",
     "related",
     "information",
     "data",
@@ -235,11 +245,25 @@ def query_terms_for_question(question: str) -> list[str]:
 
 def _required_entity_phrases(question: str) -> list[str]:
     phrases: list[str] = []
-    for match in re.findall(r"\b[\w\u4e00-\u9fff]+(?:[-'][\w\u4e00-\u9fff]+)+\b", question.lower()):
-        normalized = _normalize_phrase(match)
+    for match in re.findall(r"\b[\w\u4e00-\u9fff]+(?:[-'][\w\u4e00-\u9fff]+)+\b", question):
+        # Treat hyphenated proper nouns such as "T-Hub" as required entities,
+        # but do not require generic descriptors like "early-stage" verbatim.
+        if not _looks_like_named_entity(match):
+            continue
+        normalized = _normalize_phrase(match).lower()
         if normalized and normalized not in phrases:
             phrases.append(normalized)
     return phrases[:4]
+
+
+def _looks_like_named_entity(text: str) -> bool:
+    compact = re.sub(r"[-'_]+", "", text)
+    if any(char.isdigit() for char in compact):
+        return True
+    letters = [char for char in compact if char.isalpha()]
+    if not letters:
+        return False
+    return any(char.isupper() for char in letters)
 
 
 def _normalize_term(term: str) -> str:

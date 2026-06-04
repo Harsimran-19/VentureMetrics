@@ -37,6 +37,32 @@ def test_social_question_does_not_allow_tools() -> None:
     assert route.allow_web_search is False
 
 
+def test_nice_to_meet_you_does_not_allow_tools() -> None:
+    route = route_message("nice to meet you?")
+
+    assert route.intent == "casual_chat"
+    assert route.needs_research is False
+    assert route.allow_internal_search is False
+    assert route.allow_web_search is False
+
+
+def test_feedback_does_not_trigger_research() -> None:
+    route = route_message("that is an extremely artificial response")
+
+    assert route.intent == "casual_chat"
+    assert route.needs_research is False
+    assert route.allow_web_search is False
+
+
+def test_broad_research_command_asks_for_clarification() -> None:
+    route = route_message("find funding")
+
+    assert route.intent == "clarification_needed"
+    assert route.needs_research is False
+    assert route.allow_internal_search is False
+    assert route.allow_web_search is False
+
+
 def test_open_domain_factual_question_requires_research() -> None:
     route = route_message("What is T-Hub in Hyderabad?")
 

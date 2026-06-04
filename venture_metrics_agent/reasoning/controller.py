@@ -234,7 +234,9 @@ def _route_with_reasoner(
             reason="The message is a follow-up to the current chat topic.",
             constraints=["Resolve the topic from chat memory before retrieval."],
         )
-    if deterministic.intent in {"chat_summary", "system_help"}:
+    if deterministic.intent in {"casual_chat", "chat_summary", "system_help"}:
+        return deterministic, "deterministic_guardrail"
+    if deterministic.intent == "clarification_needed":
         return deterministic, "deterministic_guardrail"
     if not llm.is_configured:
         return deterministic, "deterministic"
@@ -286,6 +288,8 @@ def _route_from_payload(payload: dict[str, Any], *, use_web_fallback: bool) -> R
     needs_research = intent in {"internal_research", "current_research", "external_research"} or bool(
         payload.get("needs_research")
     )
+    if intent in {"casual_chat", "chat_summary", "system_help", "clarification_needed"}:
+        needs_research = False
     allow_internal = needs_research and bool(payload.get("allow_internal_search", True))
     allow_web = needs_research and use_web_fallback and bool(payload.get("allow_web_search", use_web_fallback))
     needs_clarification = intent == "clarification_needed" or bool(payload.get("needs_clarification"))
@@ -542,10 +546,10 @@ def _direct_response(
     chat_history: list[dict[str, str]],
 ) -> dict[str, Any]:
     if route.needs_clarification:
-        answer = "Can you narrow the question a bit? I need a specific topic, source type, company, programme, or region to research."
-        confidence = "Insufficient evidence"
-        source_mode = "insufficient"
-        gaps = ["No research tools were used because the request was underspecified."]
+        answer = _clarification_response(question, chat_history)
+        confidence = "High"
+        source_mode = "no_tools"
+        gaps = []
     else:
         answer = casual_response(question, intent=route.intent, chat_history=chat_history, llm=llm)
         confidence = "High"
@@ -564,6 +568,23 @@ def _direct_response(
         "route": route.as_dict(),
         "reasoning_trace": workspace.trace(),
     }
+
+
+def _clarification_response(question: str, chat_history: list[dict[str, str]]) -> str:
+    lowered = question.lower()
+    previous = _previous_user_question(chat_history)
+
+    if any(term in lowered for term in ("policy", "policies", "政策")):
+        return "Which policy angle should I focus on: Hong Kong, Shenzhen, GBA-wide, university commercialization, or startup funding?"
+    if any(term in lowered for term in ("funding", "grant", "fund", "资助", "資助")):
+        return "What kind of funding should I look for: government grants, university startup support, competitions, investors, or all of them?"
+    if any(term in lowered for term in ("compare", "comparison")):
+        return "What should I compare? You can name two sources, two cities, two programmes, or ask me to pick the strongest matches from the source library."
+    if any(term in lowered for term in ("source", "sources", "data")):
+        return "Which part of the source library should I inspect: funding, policies, incubators, universities, science parks, or ecosystem benchmarks?"
+    if previous:
+        return "What part should I go deeper on: the source evidence, the practical takeaway, the region, or a specific programme?"
+    return "What should I focus on: a region, source type, organization, programme, or entrepreneurship topic?"
 
 
 def _synthesize_response(

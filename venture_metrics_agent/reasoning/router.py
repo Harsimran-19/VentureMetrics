@@ -79,6 +79,10 @@ HELP_PATTERNS = (
     r"\bwhat('?s| is) your name\b",
 )
 SOCIAL_PATTERNS = (
+    r"\bnice to meet you\b",
+    r"\bgood to meet you\b",
+    r"\bpleased to meet you\b",
+    r"\bit('?s| is) nice to meet you\b",
     r"\bhow are you\b",
     r"\bhow('?s| is) it going\b",
     r"\bhow are things\b",
@@ -86,6 +90,12 @@ SOCIAL_PATTERNS = (
     r"\bgood morning\b",
     r"\bgood afternoon\b",
     r"\bgood evening\b",
+)
+FEEDBACK_PATTERNS = (
+    r"\bthat (is|was|sounds?|feels?)\b.*\b(artificial|robotic|awkward|bad|wrong|weird|not helpful)\b",
+    r"\byou (misunderstood|missed|ignored)\b",
+    r"\bnot what i (asked|meant|wanted)\b",
+    r"\btoo (artificial|robotic|formal|generic|verbose|short)\b",
 )
 SUMMARY_PATTERNS = (
     r"\bsummarize (this|our|the) chat\b",
@@ -157,6 +167,17 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
             reason="The message is conversational and does not ask for research.",
         )
 
+    if any(re.search(pattern, lowered) for pattern in FEEDBACK_PATTERNS):
+        return RouteDecision(
+            intent="casual_chat",
+            needs_research=False,
+            allow_internal_search=False,
+            allow_web_search=False,
+            needs_clarification=False,
+            reason="The user is giving feedback on the conversation, not asking for source research.",
+            constraints=["Acknowledge the feedback and adjust the conversational style."],
+        )
+
     if any(re.search(pattern, lowered) for pattern in SUMMARY_PATTERNS):
         return RouteDecision(
             intent="chat_summary",
@@ -177,7 +198,7 @@ def route_message(question: str, *, use_web_fallback: bool = True) -> RouteDecis
             reason="The user is asking about system capabilities rather than source evidence.",
         )
 
-    if _is_too_vague(lowered):
+    if _is_too_vague(lowered) or _needs_research_clarification(lowered):
         return RouteDecision(
             intent="clarification_needed",
             needs_research=False,
@@ -245,6 +266,9 @@ def _is_casual_chat(lowered: str) -> bool:
         "sup",
         "thanks",
         "thank you",
+        "nice to meet you",
+        "good to meet you",
+        "pleased to meet you",
         "ok",
         "okay",
         "cool",
@@ -261,8 +285,35 @@ def _is_too_vague(lowered: str) -> bool:
     return compact in vague
 
 
+def _needs_research_clarification(lowered: str) -> bool:
+    compact = re.sub(r"[^\w\u4e00-\u9fff]+", " ", lowered).strip()
+    broad_prompts = {
+        "find funding",
+        "find grants",
+        "find policies",
+        "find policy",
+        "research funding",
+        "research grants",
+        "research policies",
+        "research policy",
+        "tell me about funding",
+        "tell me about grants",
+        "tell me about policies",
+        "tell me about policy",
+        "compare sources",
+        "compare two sources",
+    }
+    if compact in broad_prompts:
+        return True
+    if re.fullmatch(r"(find|research|list|show me) (sources|data|programmes|programs)", compact):
+        return True
+    return False
+
+
 def _looks_like_factual_question(lowered: str) -> bool:
     if any(re.search(pattern, lowered) for pattern in SOCIAL_PATTERNS):
+        return False
+    if any(re.search(pattern, lowered) for pattern in FEEDBACK_PATTERNS):
         return False
     if any(re.search(pattern, lowered) for pattern in SUMMARY_PATTERNS):
         return False

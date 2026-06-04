@@ -19,13 +19,15 @@ def casual_response(
     if llm.is_configured:
         try:
             system_content = (
-                "You are the Venture Metrics assistant. Summarize the chat so far in plain language. "
+                "You are Venture Metrics. Summarize the chat so far in plain language. "
                 "Do not cite sources, mention tools, or add new facts. Return JSON with key answer."
                 if intent == "chat_summary"
                 else (
-                    "You are the Venture Metrics assistant. Reply naturally and briefly to casual chat. "
-                    "Do not cite sources, mention tools, mention hidden routing, or push the user into a fixed script. "
-                    "If useful, invite the next message in a normal conversational way. Return JSON with key answer."
+                    "You are Venture Metrics, a chat-first research assistant for entrepreneurship ecosystem data. "
+                    "Reply naturally and briefly. "
+                    "Sound warm, attentive, and project-aware, not robotic. If the user gives feedback, acknowledge "
+                    "it and adjust. Do not cite sources, mention tools, mention hidden routing, or push the user "
+                    "into a fixed script. Return JSON with key answer."
                 )
             )
             response = llm.complete_json(
@@ -61,12 +63,35 @@ def _fallback_response(question: str, *, intent: str, chat_history: list[dict[st
         )
     if intent == "system_help":
         return (
-            "I am the Venture Metrics research assistant. I can keep a chat session, use the indexed source library first, search the web when evidence is missing, and answer with citations and confidence."
+            "I am Venture Metrics. I help explore entrepreneurship sources, policies, funding, incubators, universities, and benchmark ecosystems. For research questions, I use the saved source library first and add citations when I answer."
         )
     if compact in {"thanks", "thank you", "谢谢", "謝謝"}:
         return "No problem."
+    if "nice to meet you" in lowered or "good to meet you" in lowered or "pleased to meet you" in lowered:
+        return "Nice to meet you too. I can help with source exploration, entrepreneurship research, or just talk through what you are testing."
     if "how are you" in lowered or "how is it going" in lowered or "how's it going" in lowered:
-        return "I am running normally."
+        return "I am doing well. Ready to help with the source library or talk through what you are testing."
+    if _looks_like_feedback(lowered):
+        return "Fair point. That sounded too mechanical. I will keep casual replies more natural and save the research mode for questions that actually need sources."
     if compact in {"ok", "okay", "cool"}:
         return "Got it."
-    return "Hi."
+    if compact in {"hi", "hello", "hey", "yo", "你好"}:
+        return "Hi. What are you working on today?"
+    return "I am here. Tell me what you want to explore or test next."
+
+
+def _looks_like_feedback(lowered: str) -> bool:
+    return any(
+        phrase in lowered
+        for phrase in (
+            "artificial",
+            "robotic",
+            "awkward",
+            "bad response",
+            "wrong response",
+            "not helpful",
+            "not what i asked",
+            "not what i meant",
+            "misunderstood",
+        )
+    )

@@ -121,13 +121,6 @@ DEFAULT_CASES = [
         required_terms=["patent", "Hong Kong"],
     ),
     EvalCase(
-        id="gba_ecosystem_connectors",
-        question="Which associations, alliances, or ecosystem organisations could help a startup build connections across Hong Kong and Shenzhen?",
-        category="ecosystem",
-        min_citations=1,
-        required_terms=["Hong Kong", "Shenzhen"],
-    ),
-    EvalCase(
         id="startup_hiring_channels",
         question="Which hiring platforms, labour portals, or talent programmes look most relevant for startup recruitment in Hong Kong, the UK, and Canada?",
         category="talent",

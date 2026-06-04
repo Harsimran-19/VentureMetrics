@@ -963,7 +963,6 @@ HTML = r"""<!doctype html>
         <button data-q="Which Hong Kong universities provide spinout, technology transfer, or incubator support for founders?">Hong Kong university spinouts</button>
         <button data-q="Which mainland university incubators or science parks look most relevant as benchmarks for commercialization and startup support?">Mainland incubator benchmarks</button>
         <button data-q="What patent, intellectual property, or commercialization support is available in Hong Kong for startups or university-linked founders?">Patent and IP support</button>
-        <button data-q="Which associations, alliances, or ecosystem organisations could help a startup build connections across Hong Kong and Shenzhen?">GBA ecosystem connectors</button>
         <button data-q="Which hiring platforms, labour portals, or talent programmes look most relevant for startup recruitment in Hong Kong, the UK, and Canada?">Startup hiring channels</button>
       </section>
     </aside>
